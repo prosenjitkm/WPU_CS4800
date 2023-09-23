@@ -50,4 +50,8 @@ public class UserService {
             throw new RuntimeException("User not found with id " + id);
         }
     }
+
+    public User getUserByUsername(String username) {
+        return userRepository.findByUserName(username).orElse(null);
+    }
 }
