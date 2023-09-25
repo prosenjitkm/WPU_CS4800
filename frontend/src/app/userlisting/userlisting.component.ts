@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AuthService } from "../service/auth.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";

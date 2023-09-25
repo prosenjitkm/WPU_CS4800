@@ -1,4 +1,18 @@
 {
+  "role": [
+    {
+      "code": "admin",
+      "name": "ADMIN"
+    },
+    {
+      "code": "buyer",
+      "name": "BUYER"
+    },
+    {
+      "code": "seller",
+      "name": "SELLER"
+    }
+  ],
   "user": [
     {
       "id": 1,
@@ -75,8 +89,7 @@
       "country": "United States of America",
       "role": "ADMIN",
       "isActive": true
-    }
-  ,
+    },
     {
       "id": 5,
       "userName": "prantikaroytanni",
@@ -95,8 +108,7 @@
       "country": "United States of America",
       "role": "ADMIN",
       "isActive": true
-    }
-  ,
+    },
     {
       "id": 6,
       "userName": "prantikaroytanni",
@@ -134,6 +146,15 @@
       "country": "United States of America",
       "role": "ADMIN",
       "isActive": true
+    },
+    {
+      "userName": "tanni",
+      "password": "",
+      "firstName": "Tanni",
+      "lastName": "Roy",
+      "role": "buyer",
+      "isActive": false,
+      "id": 8
     }
   ]
 }

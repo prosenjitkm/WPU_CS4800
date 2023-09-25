@@ -7,18 +7,19 @@ import { HttpClient } from "@angular/common/http";
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-  apiUrl = 'http://localhost:3000/user';
+  apiUrl = 'http://localhost:8088/api/users';
 
   getAll() {
     return this.http.get(this.apiUrl);
   }
 
   getByCode(code: any) {
-    //return this.http.get(this.apiUrl+'/'+code);
     return this.http.get(`${this.apiUrl}?userName=${code}`);
   }
 
   proceedRegister(inputdata: any) {
+    console.log(inputdata);
+    console.log(this.apiUrl);
     return this.http.post(this.apiUrl, inputdata);
   }
 
@@ -32,5 +33,9 @@ export class AuthService {
 
   getUserRole(){
     return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
+  }
+
+  getAllRole(){
+    return this.http.get('http://localhost:3000/role');
   }
 }
