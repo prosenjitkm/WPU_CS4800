@@ -20,6 +20,9 @@ public class User {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "user_id")
+    private Long userId;
+
     @Column(name = "user_name")
     private String userName;
 
@@ -32,7 +35,7 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "dateOdBirth")
+    @Column(name = "dateOfBirth")
     private LocalDate dateOfBirth;
 
     @Column(name = "gender")
@@ -63,7 +66,7 @@ public class User {
     private String country;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_level")
+    @Column(name = "role")
     private Roles role;
 
     @Column(name = "is_Active")

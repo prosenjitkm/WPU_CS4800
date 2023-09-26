@@ -11,6 +11,11 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
 
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
+  userdata:any;
+
   constructor(
     private builder: FormBuilder,
     private toastr:ToastrService,
@@ -24,8 +29,35 @@ export class LoginComponent {
     password:this.builder.control('', Validators.required),
   });
 
-  userdata:any;
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+      this.service.getByCode(this.loginForm.value.userName).subscribe(response => {
 
+        if (Array.isArray(response) && response.length) {
+          this.userdata = response[0]; // Get the first user from the array response
+        } else {
+          this.toastr.error('Invalid username');
+          return;
+        }
+
+        if(this.userdata.password === this.loginForm.value.password){
+
+          if(this.userdata.active === true){
+            sessionStorage.setItem('userName', this.userdata.userName);
+            sessionStorage.setItem('role', this.userdata.role); // Fix the key here as mentioned in the previous response
+            this.router.navigate(['']);
+
+          } else {
+            this.toastr.error('Please contact admin', 'Inactive User');
+          }
+
+        } else {
+          this.toastr.error('Invalid credentials');
+        }
+      })
+    }
+  }
+/*
   proceedLogin() {
     if (this.loginForm.valid) {
       this.service.getByCode(this.loginForm.value.userName).subscribe(response => {
@@ -53,5 +85,5 @@ export class LoginComponent {
         }
       })
     }
-  }
+  }*/
 }
