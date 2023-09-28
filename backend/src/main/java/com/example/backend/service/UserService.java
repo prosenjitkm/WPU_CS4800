@@ -1,17 +1,15 @@
 package com.example.backend.service;
 
 import com.example.backend.enums.Roles;
-import com.example.backend.exception.InvalidRoleException;
-import com.example.backend.exception.UserNotActiveException;
-import com.example.backend.exception.UserNotFoundException;
+import com.example.backend.exception.login.InvalidRoleException;
+import com.example.backend.exception.login.UserNotActiveException;
+import com.example.backend.exception.login.UserNotFoundException;
 import com.example.backend.model.User;
 import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 

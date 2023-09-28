@@ -1,5 +1,6 @@
 package com.example.backend.controller;
 
+import com.example.backend.constants.UrlConstants;
 import com.example.backend.model.User;
 import com.example.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -12,14 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping(UrlConstants.BASE_USER_URL)
 @RequiredArgsConstructor
 @Log4j2
 public class UserController {
 
     private final UserService userService;
 
-    @PostMapping
+    @PostMapping(UrlConstants.ADD_USER)
     public ResponseEntity<User> addUser(@RequestBody User user) {
         try {
             User newUser = userService.create(user); // Changed from createUser to create
@@ -29,7 +30,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping(UrlConstants.DELETE_USER)
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long id) {
         try {
             userService.delete(id); // Changed from deleteUser to delete
@@ -39,7 +40,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping(UrlConstants.UPDATE_USER)
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
         try {
             User updatedUser = userService.update(id, user); // Changed from updateUser to update
@@ -49,7 +50,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/byUsername/{username}")
+    @GetMapping(UrlConstants.GET_USER_BY_USERNAME)
     public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
         try {
             User user = userService.getByUsername(username); // Changed from getUserByUsername to getByUsername

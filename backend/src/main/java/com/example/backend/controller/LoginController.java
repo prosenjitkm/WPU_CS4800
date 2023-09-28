@@ -1,9 +1,10 @@
 package com.example.backend.controller;
 
+import com.example.backend.constants.UrlConstants;
 import com.example.backend.dto.LoginRequestDTO;
-import com.example.backend.exception.InvalidRoleException;
-import com.example.backend.exception.UserNotActiveException;
-import com.example.backend.exception.UserNotFoundException;
+import com.example.backend.exception.login.InvalidRoleException;
+import com.example.backend.exception.login.UserNotActiveException;
+import com.example.backend.exception.login.UserNotFoundException;
 import com.example.backend.model.User;
 import com.example.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -12,14 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth")
 @RequiredArgsConstructor
 @Log4j2
 public class LoginController {
 
     private final UserService userService;
 
-    @PostMapping("/login")
+    @PostMapping(value = UrlConstants.LOGIN_USER)
     public ResponseEntity<?> loginUser(@RequestBody LoginRequestDTO loginRequest) {
         try {
             User user = userService.authenticateWithExceptions(loginRequest.getUsername(), loginRequest.getPassword());

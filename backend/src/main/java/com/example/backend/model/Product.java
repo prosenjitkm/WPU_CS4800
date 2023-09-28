@@ -50,4 +50,8 @@ public class Product {
 
     @Column(name = "posted_date")
     private Date postedDate;
+
+    @Lob
+    @Column(name = "product_image")
+    private byte[] productImage;
 }
