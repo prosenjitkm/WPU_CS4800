@@ -6,26 +6,26 @@
   <mat-card-content>
     <form class="example-form" [formGroup]="registrationForm" (ngSubmit)="proceedRegister()">
 
-      <div>
+
         <mat-form-field class="example-full-width">
           <mat-label>User Name</mat-label>
           <input matInput formControlName="userName">
         </mat-form-field>
-      </div>
 
-      <div>
+
+
         <mat-form-field class="example-full-width">
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="password">
         </mat-form-field>
-      </div>
 
-      <div>
+
+
         <mat-form-field class="example-full-width">
           <mat-label>First Name</mat-label>
           <input matInput formControlName="firstName">
         </mat-form-field>
-      </div>
+
 
       <div>
         <mat-form-field class="example-full-width">
@@ -103,7 +103,15 @@
           <input matInput formControlName="country">
         </mat-form-field>
       </div>
-
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Role</mat-label>
+          <mat-select placeholder="Role" formControlName="role">
+            <mat-option value="BUYER">BUYER</mat-option>
+            <mat-option value="SELLER">SELLER</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
       <div>
         <button mat-raised-button color="primary">Submit</button>
         <a routerLink="/login" mat-raised-button color="accent">Back to Login</a>

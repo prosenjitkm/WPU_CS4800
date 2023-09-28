@@ -1,1 +1,56 @@
-<p>updatepopup works!</p>
+<mat-card>
+  <mat-card-header>
+    <h1>Update User</h1>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="example-form" [formGroup]="updateForm" (ngSubmit)="updateUser()">
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>User Name</mat-label>
+          <input matInput formControlName="userName">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option *ngFor="let item of rolelist" [value]="item.code">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Status</mat-label>
+          <input matInput formControlName="isActive">
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <button mat-raised-button color="primary">Update</button>
+        <a mat-dialog-close mat-raised-button color="accent">Close</a>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
