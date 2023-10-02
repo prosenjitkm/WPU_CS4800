@@ -2,6 +2,8 @@ package com.example.backend.controller;
 
 import com.example.backend.constants.UrlConstants;
 import com.example.backend.model.User;
+import com.example.backend.response.ErrorResponse;
+import com.example.backend.response.SuccessResponse;
 import com.example.backend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -19,12 +21,14 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping(UrlConstants.ADD_USER)
-    public ResponseEntity<User> addUser(@RequestBody User user) {
+    public ResponseEntity<Object> addUser(@RequestBody User user) {
         try {
-            User newUser = userService.create(user); // Changed from createUser to create
-            return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+            User createdUser = userService.create(user);
+            SuccessResponse successResponse = new SuccessResponse("User successfully created with ID: " + createdUser.getId());
+            return new ResponseEntity<>(successResponse, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            log.error("Error while adding user", e);
+            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while adding the user.", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -39,33 +43,45 @@ public class UserController {
     }
 
     @PutMapping(UrlConstants.UPDATE_USER)
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<Object> updateUser(@PathVariable Long id, @RequestBody User user) {
         try {
             User updatedUser = userService.update(id, user); // Changed from updateUser to update
-            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+            SuccessResponse successResponse = new SuccessResponse("User with ID: " + updatedUser.getId() + " successfully updated.");
+            return new ResponseEntity<>(successResponse, HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            log.error("Error while updating user with ID: {}", id, e);
+            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while updating the user.", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping(UrlConstants.GET_USER_BY_USERNAME)
-    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
+    public ResponseEntity<Object> getUserByUsername(@PathVariable String username) {
         try {
             User user = userService.getByUsername(username); // Changed from getUserByUsername to getByUsername
             if (user != null) {
                 return new ResponseEntity<>(user, HttpStatus.OK);
             } else {
-                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("User with username: " + username + " not found."));
             }
         } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+            log.error("Error while fetching user with username: {}", username, e);
+            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while fetching the user.", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping(value = UrlConstants.LIST_ALL_USERS)
-    public ResponseEntity<List<User>> getAllUsers() {
-        log.info("Fetching all users...");
-        List<User> users = userService.getAllUsers();
-        return ResponseEntity.ok(users);
+    public ResponseEntity<Object> getAllUsers() {
+        try {
+            log.info("Fetching all users...");
+            List<User> users = userService.getAllUsers();
+            if (users != null && !users.isEmpty()) {
+                return ResponseEntity.ok(users);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("No users found."));
+            }
+        } catch (Exception e) {
+            log.error("Error while fetching all users", e);
+            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while fetching all users.", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
