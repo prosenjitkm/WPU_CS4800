@@ -7,13 +7,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-/*import org.springframework.security.access.prepost.PreAuthorize;*/
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(UrlConstants.BASE_USER_URL)
 @RequiredArgsConstructor
 @Log4j2
 public class UserController {
@@ -64,8 +62,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/list")
-/*    @PreAuthorize("hasRole('ADMIN')")*/
+    @GetMapping(value = UrlConstants.LIST_ALL_USERS)
     public ResponseEntity<List<User>> getAllUsers() {
         log.info("Fetching all users...");
         List<User> users = userService.getAllUsers();

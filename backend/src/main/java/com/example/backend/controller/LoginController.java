@@ -20,7 +20,7 @@ public class LoginController {
     private final UserService userService;
 
     @PostMapping(value = UrlConstants.LOGIN_USER)
-    public ResponseEntity<?> loginUser(@RequestBody LoginRequestDTO loginRequest) {
+    public ResponseEntity<Object> loginUser(@RequestBody LoginRequestDTO loginRequest) {
         try {
             User user = userService.authenticateWithExceptions(loginRequest.getUsername(), loginRequest.getPassword());
             return ResponseEntity.ok(user);
@@ -41,5 +41,4 @@ public class LoginController {
             return ResponseEntity.badRequest().body("An unexpected error occurred during login.");
         }
     }
-
 }
