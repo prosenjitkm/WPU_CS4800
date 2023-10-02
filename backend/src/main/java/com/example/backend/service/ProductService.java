@@ -21,9 +21,26 @@ public class ProductService {
                 .orElseThrow(() -> new ProductNotFoundException("Product not found with id " + id));
     }
 
+/*    @Transactional
+    public Product create(Product product) {
+        log.info("Creating new product: {}", product.getProductId());
+        try{
+            return productRepository.save(product);
+        }catch(Exception e){
+            log.error("Error creating product: {}", product.getProductId(), e);
+            throw e;
+        }
+    }*/
+
     @Transactional
     public Product create(Product product) {
-        return productRepository.save(product);
+        log.info("Creating new product: {}", product.getProductId());
+        try {
+            return productRepository.save(product);
+        } catch (Exception e) {
+            log.error("Error creating product: {}", product.getProductId(), e);
+            throw new ProductNotFoundException("Failed to create product with id " + product.getProductId());
+        }
     }
 
     @Transactional
