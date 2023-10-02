@@ -5,7 +5,7 @@ import lombok.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "products")  // renamed to users
+@Table(name = "products")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -50,8 +50,4 @@ public class Product {
 
     @Column(name = "posted_date")
     private Date postedDate;
-
-    @Lob
-    @Column(name = "product_image")
-    private byte[] productImage;
 }
