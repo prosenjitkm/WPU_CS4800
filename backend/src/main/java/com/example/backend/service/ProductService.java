@@ -2,11 +2,14 @@ package com.example.backend.service;
 
 import com.example.backend.exception.product.ProductNotFoundException;
 import com.example.backend.model.Product;
+import com.example.backend.model.User;
 import com.example.backend.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -20,17 +23,6 @@ public class ProductService {
         return productRepository.findById(id)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found with id " + id));
     }
-
-/*    @Transactional
-    public Product create(Product product) {
-        log.info("Creating new product: {}", product.getProductId());
-        try{
-            return productRepository.save(product);
-        }catch(Exception e){
-            log.error("Error creating product: {}", product.getProductId(), e);
-            throw e;
-        }
-    }*/
 
     @Transactional
     public Product create(Product product) {
@@ -58,5 +50,9 @@ public class ProductService {
             throw new ProductNotFoundException("Product not found with id " + id);
         }
         productRepository.deleteById(id);
+    }
+
+    public List<Product> getAllProductsForUser(Long userId) {
+        return productRepository.findByUserId(userId);
     }
 }

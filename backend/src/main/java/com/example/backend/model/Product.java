@@ -19,7 +19,7 @@ public class Product {
     private Long id;
 
     @Column(name = "user_id")
-    private Long UserId; // the user who added the product
+    private Long userId; // the user who added the product
 
     @Column(name = "product_id")
     private Long productId;
