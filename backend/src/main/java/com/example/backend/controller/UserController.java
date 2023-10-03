@@ -1,6 +1,7 @@
 package com.example.backend.controller;
 
 import com.example.backend.constants.UrlConstants;
+import com.example.backend.model.Product;
 import com.example.backend.model.User;
 import com.example.backend.response.ErrorResponse;
 import com.example.backend.response.SuccessResponse;

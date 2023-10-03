@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import com.example.backend.response.ErrorResponse;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @Log4j2
@@ -62,6 +64,23 @@ public class ProductController {
         } catch (Exception ex) {
             log.error("Error during product deletion with ID {}", id, ex);
             return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while deleting the product with ID " + id), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = UrlConstants.GET_ALL_PRODUCTS_FOR_A_USER)
+    public ResponseEntity<Object> getAllProductsForGivenUserId(@PathVariable Long userId){
+        try {
+            log.info("Fetching all products for the user: " + userId);
+            List<Product> productsForUser = productService.getAllProductsForUser(userId);
+
+            if (!productsForUser.isEmpty()) {
+                return ResponseEntity.ok(productsForUser);
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("No product found for the given user."));
+            }
+        } catch(Exception e) {
+            log.error("Error fetching products for user: " + userId, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse("Error fetching products."));
         }
     }
 }
