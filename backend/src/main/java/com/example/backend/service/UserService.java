@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Log4j2
@@ -51,23 +50,23 @@ public class UserService {
     }
 
     @Transactional
-    public void delete(Long id) {
-        if(userRepository.existsById(id)) {
-            userRepository.deleteById(id);
+    public void delete(Long userId) {
+        if(userRepository.existsById(userId)) {
+            userRepository.deleteById(userId);
         } else {
-            log.error("User not found with id: {}", id);
-            throw new UserNotFoundException("User not found with id " + id);
+            log.error("User not found with id: {}", userId);
+            throw new UserNotFoundException("User not found with id " + userId);
         }
     }
 
     @Transactional
-    public User update(Long id, User updatedUser) {
-        if(userRepository.existsById(id)) {
-            updatedUser.setId(id);
+    public User update(Long userId, User updatedUser) {
+        if(userRepository.existsById(userId)) {
+            updatedUser.setUserId(userId);
             return userRepository.save(updatedUser);
         } else {
-            log.error("User not found with id: {}", id);
-            throw new UserNotFoundException("User not found with id " + id);
+            log.error("User not found with id: {}", userId);
+            throw new UserNotFoundException("User not found with id " + userId);
         }
     }
 

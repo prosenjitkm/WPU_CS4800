@@ -25,8 +25,8 @@ public class ProductController {
     public ResponseEntity<Object> addProduct(@RequestBody Product product) {
         try {
             Product createdProduct = productService.create(product);
-            log.info("Product with ID {} successfully deleted", createdProduct.getId());
-            SuccessResponse successResponse = new SuccessResponse("Product successfully created with ID: " + createdProduct.getId());
+            log.info("Product with ID {} successfully deleted", createdProduct.getProductId());
+            SuccessResponse successResponse = new SuccessResponse("Product successfully created with ID: " + createdProduct.getProductId());
             return new ResponseEntity<>(successResponse, HttpStatus.CREATED);
         } catch (Exception e) {
             log.error("Error while adding product", e);
@@ -35,35 +35,35 @@ public class ProductController {
     }
 
     @PutMapping(value = UrlConstants.UPDATE_PRODUCT)
-    public ResponseEntity<Object> updateProduct(@PathVariable Long id,
+    public ResponseEntity<Object> updateProduct(@PathVariable Long productId,
                                                 @RequestBody Product product) {
         try {
-            Product updatedProduct = productService.update(id, product);
-            log.info("Product with ID {} successfully updated: {}", id, updatedProduct);
+            Product updatedProduct = productService.update(productId, product);
+            log.info("Product with ID {} successfully updated: {}", productId, updatedProduct);
             return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
         } catch (ProductNotFoundException ex) {
-            log.error("Product with ID {} not found: {}", id, ex.getMessage());
+            log.error("Product with ID {} not found: {}", productId, ex.getMessage());
             return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
         } catch (Exception e) {
-            log.error("Error while updating product with ID {}", id, e);
-            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while updating the product with ID " + id), HttpStatus.INTERNAL_SERVER_ERROR);
+            log.error("Error while updating product with ID {}", productId, e);
+            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while updating the product with ID " + productId), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
 
     @DeleteMapping(UrlConstants.DELETE_PRODUCT)
-    public ResponseEntity<Object> deleteProduct(@PathVariable Long id) {
+    public ResponseEntity<Object> deleteProduct(@PathVariable Long productId) {
         try {
-            productService.delete(id);
-            log.info("Product with ID {} successfully deleted", id);
-            SuccessResponse successResponse = new SuccessResponse("Product with ID " + id + " successfully deleted");
+            productService.delete(productId);
+            log.info("Product with ID {} successfully deleted", productId);
+            SuccessResponse successResponse = new SuccessResponse("Product with ID " + productId + " successfully deleted");
             return new ResponseEntity<>(successResponse, HttpStatus.OK);
         } catch (ProductNotFoundException ex) {
-            log.error("Product with ID {} not found: {}", id, ex.getMessage());
+            log.error("Product with ID {} not found: {}", productId, ex.getMessage());
             return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
         } catch (Exception ex) {
-            log.error("Error during product deletion with ID {}", id, ex);
-            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while deleting the product with ID " + id), HttpStatus.INTERNAL_SERVER_ERROR);
+            log.error("Error during product deletion with ID {}", productId, ex);
+            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while deleting the product with ID " + productId), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

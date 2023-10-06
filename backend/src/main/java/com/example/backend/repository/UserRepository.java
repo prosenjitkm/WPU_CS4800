@@ -11,5 +11,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUserName(String username);  // Changed method to match the new field name
 
-    boolean existsById(Long id);
+    boolean existsByUserId(Long userId);
+
+    Optional<User> findTopByOrderByUserIdDesc();
 }

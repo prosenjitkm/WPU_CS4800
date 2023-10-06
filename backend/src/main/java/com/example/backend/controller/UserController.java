@@ -25,7 +25,7 @@ public class UserController {
     public ResponseEntity<Object> addUser(@RequestBody User user) {
         try {
             User createdUser = userService.create(user);
-            SuccessResponse successResponse = new SuccessResponse("User successfully created with ID: " + createdUser.getId());
+            SuccessResponse successResponse = new SuccessResponse("User successfully created with ID: " + createdUser.getUserId());
             return new ResponseEntity<>(successResponse, HttpStatus.CREATED);
         } catch (Exception e) {
             log.error("Error while adding user", e);
@@ -47,7 +47,7 @@ public class UserController {
     public ResponseEntity<Object> updateUser(@PathVariable Long id, @RequestBody User user) {
         try {
             User updatedUser = userService.update(id, user); // Changed from updateUser to update
-            SuccessResponse successResponse = new SuccessResponse("User with ID: " + updatedUser.getId() + " successfully updated.");
+            SuccessResponse successResponse = new SuccessResponse("User with ID: " + updatedUser.getUserId() + " successfully updated.");
             return new ResponseEntity<>(successResponse, HttpStatus.OK);
         } catch (Exception e) {
             log.error("Error while updating user with ID: {}", id, e);
