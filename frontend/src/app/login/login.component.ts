@@ -1,54 +1,32 @@
+// login.component.ts
+
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from "@angular/forms";
-import { ToastrService } from "ngx-toastr";
-import { AuthService } from "../service/auth.service";
-import { Router } from "@angular/router";
+import {Router} from "@angular/router";
+import {UserService} from "../services/user.service"; // Adjust the path accordingly
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
 
-  errorMessage: string = '';
-  userdata: any;
+  credentials = {
+    username: '',
+    password: ''
+  };
 
-  constructor(
-      private builder: FormBuilder,
-      private toastr: ToastrService,
-      private service: AuthService,
-      private router: Router) {
-    sessionStorage.clear();
+  constructor(private userService: UserService, private router: Router) { }
+
+    login() {
+        this.userService.login(this.credentials).subscribe(
+            (data: any) => {
+                console.log('Login successful');
+                localStorage.setItem('currentUser', JSON.stringify(data));
+                this.router.navigate(['/dashboard']);
+            },
+            error => {
+                console.log('Login error', error);
+            }
+        );
   }
-
-  loginForm = this.builder.group({
-    userName: this.builder.control('', Validators.required),
-    password: this.builder.control('', Validators.required),
-  });
-
-  onSubmit(): void {
-    if (this.loginForm.valid) {
-      this.service.login(this.loginForm.value.userName, this.loginForm.value.password).subscribe({
-        next: (response: any) => {
-          // Here, we are making sure userName and role are string values before setting them in sessionStorage
-          const userName = typeof response.userName === 'string' ? response.userName : '';
-          const role = typeof response.role === 'string' ? response.role : '';
-
-          if (userName && role) {
-            sessionStorage.setItem('userName', userName);
-            sessionStorage.setItem('role', role);
-            this.router.navigate(['']);
-          } else {
-            this.toastr.error('Unexpected response from the server.');
-          }
-        },
-        error: (error: any) => {
-          // Handle login failure here:
-          this.toastr.error(error.message || 'Login failed.');
-        }
-      });
-    }
-  }
-
 }

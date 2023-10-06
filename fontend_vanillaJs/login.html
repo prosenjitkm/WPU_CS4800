@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Login</title>
+</head>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">User Portal</div>
+        <div>
+            <button id="logoutBtn">Logout</button>
+<!--            <button id="usersBtn">Users</button>-->
+        </div>
+    </div>
+</nav>
+<div class="login-container">
+    <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Login">
+    </form>
+    <button id="registerBtn">Register</button>
+</div>
+<script src="scripts.js"></script>
+</body>
+</html>
