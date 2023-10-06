@@ -58,3 +58,6 @@ if (registerForm) {
             });
     });
 }
+function goToLogin() {
+    window.location.href = 'login.html';
+}

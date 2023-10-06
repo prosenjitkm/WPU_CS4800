@@ -61,7 +61,7 @@ public class UserService {
 
     @Transactional
     public User update(Long userId, User updatedUser) {
-        if(userRepository.existsById(userId)) {
+        if(userRepository.existsByUserId(userId)) {
             updatedUser.setUserId(userId);
             return userRepository.save(updatedUser);
         } else {

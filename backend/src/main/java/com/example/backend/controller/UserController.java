@@ -1,7 +1,6 @@
 package com.example.backend.controller;
 
 import com.example.backend.constants.UrlConstants;
-import com.example.backend.model.Product;
 import com.example.backend.model.User;
 import com.example.backend.response.ErrorResponse;
 import com.example.backend.response.SuccessResponse;
@@ -34,9 +33,9 @@ public class UserController {
     }
 
     @DeleteMapping(UrlConstants.DELETE_USER)
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long userId) {
         try {
-            userService.delete(id); // Changed from deleteUser to delete
+            userService.delete(userId); // Changed from deleteUser to delete
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -44,13 +43,13 @@ public class UserController {
     }
 
     @PutMapping(UrlConstants.UPDATE_USER)
-    public ResponseEntity<Object> updateUser(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<Object> updateUser(@PathVariable Long userId, @RequestBody User user) {
         try {
-            User updatedUser = userService.update(id, user); // Changed from updateUser to update
+            User updatedUser = userService.update(userId, user); // Changed from updateUser to update
             SuccessResponse successResponse = new SuccessResponse("User with ID: " + updatedUser.getUserId() + " successfully updated.");
             return new ResponseEntity<>(successResponse, HttpStatus.OK);
         } catch (Exception e) {
-            log.error("Error while updating user with ID: {}", id, e);
+            log.error("Error while updating user with ID: {}", userId, e);
             return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred while updating the user.", e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Register</title>
+    <title>Update User</title>
 </head>
 <body>
 <div class="register-container">
-    <form id="registerForm">
+    <form id="updateForm">
         <label for="userName">Username:</label>
         <input type="text" id="userName" name="userName" required>
 
@@ -57,10 +57,10 @@
             <option value="SELLER">SELLER</option>
         </select>
 
-        <input type="submit" value="Register">
-        <button id="backButton" onclick="goToLogin()">Back</button>
+        <input type="submit" value="Update">
+        <button type="button" id="backButton" onclick="goToUserListing()">Back</button>
     </form>
 </div>
-<script src="register.js"></script>
+<script src="update.js"></script>
 </body>
 </html>

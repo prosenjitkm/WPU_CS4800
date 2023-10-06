@@ -29,39 +29,10 @@ if (loginForm) {
     });
 }
 
-// Handle logout functionality
-const logoutButton = document.getElementById('logoutBtn');
-if (logoutButton) {
-    logoutButton.addEventListener('click', function() {
-        fetch('http://localhost:8088/logout', {
-            method: 'GET'
-        })
-            .then(response => {
-                if (response.status === 200) {
-                    localStorage.removeItem('user');
-                    window.location.href = 'login.html';
-                } else {
-                    console.error('Error during logout:', response.statusText);
-                }
-            })
-            .catch(error => {
-                console.error('Error during logout:', error);
-            });
-    });
-}
-
 // Redirect to the registration page when the "Register" button is clicked
 const registerButton = document.getElementById('registerBtn');
 if (registerButton) {
     registerButton.addEventListener('click', function() {
         window.location.href = 'register.html';
-    });
-}
-
-// Navigate to user listing page
-const usersButton = document.getElementById('usersBtn');
-if (usersButton) {
-    usersButton.addEventListener('click', function() {
-        window.location.href = 'userlisting.html';
     });
 }

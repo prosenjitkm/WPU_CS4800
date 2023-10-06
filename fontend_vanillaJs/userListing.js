@@ -60,33 +60,7 @@ function deleteUser(userId) {
 }
 
 function updateUser(userId) {
-    const userData = prompt("Enter new user data in JSON format:", "{}");
-    if (userData) {
-        try {
-            const parsedData = JSON.parse(userData);
-            fetch(`http://localhost:8088/api/users/${userId}`, {
-                method: 'PUT',
-                body: JSON.stringify(parsedData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.successMessage) {
-                        alert('User updated successfully');
-                        location.reload();
-                    } else {
-                        alert(data.errorMessage);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error updating user:', error);
-                });
-        } catch (e) {
-            alert("Invalid JSON format");
-        }
-    }
+    window.location.href = `update.html?userId=${userId}`;
 }
 
 // Handle logout functionality
