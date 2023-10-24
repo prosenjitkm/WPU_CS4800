@@ -53,6 +53,6 @@ public class ProductService {
     }
 
     public List<Product> getAllProductsForUser(Long userId) {
-        return productRepository.findByUserId(userId);
+        return productRepository.findByUser_UserId(userId);
     }
 }

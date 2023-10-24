@@ -2,15 +2,20 @@ package com.example.backend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.sql.Date;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.Date;
 
 @Entity
-@Table(name = "products")
+@Table(name = "PRODUCTS")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@EntityListeners(AuditingEntityListener.class)
 public class Product {
 
     @Id
@@ -18,14 +23,18 @@ public class Product {
     @Column(name = "product_id")
     private Long productId;
 
-    @Column(name = "user_id")
-    private Long userId; // the user who added the product
+    // Relationship with User
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;  // the user who added the product
 
     @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "product_category")
-    private String productCategory;
+    // Relationship with ProductCategory
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_category_id", referencedColumnName = "product_category_id")
+    private ProductCategory productCategory;
 
     @Column(name = "product_quantity")
     private Long productQuantity;
@@ -45,6 +54,13 @@ public class Product {
     @Column(name = "is_available")
     private Boolean isAvailable;
 
-    @Column(name = "posted_date")
-    private Date postedDate;
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date createdDate;
+
+    @Column(name = "last_modified_date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    private Date lastModifiedDate;
 }

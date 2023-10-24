@@ -3,16 +3,22 @@ package com.example.backend.model;
 import com.example.backend.enums.Roles;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "users")  // renamed to users
+@Table(name = "USERS")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@EntityListeners(AuditingEntityListener.class)
 public class User {
 
     @Id
@@ -68,4 +74,18 @@ public class User {
 
     @Column(name = "is_Active")
     private boolean isActive;
+
+    @Column(name = "created_date", nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
+    private Date createdDate;
+
+    @Column(name = "last_modified_date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
+    private Date lastModifiedDate;
+
+    // Relationship with Product
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Product> products;
 }

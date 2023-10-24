@@ -68,10 +68,10 @@ public class ProductController {
     }
 
     @GetMapping(value = UrlConstants.GET_ALL_PRODUCTS_FOR_A_USER)
-    public ResponseEntity<Object> getAllProductsForGivenUserId(@PathVariable Long userId){
+    public ResponseEntity<Object> getAllProductsForGivenUserId(@PathVariable Long userId) {
         try {
-            log.info("Fetching all products for the user: " + userId);
             List<Product> productsForUser = productService.getAllProductsForUser(userId);
+            log.info("Fetched {} products for user with ID {}", productsForUser.size(), userId);
 
             if (!productsForUser.isEmpty()) {
                 return ResponseEntity.ok(productsForUser);
@@ -79,7 +79,7 @@ public class ProductController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("No product found for the given user."));
             }
         } catch(Exception e) {
-            log.error("Error fetching products for user: " + userId, e);
+            log.error("Error fetching products for user: {}", userId, e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse("Error fetching products."));
         }
     }
