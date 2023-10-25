@@ -45,6 +45,9 @@ public class Product {
     @Column(name = "product_description")
     private String productDescription;
 
+    @Column(name = "product_image_url")
+    private String productImageUrl;
+
     @Column(name = "product_sale_price")
     private Long productSalePrice;
 
