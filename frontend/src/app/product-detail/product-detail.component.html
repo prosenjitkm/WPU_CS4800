@@ -1,1 +1,11 @@
-<p>product-detail works!</p>
+<!--<div *ngIf="isLoggedIn">Welcome, {{ userName }}</div>-->
+
+<ul>
+  <li *ngFor="let product">{{ product.name }}</li>
+</ul>
+
+<!--<div [ngSwitch]="page">-->
+<!--  <div *ngSwitchCase="'home'">Welcome to the home page.</div>-->
+<!--  <div *ngSwitchCase="'products'">View our products here.</div>-->
+<!--  <div *ngSwitchDefault>Page not found.</div>-->
+<!--</div>-->

@@ -25,7 +25,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     HomeComponent,
     UserlistingComponent,
     UpdatepopupComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

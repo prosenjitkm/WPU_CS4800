@@ -28,27 +28,33 @@ export class LoginComponent {
   });
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      this.service.login(this.loginForm.value.userName, this.loginForm.value.password).subscribe({
-        next: (response: any) => {
-          // Here, we are making sure userName and role are string values before setting them in sessionStorage
-          const userName = typeof response.userName === 'string' ? response.userName : '';
-          const role = typeof response.role === 'string' ? response.role : '';
+    const userName = this.loginForm.value.userName;
+    const password = this.loginForm.value.password;
 
-          if (userName && role) {
-            sessionStorage.setItem('userName', userName);
-            sessionStorage.setItem('role', role);
-            this.router.navigate(['']);
-          } else {
-            this.toastr.error('Unexpected response from the server.');
+    if (this.loginForm.valid) {
+      if (userName && password) {
+        this.service.login(userName, password).subscribe({
+          next: (response: any) => {
+            // Check if response.userName and response.role are strings, and provide default values if they are not
+            const userResponse = typeof response.userName === 'string' ? response.userName : '';
+            const role = typeof response.role === 'string' ? response.role : '';
+
+            if (userResponse && role) {
+              sessionStorage.setItem('userName', userResponse);
+              sessionStorage.setItem('role', role);
+              this.router.navigate(['']);
+            } else {
+              this.toastr.error('Unexpected response from the server.');
+            }
+          },
+          error: (error: any) => {
+            // Handle login failure here:
+            this.toastr.error(error.message || 'Login failed.');
           }
-        },
-        error: (error: any) => {
-          // Handle login failure here:
-          this.toastr.error(error.message || 'Login failed.');
-        }
-      });
+        });
+      } else {
+        this.toastr.error('Username and password are required.');
+      }
     }
   }
-
 }
