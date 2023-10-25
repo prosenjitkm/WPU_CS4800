@@ -5,9 +5,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 @Component({
-  selector: 'app-product-listing',
-  templateUrl: './product-listing.component.html',
-  styleUrls: ['./product-listing.component.css']
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
   displayedColumns: string[] = [
@@ -15,11 +15,12 @@ export class ProductListComponent implements OnInit {
     'name',
     'price',
     'description',
-    'action'
+    'action',
+    'picture'
   ];
 
-  productlist: Product[] = [];
-  dataSource: MatTableDataSource<Product>;
+  productlist: any;
+  dataSource: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -31,14 +32,20 @@ export class ProductListComponent implements OnInit {
   }
 
   loadProducts() {
-    this.productService.getAllProducts().subscribe((products: Product[]) => {
-      this.productlist = products;
+    this.productService.getAllProducts().subscribe(response => {
+      this.productlist = response;
       this.dataSource = new MatTableDataSource(this.productlist);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
   }
 
-  // You can implement functions to update and delete products here
+  updateProduct(code:any) {
+
+  }
+  deleteProduct(code:any){
+
+
+  }
 }
 

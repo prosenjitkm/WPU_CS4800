@@ -5,6 +5,8 @@ import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { UserlistingComponent } from "./userlisting/userlisting.component";
 import { AuthGuard } from './guard/auth.guard';
+import { ProductListComponent } from "./product-list/product-list.component";
+import { ProductDetailComponent } from "./product-detail/product-detail.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent, canActivate:[AuthGuard]},

@@ -1,0 +1,38 @@
+
+<!-- product-listing.component.html -->
+
+<mat-table [dataSource]="dataSource" matSort>
+
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+    <mat-cell *matCellDef="let product">{{ product.id }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+    <mat-cell *matCellDef="let product">{{ product.name }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+    <mat-cell *matCellDef="let product">{{ product.price }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>
+    <mat-cell *matCellDef="let product">{{ product.description }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+    <mat-cell *matCellDef="let product">
+      <button (click)="updateProduct(product.id)">Update</button>
+      <button (click)="deleteProduct(product.id)">Delete</button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
