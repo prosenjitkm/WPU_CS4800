@@ -42,7 +42,9 @@ public class LoginController {
             return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
         } catch (Exception ex) {
             log.error("Error during authentication", ex);
-            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred during login."), HttpStatus.INTERNAL_SERVER_ERROR);
+            //return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred during login."), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred during login.", ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+
         }
     }
 }
