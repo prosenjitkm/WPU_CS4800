@@ -14,6 +14,8 @@ import { RouterOutlet } from "@angular/router";
 import { AppRoutingModule } from './app-routing.module';
 import {MatButtonModule} from "@angular/material/button";
 import {MaterialModule} from "../material.module";
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {MaterialModule} from "../material.module";
     LoginComponent,
     HomeComponent,
     UserlistingComponent,
-    UpdatepopupComponent
+    UpdatepopupComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
