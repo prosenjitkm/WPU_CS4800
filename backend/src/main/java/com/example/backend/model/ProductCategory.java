@@ -1,5 +1,6 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -21,6 +22,7 @@ public class ProductCategory {
     @Column(name = "category_name")
     private String categoryName;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "productCategory", cascade = CascadeType.ALL)
     private List<Product> products;
 }

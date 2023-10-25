@@ -1,6 +1,7 @@
 package com.example.backend.model;
 
 import com.example.backend.enums.Roles;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -86,6 +87,7 @@ public class User {
     private Date lastModifiedDate;
 
     // Relationship with Product
+    @JsonManagedReference
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Product> products;
 }

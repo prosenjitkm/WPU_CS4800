@@ -1,11 +1,9 @@
 package com.example.backend.controller;
 
-import com.example.backend.constants.UrlConstants;
 import com.example.backend.dto.LoginRequestDTO;
 import com.example.backend.exception.login.InvalidRoleException;
 import com.example.backend.exception.login.UserNotActiveException;
 import com.example.backend.exception.login.UserNotFoundException;
-import com.example.backend.model.User;
 import com.example.backend.response.ErrorResponse;
 import com.example.backend.response.SuccessResponse;
 import com.example.backend.service.UserService;
@@ -22,11 +20,11 @@ public class LoginController {
 
     private final UserService userService;
 
-    @PostMapping(value = UrlConstants.LOGIN_USER)
+    @PostMapping(value = "/api/auth/login")
     public ResponseEntity<Object> loginUser(@RequestBody LoginRequestDTO loginRequest) {
         try {
-            User user = userService.authenticateWithExceptions(loginRequest.getUsername(), loginRequest.getPassword());
-            SuccessResponse successResponse = new SuccessResponse("User " + loginRequest.getUsername() + " successfully authenticated.", user);
+            userService.authenticateWithExceptions(loginRequest.getUsername(), loginRequest.getPassword());
+            SuccessResponse successResponse = new SuccessResponse("User " + loginRequest.getUsername() + " successfully authenticated.");
             return new ResponseEntity<>(successResponse, HttpStatus.OK);
         } catch (UserNotFoundException ex) {
             log.error("User not found", ex);
@@ -37,14 +35,12 @@ public class LoginController {
         } catch (InvalidRoleException ex) {
             log.error("Invalid role", ex);
             return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
-        } catch (IllegalArgumentException ex) {  // catching the password mismatch exception
+        } catch (IllegalArgumentException ex) {
             log.error("Password mismatch", ex);
             return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
         } catch (Exception ex) {
             log.error("Error during authentication", ex);
-            //return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred during login."), HttpStatus.INTERNAL_SERVER_ERROR);
             return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred during login.", ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
-
         }
     }
 }

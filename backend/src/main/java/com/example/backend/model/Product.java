@@ -1,5 +1,6 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -24,6 +25,7 @@ public class Product {
     private Long productId;
 
     // Relationship with User
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;  // the user who added the product
@@ -32,6 +34,7 @@ public class Product {
     private String productName;
 
     // Relationship with ProductCategory
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_category_id", referencedColumnName = "product_category_id")
     private ProductCategory productCategory;
