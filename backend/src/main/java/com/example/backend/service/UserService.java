@@ -1,5 +1,6 @@
 package com.example.backend.service;
 
+import com.example.backend.dto.ProfileDTO;
 import com.example.backend.enums.Roles;
 import com.example.backend.exception.login.InvalidRoleException;
 import com.example.backend.exception.login.UserNotActiveException;
@@ -68,6 +69,23 @@ public class UserService {
             log.error("User not found with id: {}", userId);
             throw new UserNotFoundException("User not found with id " + userId);
         }
+    }
+
+    public ProfileDTO convertToProfileDTO(User user) {
+        ProfileDTO profileDTO = new ProfileDTO();
+        profileDTO.setFirstName(user.getFirstName());
+        profileDTO.setLastName(user.getLastName());
+        profileDTO.setDateOfBirth(user.getDateOfBirth());
+        profileDTO.setGender(user.getGender());
+        profileDTO.setEmail(user.getEmail());
+        profileDTO.setPhone(user.getPhone());
+        profileDTO.setHouseNumber(user.getHouseNumber());
+        profileDTO.setStreetName(user.getStreetName());
+        profileDTO.setCity(user.getCity());
+        profileDTO.setState(user.getState());
+        profileDTO.setZipCode(user.getZipCode());
+        profileDTO.setCountry(user.getCountry());
+        return profileDTO;
     }
 
     public User getByUsername(String username) {
