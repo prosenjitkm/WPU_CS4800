@@ -1,9 +1,12 @@
 package com.example.backend.controller;
 
+import com.example.backend.security.JwtTokenProvider;
+
 import com.example.backend.dto.LoginRequestDTO;
 import com.example.backend.exception.login.InvalidRoleException;
 import com.example.backend.exception.login.UserNotActiveException;
 import com.example.backend.exception.login.UserNotFoundException;
+import com.example.backend.model.User;
 import com.example.backend.response.ErrorResponse;
 import com.example.backend.response.SuccessResponse;
 import com.example.backend.service.UserService;
@@ -19,12 +22,14 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
 
     private final UserService userService;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @PostMapping(value = "/api/auth/login")
     public ResponseEntity<Object> loginUser(@RequestBody LoginRequestDTO loginRequest) {
         try {
-            userService.authenticateWithExceptions(loginRequest.getUsername(), loginRequest.getPassword());
-            SuccessResponse successResponse = new SuccessResponse("User " + loginRequest.getUsername() + " successfully authenticated.");
+            User user = userService.authenticateWithExceptions(loginRequest.getUsername(), loginRequest.getPassword());
+            String token = jwtTokenProvider.createToken(user.getUserName(), user.getRole().name());
+            SuccessResponse successResponse = new SuccessResponse("User " + loginRequest.getUsername() + " successfully authenticated.", token);
             return new ResponseEntity<>(successResponse, HttpStatus.OK);
         } catch (UserNotFoundException ex) {
             log.error("User not found", ex);
