@@ -2,7 +2,6 @@ package com.example.backend.service;
 
 import com.example.backend.exception.product.ProductNotFoundException;
 import com.example.backend.model.Product;
-import com.example.backend.model.User;
 import com.example.backend.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

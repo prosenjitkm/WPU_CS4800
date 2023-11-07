@@ -21,6 +21,8 @@ public class UrlConstants {
     public static final String DELETE_USER = BASE_USER_URL + "/{userId}";
     public static final String UPDATE_USER = BASE_USER_URL + "/{userId}";
 
+    public static final String ADD_USER_CATEGORY = BASE_CATEGORY_URL + "/user";
+
     public static final String GET_USER_BY_USERNAME = BASE_USER_URL + "/username/{username}";
 
     public static final String GET_ALL_PRODUCTS_FOR_A_USER = BASE_PRODUCT_URL + "/{userId}";

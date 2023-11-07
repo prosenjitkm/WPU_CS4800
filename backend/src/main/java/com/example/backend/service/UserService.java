@@ -1,24 +1,26 @@
 package com.example.backend.service;
 
 import com.example.backend.dto.ProfileDTO;
-import com.example.backend.enums.Roles;
 import com.example.backend.exception.login.InvalidRoleException;
 import com.example.backend.exception.login.UserNotActiveException;
 import com.example.backend.exception.login.UserNotFoundException;
 import com.example.backend.model.User;
+import com.example.backend.model.UserCategory;
 import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Set;
 
-@Log4j2
 @RequiredArgsConstructor
 @Service
-public class UserService {
+@Log4j2
+public class UserService{
 
     private final UserRepository userRepository;
+    private static final Set<String> VALID_USER_CATEGORIES = Set.of("ADMIN", "BUYER", "SELLER");
 
     public User authenticateWithExceptions(String username, String password) throws UserNotActiveException, InvalidRoleException, UserNotFoundException {
         User user = userRepository.findByUserName(username)
@@ -32,12 +34,15 @@ public class UserService {
             throw new UserNotActiveException("User is not active. Login unsuccessful.");
         }
 
-        if (user.getRole() != Roles.ADMIN && user.getRole() != Roles.BUYER && user.getRole() != Roles.SELLER) {
-            throw new InvalidRoleException("User does not have a role set. Login unsuccessful.");
+        // Check if the user has a valid category set
+        UserCategory userCategory = user.getUserCategory();
+        if (userCategory == null || !VALID_USER_CATEGORIES.contains(userCategory.getCategoryName())) {
+            throw new InvalidRoleException("User does not have a valid category set. Login unsuccessful.");
         }
 
         return user;
     }
+
 
     @Transactional
     public User create(User user) {
@@ -94,5 +99,9 @@ public class UserService {
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
+    }
+
+    public User findUserByUsername(String username) {
+        return userRepository.findByUserName(username).orElse(null);
     }
 }
