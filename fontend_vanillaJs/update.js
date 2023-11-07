@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 if (data.successMessage) {
                     alert(data.successMessage);
-                    window.location.href = 'userListing.html';
+                    window.location.href = 'UserManagement.html';
                 } else if (data.errorMessage) {
                     alert(data.errorMessage);
                 }
