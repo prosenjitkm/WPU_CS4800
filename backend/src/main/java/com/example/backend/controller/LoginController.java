@@ -1,51 +1,49 @@
 package com.example.backend.controller;
 
-import com.example.backend.security.JwtTokenProvider;
-
-import com.example.backend.dto.LoginRequestDTO;
-import com.example.backend.exception.login.InvalidRoleException;
 import com.example.backend.exception.login.UserNotActiveException;
 import com.example.backend.exception.login.UserNotFoundException;
 import com.example.backend.model.User;
 import com.example.backend.response.ErrorResponse;
 import com.example.backend.response.SuccessResponse;
 import com.example.backend.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "Authentication", description = "Authentication operations")
 @RestController
 @RequiredArgsConstructor
-@Log4j2
+@Slf4j
 public class LoginController {
 
     private final UserService userService;
-    private final JwtTokenProvider jwtTokenProvider;
 
+    @Operation(summary = "Login a user")
     @PostMapping(value = "/api/auth/login")
-    public ResponseEntity<Object> loginUser(@RequestBody LoginRequestDTO loginRequest) {
+    public ResponseEntity<Object> login(
+            @Parameter(description  = "Username of the user", required = true)
+            @RequestParam String username,
+            @Parameter(description  = "Password of the user", required = true)
+            @RequestParam String password) {
         try {
-            User user = userService.authenticateWithExceptions(loginRequest.getUsername(), loginRequest.getPassword());
-            String token = jwtTokenProvider.createToken(user.getUserName(), user.getRole().name());
-            SuccessResponse successResponse = new SuccessResponse("User " + loginRequest.getUsername() + " successfully authenticated.", token);
-            return new ResponseEntity<>(successResponse, HttpStatus.OK);
-        } catch (UserNotFoundException ex) {
-            log.error("User not found", ex);
-            return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
-        } catch (UserNotActiveException ex) {
-            log.error("User not active", ex);
-            return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
-        } catch (InvalidRoleException ex) {
-            log.error("Invalid role", ex);
-            return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
-        } catch (IllegalArgumentException ex) {
-            log.error("Password mismatch", ex);
-            return ResponseEntity.badRequest().body(new ErrorResponse(ex.getMessage()));
-        } catch (Exception ex) {
-            log.error("Error during authentication", ex);
-            return new ResponseEntity<>(new ErrorResponse("An unexpected error occurred during login.", ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
+            User user = userService.authenticateWithExceptions(username, password);
+            return ResponseEntity.ok(new SuccessResponse("Login successful", user));
+        } catch (UserNotFoundException | UserNotActiveException e) {
+            log.error("Login failed for user: {}", username, e);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErrorResponse(e.getMessage()));
+        } catch (IllegalArgumentException e) {
+            log.error("Invalid password for user: {}", username, e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorResponse("Invalid password"));
+        } catch (Exception e) {
+            log.error("Login error for user: {}", username, e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse("An unexpected error occurred during login", e.getMessage()));
         }
     }
 }
