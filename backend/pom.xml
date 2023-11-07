@@ -19,6 +19,11 @@
     </properties>
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
         <!-- Springdoc OpenAPI UI -->
         <dependency>
             <groupId>org.springdoc</groupId>

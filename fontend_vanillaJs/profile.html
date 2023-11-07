@@ -2,36 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 20px;
+        }
+        .profile-header {
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
-<!-- Navigation bar -->
-<div class="navbar">
-    <div class="nav-container">
-        <span class="nav-logo">UserSystem</span>
-        <div class="nav-buttons">
-            <button id="usersBtn">Users</button>
-            <button id="logoutBtn">Logout</button>
+
+<div class="container">
+    <div class="profile-header row">
+        <div class="col-md-6">
+            <h2>User Profile</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <button class="btn btn-primary">Shop</button>
+            <button class="btn btn-secondary">Moderate Users</button>
+            <button class="btn btn-danger">Logout</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form>
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                </div>
+                <!-- Add additional fields here -->
+                <!-- ... -->
+                <button type="submit" class="btn btn-success">Update Profile</button>
+            </form>
         </div>
     </div>
 </div>
 
-<!-- User Profile -->
-<div class="profile-container">
-    <h2>User Profile</h2>
-    <p><strong>Username:</strong> <span id="usernameDisplay"></span></p>
-    <p><strong>First Name:</strong> <span id="firstNameDisplay"></span></p>
-    <p><strong>Last Name:</strong> <span id="lastNameDisplay"></span></p>
-    <p><strong>Date of Birth:</strong> <span id="dobDisplay"></span></p>
-    <p><strong>Email:</strong> <span id="emailDisplay"></span></p>
-    <p><strong>Phone:</strong> <span id="phoneDisplay"></span></p>
-    <p><strong>Address:</strong> <span id="addressDisplay"></span></p>
-    <p><strong>Role:</strong> <span id="roleDisplay"></span></p>
-</div>
+<!-- Optional JavaScript; choose one of the two! -->
 
-<script src="profile.js"></script>
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

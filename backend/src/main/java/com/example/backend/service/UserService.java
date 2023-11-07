@@ -9,9 +9,11 @@ import com.example.backend.model.UserCategory;
 import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @RequiredArgsConstructor
@@ -76,21 +78,31 @@ public class UserService{
         }
     }
 
-    public ProfileDTO convertToProfileDTO(User user) {
-        ProfileDTO profileDTO = new ProfileDTO();
-        profileDTO.setFirstName(user.getFirstName());
-        profileDTO.setLastName(user.getLastName());
-        profileDTO.setDateOfBirth(user.getDateOfBirth());
-        profileDTO.setGender(user.getGender());
-        profileDTO.setEmail(user.getEmail());
-        profileDTO.setPhone(user.getPhone());
-        profileDTO.setHouseNumber(user.getHouseNumber());
-        profileDTO.setStreetName(user.getStreetName());
-        profileDTO.setCity(user.getCity());
-        profileDTO.setState(user.getState());
-        profileDTO.setZipCode(user.getZipCode());
-        profileDTO.setCountry(user.getCountry());
-        return profileDTO;
+    @Transactional(readOnly = true)
+    public ProfileDTO getProfileByUsername(String username) {
+        Optional<User> userOptional = userRepository.findByUserName(username);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            ProfileDTO profileDTO = new ProfileDTO();
+            // Assuming your User entity has getters for these fields
+            profileDTO.setFirstName(user.getFirstName());
+            profileDTO.setLastName(user.getLastName());
+            profileDTO.setDateOfBirth(user.getDateOfBirth());
+            profileDTO.setGender(user.getGender());
+            profileDTO.setEmail(user.getEmail());
+            profileDTO.setPhone(user.getPhone());
+            profileDTO.setHouseNumber(user.getHouseNumber());
+            profileDTO.setStreetName(user.getStreetName());
+            profileDTO.setCity(user.getCity());
+            profileDTO.setState(user.getState());
+            profileDTO.setZipCode(user.getZipCode());
+            profileDTO.setCountry(user.getCountry());
+            // ... any other fields you wish to add to the profile
+            return profileDTO;
+        } else {
+            // User not found, throw an exception or handle it accordingly
+            throw new UsernameNotFoundException("User not found with username: " + username);
+        }
     }
 
     public User getByUsername(String username) {
