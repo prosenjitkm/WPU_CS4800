@@ -10,12 +10,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { HomeComponent } from './components/home/home.component';
+import {HeaderComponent} from "./header/header.component";
 // ... other imports
 
 @NgModule({
   declarations: [
     // ... your components here
-
+    HeaderComponent,
     RegisterComponent,
     LoginComponent,
     HomeComponent,
