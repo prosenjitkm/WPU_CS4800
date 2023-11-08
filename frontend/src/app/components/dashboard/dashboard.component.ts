@@ -8,6 +8,6 @@ export class DashboardComponent implements OnInit {
   user: any;
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    //this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 }
