@@ -7,6 +7,8 @@ public class UrlConstants {
 
     private static final String BASE_URL = "/api";
     public static final String BASE_PRODUCT_URL = BASE_URL + "/products";
+
+    public static final String BASE_CATEGORY_URL = BASE_URL + "/categories";
     public static final String BASE_USER_URL = BASE_URL + "/users";
     public static final String BASE_LOGIN_URL = BASE_URL + "/auth";
 
@@ -19,6 +21,8 @@ public class UrlConstants {
     public static final String DELETE_USER = BASE_USER_URL + "/{userId}";
     public static final String UPDATE_USER = BASE_USER_URL + "/{userId}";
 
+    public static final String ADD_USER_CATEGORY = BASE_CATEGORY_URL + "/user";
+
     public static final String GET_USER_BY_USERNAME = BASE_USER_URL + "/username/{username}";
 
     public static final String GET_ALL_PRODUCTS_FOR_A_USER = BASE_PRODUCT_URL + "/{userId}";
@@ -26,4 +30,6 @@ public class UrlConstants {
     public static final String LIST_ALL_USERS = BASE_USER_URL + "/list";
 
     public static final String LOGIN_USER = BASE_LOGIN_URL + "/login";
+
+    public static final String ADD_CATEGORY = BASE_CATEGORY_URL;
 }
