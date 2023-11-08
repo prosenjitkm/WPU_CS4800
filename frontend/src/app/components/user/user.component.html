@@ -1,0 +1,42 @@
+<div *ngIf="selectedUser">
+  <h2>{{ selectedUser.id ? 'Edit User' : 'Add New User' }}</h2>
+
+  <form>
+    <div>
+      <label>Username:</label>
+      <input [(ngModel)]="selectedUser.userName" name="username">
+    </div>
+    <!-- Add other fields in a similar manner -->
+
+    <div>
+      <button (click)="saveUser()">{{ selectedUser.id ? 'Update' : 'Create' }}</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+</div>
+<div *ngIf="users && users.length">
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>First Name</th>
+      <!-- Add other fields as needed -->
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.userName }}</td>
+      <td>{{ user.firstName }}</td>
+      <!-- Add other fields as needed -->
+      <td>
+        <button *ngIf="user.id" (click)="editUser(user.id)">Edit</button>
+        <button *ngIf="user.id" (click)="deleteUser(user.id)">Delete</button>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,19 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input [(ngModel)]="loginRequest.username" name="username" id="username">
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" [(ngModel)]="loginRequest.password" name="password" id="password">
+    </div>
+    <div class="form-group">
+      <button (click)="login()">Login</button>
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>
