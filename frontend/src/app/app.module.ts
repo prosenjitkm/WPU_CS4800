@@ -11,16 +11,23 @@ import { RegisterComponent } from './components/authentication/register/register
 import { LoginComponent } from './components/authentication/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { PageNotFoundComponent} from './pagenotfound/pagenotfound.component';
+
 // ... other imports
 
 @NgModule({
   declarations: [
+    AppComponent,
+
     // ... your components here
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProductListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

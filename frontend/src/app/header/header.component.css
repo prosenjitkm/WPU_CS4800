@@ -1,4 +1,4 @@
-/* app.component.css */
+
 .container {
   display: flex;
   flex-direction: column;
@@ -27,11 +27,14 @@ h1 {
 }
 .icons{
   display: inline-block;
-  float: right;
+
 
 }
 .icons a {
-  margin-left: 20px;
+    display: inline;
+  margin-left: 15px;
+
+
 }
 nav {
 
@@ -105,7 +108,7 @@ nav:hover {
   content: url(src/app/header/home.png);
   margin: auto;
   margin-left: 15px;
-  margin-right: 2px;
+  margin-right: 10px;
   width: 48px;
   height: 35px;
 }
@@ -140,10 +143,10 @@ nav:hover {
     width: 8vh;
     min-width: 8vh;
   }
-  .home{
-    position: relative;
-    right: 6px;
+  input#search-bar {
+    font-size: 0;
   }
+
   .uno li h4 {
     display: none;
   }
@@ -184,7 +187,7 @@ input#search-bar{
   height: 37px;
   border-radius: 10px;
   padding: 0 20px;
-  font-size: 1rem;
+  font-size: 80%;
   background: transparent;
   outline: none;
   &:focus{
