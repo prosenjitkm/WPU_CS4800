@@ -10,7 +10,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import {HeaderComponent} from "./header/header.component";
+import { HeaderComponent } from './header/header.component';
 // ... other imports
 
 @NgModule({
@@ -28,7 +28,7 @@ import {HeaderComponent} from "./header/header.component";
     HttpClientModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule,
+
     // ... other modules here
   ],
   providers: [],

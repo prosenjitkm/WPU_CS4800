@@ -87,13 +87,13 @@ nav:hover {
   background: #252424;
   transition: background .2s, border .4s;
   .uno li h4, .dos li h4{
-    text-shadow: #008ABF 1;
+    text-shadow: #008ABF;
   }
 }
 
 .uno li h4, .dos li h4 {
   text-decoration: none;
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: #fff;
   margin: auto;
@@ -199,10 +199,10 @@ input#search-bar{
       transition: opacity 0.45s ease;
       opacity: 0;
     }
-    &:-ms-placeholder {
+   /* &:-ms-placeholder {
       transition: opacity 0.45s ease;
       opacity: 0;
-    }
+    }  */
   }
 }
 

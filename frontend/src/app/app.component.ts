@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements DoCheck{
-  title = 'MyWebsiteAngular';
+  title = 'ECOMMERCE';
   isMenuRequired=false;
   constructor(private router:Router){}
 
