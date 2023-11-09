@@ -1,0 +1,39 @@
+<!-- app.component.html -->
+<div class="container">
+
+  <header>
+    <div class="header">
+
+      <h1> ECOMMERCE </h1>
+
+      <div class="search">
+      <form class="search-container">
+        <input type="text" id="search-bar" placeholder="What can I help you with today?">
+        <a href="#"><img class="search-icon" ></a>
+      </form>
+      </div>
+      <div class="icons">
+      <a router-link="/login">Settings</a>
+      <a>Logout</a>
+    </div>
+    </div>
+
+  </header>
+  <nav>
+    <div class="links">
+    <ul class="uno">
+      <li routerLink="/"><img class ="home"><h4>Home</h4></li>
+      <li routerLink="/products"><img class ="explore"><h4>Explore</h4></li>
+      <li routerLink="/dashboard"><img class ="account"><h4>Account</h4></li>
+      <!-- Add more navigation items as needed -->
+    </ul>
+      <ul class="dos">
+        <li routerLink="/orders"><img class ="explore"><h4>Orders</h4></li>
+        <li routerLink="/notifications"><img class ="alert"><h4>Alerts</h4></li>
+        <li routerLink="/shortlist"><img class ="account"><h4>Shortlist</h4></li>
+        <!-- Add more navigation items as needed -->
+      </ul>
+    </div>
+  </nav>
+
+</div>

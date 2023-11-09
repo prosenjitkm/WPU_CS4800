@@ -1,43 +1,37 @@
-import { NgModule } from '@angular/core';
+// app.module.ts
+
 import { BrowserModule } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http";
-import { ReactiveFormsModule } from "@angular/forms";
-import { ToastrModule } from "ngx-toastr";
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { UserlistingComponent } from './userlisting/userlisting.component';
-import { UpdatepopupComponent } from './updatepopup/updatepopup.component';
-import { RouterOutlet } from "@angular/router";
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import {MatButtonModule} from "@angular/material/button";
-import {MaterialModule} from "../material.module";
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { HttpClientModule}  from "@angular/common/http";
+import { FormsModule } from "@angular/forms";
+import { AppComponent } from './app.component';
+
+import { HeaderComponent } from "./header/header.component";
+import { LoginComponent } from './components/authentication/login/login.component';
+import { RegisterComponent } from './components/authentication/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HomeComponent } from './components/home/home.component';
+// ... other imports
 
 @NgModule({
   declarations: [
-    AppComponent,
-    RegisterComponent,
+    // ... your components here
+    HeaderComponent,
     LoginComponent,
-    HomeComponent,
-    UserlistingComponent,
-    UpdatepopupComponent,
-    ProductListComponent,
-    ProductDetailComponent
+    RegisterComponent,
+    DashboardComponent,
+    HomeComponent
+
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    MaterialModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    ToastrModule.forRoot(),
-    RouterOutlet,
     AppRoutingModule,
-    MatButtonModule
+    HttpClientModule,
+    FormsModule,
+    BrowserModule,
+    AppRoutingModule,
+    // ... other modules here
   ],
   providers: [],
   bootstrap: [AppComponent]

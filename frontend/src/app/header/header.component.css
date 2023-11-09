@@ -1,0 +1,218 @@
+/* app.component.css */
+.container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Set the background color for the header and navigation */
+header {
+  max-height: 70px;
+  margin-top: 10px;
+  background-color: rgb(18, 18, 18);
+  color: #fff;
+  display: inline-block;
+  padding: 10px;
+  border-bottom: 2px solid rgb(32, 33, 36);
+  font-size: 20px;
+  flex: 1; /* Takes up 1/2 of the available horizontal space */
+  min-width: 100%;
+  /* Dynamic header height based on viewport height (3.5% of the viewport height) */
+  width: 100%
+
+}
+h1 {
+  font-size: 30px;
+  display: inline;
+}
+.icons{
+  display: inline-block;
+  float: right;
+
+}
+.icons a {
+  margin-left: 20px;
+}
+nav {
+
+  background-color: #121212;
+  width: 200px; /* Dynamic navigation width based on viewport width (3.5% of the viewport width) */
+  height: 100%; /* Full viewport height for the navigation */
+}
+nav:hover {
+  border-right: 1px groove #1e1e1e;
+
+}
+
+/* Style the logo or link in the header */
+
+.links{
+  margin: 10px 0 0 2px;
+}
+
+
+
+/* Style the navigation menu */
+.uno, .dos {
+
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: 80%; /* Full height for the navigation */
+  justify-content: center;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px ridge #202124;
+}
+.dos{
+  margin-top: 0;
+}
+
+.uno li, .dos li {
+
+  width: 90%;
+  margin-top: 7px;
+  margin-left: 3px;
+  height: 35px;
+  justify-content: center;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+
+
+}
+.uno li:hover, .dos li:hover{
+  border: 1px solid #1a5067;
+  backdrop-filter: blur();
+  background: #252424;
+  transition: background .2s, border .4s;
+  .uno li h4, .dos li h4{
+    text-shadow: #008ABF 1;
+  }
+}
+
+.uno li h4, .dos li h4 {
+  text-decoration: none;
+  font-family: "Montserrat";
+  font-weight: bold;
+  color: #fff;
+  margin: auto;
+  margin-left: 1px;
+  font-size: 23px;
+}
+
+.home{
+  content: url(src/app/header/home.png);
+  margin: auto;
+  margin-left: 15px;
+  margin-right: 2px;
+  width: 48px;
+  height: 35px;
+}
+.account{
+  content: url(src/app/header/account.png);
+  margin: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 30px;
+  height: 25px;
+}
+.explore{
+  content: url(src/app/header/compass.png);
+  margin: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 33px;
+  height: 28px;
+}
+.alert{
+  content: url(src/app/header/warning.png);
+  margin: auto;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 33px;
+  height: 28px;
+}
+@media screen and (max-width: 800px) {
+  nav {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    width: 8vh;
+    min-width: 8vh;
+  }
+  .home{
+    position: relative;
+    right: 6px;
+  }
+  .uno li h4 {
+    display: none;
+  }
+}
+@media screen and (max-width: 900px) {
+  .search, .search-container, input#search-bar, .search-icon{
+    display: none;
+  }
+}
+
+/* Style the content area */
+.content {
+  margin: 20px;
+  margin-left: 3.5vw; /* Match the width of the navigation */
+  flex: 2; /* Takes up 1/2 of the available horizontal space */
+}
+
+/* Add any additional styling for your content here */
+.search{
+  display: inline;
+  position: absolute;
+  top: 15px;
+  left: 30%;
+  width: 40%;
+  margin-left: 50px;
+}
+
+
+.search-container{
+  width: 100%;
+  display: inline-flex;
+  margin-right: 25px;
+}
+
+input#search-bar{
+
+  width: 100%;
+  height: 37px;
+  border-radius: 10px;
+  padding: 0 20px;
+  font-size: 1rem;
+  background: transparent;
+  outline: none;
+  &:focus{
+    border: 1px solid #008ABF;
+    transition: 0.35s ease;
+    color: #008ABF;
+    &::-webkit-input-placeholder{
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+    &::-moz-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+    &:-ms-placeholder {
+      transition: opacity 0.45s ease;
+      opacity: 0;
+    }
+  }
+}
+
+.search-icon{
+  content: url(src/app/header/search.png);
+  position: relative;
+  float: right;
+  width: 20px;
+  height: 20px;
+  top: 9px;
+  right: 29px;
+}
+

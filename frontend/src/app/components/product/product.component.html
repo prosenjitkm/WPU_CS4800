@@ -1,0 +1,42 @@
+<div *ngIf="selectedProduct">
+  <h2>{{ selectedProduct.id ? 'Edit Product' : 'Add New Product' }}</h2>
+
+  <form>
+    <div>
+      <label>Product Name:</label>
+      <input [(ngModel)]="selectedProduct.productName" name="productName">
+    </div>
+    <!-- Add other fields in a similar manner -->
+
+    <div>
+      <button (click)="saveProduct()">{{ selectedProduct.id ? 'Update' : 'Create' }}</button>
+      <button (click)="cancelEdit()">Cancel</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="products && products.length">
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product Name</th>
+      <!-- Add other columns as needed -->
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.productName }}</td>
+      <!-- Add other fields in a similar manner -->
+      <td>
+        <button (click)="product.id && editProduct(product.id)">Edit</button>
+        <button (click)="product.id && deleteProduct(product.id)">Delete</button>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <button (click)="newProduct()">Add New Product</button>
+</div>
