@@ -1,4 +1,4 @@
-
+/* app.component.css */
 .container {
   display: flex;
   flex-direction: column;
@@ -27,30 +27,29 @@ h1 {
 }
 .icons{
   display: inline-block;
-
+  float: right;
 
 }
 .icons a {
-    display: inline;
-  margin-left: 15px;
-
-
+  margin-left: 20px;
 }
 nav {
 
   background-color: #121212;
-  width: 200px; /* Dynamic navigation width based on viewport width (3.5% of the viewport width) */
+  width: 192px; /* Dynamic navigation width based on viewport width (3.5% of the viewport width) */
   height: 100%; /* Full viewport height for the navigation */
 }
 nav:hover {
-  border-right: 1px groove #1e1e1e;
+
 
 }
 
 /* Style the logo or link in the header */
 
 .links{
-  margin: 10px 0 0 2px;
+  margin: 10px 0 0 0;
+  display: block;
+
 }
 
 
@@ -59,11 +58,11 @@ nav:hover {
 .uno, .dos {
 
   list-style: none;
-  display: flex;
-  flex-direction: column;
+  display: block;
+
   height: 80%; /* Full height for the navigation */
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 0;
   padding-bottom: 10px;
   border-bottom: 2px ridge #202124;
 }
@@ -72,45 +71,48 @@ nav:hover {
 }
 
 .uno li, .dos li {
-
-  width: 90%;
+  position: relative;
+  right: 30px;
+  width: 173px;
   margin-top: 7px;
-  margin-left: 3px;
+  margin-left: 0;
   height: 35px;
-  justify-content: center;
-  border-radius: 3px;
+
+  border-radius: 10px;
   display: flex;
-  flex-direction: row;
+
 
 
 }
 .uno li:hover, .dos li:hover{
-  border: 1px solid #1a5067;
+
   backdrop-filter: blur();
   background: #252424;
-  transition: background .2s, border .4s;
+  transition: background .2s;
   .uno li h4, .dos li h4{
     text-shadow: #008ABF;
   }
 }
 
 .uno li h4, .dos li h4 {
+
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
   color: #fff;
   margin: auto;
-  margin-left: 1px;
-  font-size: 23px;
+  margin-left: 10px;
+
+  font-size: 140%;
 }
 
 .home{
-  content: url(src/app/header/home.png);
+  content: url(src/app/header/account.png);
   margin: auto;
-  margin-left: 15px;
+  margin-left: 10px;
   margin-right: 10px;
-  width: 48px;
-  height: 35px;
+  width: 30px;
+  height: 25px;
 }
 .account{
   content: url(src/app/header/account.png);
@@ -120,14 +122,7 @@ nav:hover {
   width: 30px;
   height: 25px;
 }
-.explore{
-  content: url(src/app/header/compass.png);
-  margin: auto;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 33px;
-  height: 28px;
-}
+
 .alert{
   content: url(src/app/header/warning.png);
   margin: auto;
@@ -140,20 +135,22 @@ nav:hover {
   nav {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
-    width: 8vh;
-    min-width: 8vh;
+    width: 69px;
+
   }
-  input#search-bar {
-    font-size: 0;
+  .uno li:hover, .dos li:hover{
+    border: 0;
+    width: 50px;
   }
 
-  .uno li h4 {
+  .uno li h4, .dos li h4 {
     display: none;
   }
 }
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 600px) {
   .search, .search-container, input#search-bar, .search-icon{
     display: none;
+    transition: display 2s;
   }
 }
 
@@ -187,7 +184,7 @@ input#search-bar{
   height: 37px;
   border-radius: 10px;
   padding: 0 20px;
-  font-size: 80%;
+  font-size: 100%;
   background: transparent;
   outline: none;
   &:focus{
