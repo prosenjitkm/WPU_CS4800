@@ -1,0 +1,9 @@
+/***
+    <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+            <button (click)="updateProduct(product.id)">Update</button>
+            <button (click)="deleteProduct(product.id)">Delete</button>
+        </mat-cell>
+    </ng-container>
+***/

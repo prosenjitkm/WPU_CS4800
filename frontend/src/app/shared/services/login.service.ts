@@ -8,7 +8,7 @@ import { LoginRequestDTO } from '../models/login-request.dto';
 })
 export class LoginService {
 
-  private apiUrl = 'http://localhost:8088/api/auth';
+  private apiUrl = 'http://localhost:3306/api/auth';
 
   constructor(private http: HttpClient) { }
 

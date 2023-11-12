@@ -1,0 +1,97 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ProductService } from '../../shared/services/product.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import {Product} from "../../shared/models/product";
+
+
+@Component({
+  selector: 'app-product-list',
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.css']
+})
+export class ProductListComponent implements OnInit {
+  displayedColumns: string[] = [
+    'id',
+    'userId',
+    'productId',
+    'productCategory',
+    'productQuantity',
+    'productPrice',
+    'productSalePrice',
+    'isOnSale',
+    'isAvailable',
+    'postedDate',
+      'img'
+  ];
+
+  product: any;
+  dataSource: any;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(private productService: ProductService) {
+  }
+
+  ngOnInit() {
+    this.loadProducts();
+  }
+
+  loadProducts() {
+    this.productService.getAllProducts().subscribe(response => {
+      this.product = response;
+      this.dataSource = new MatTableDataSource(this.product);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+  }
+
+  updateProduct(code: any) {
+
+  }
+  deleteProduct(code: any) : void {
+
+  }
+  getColumnHeader(column: string): string {
+    // Add logic to return appropriate header based on the column name
+    switch (column) {
+      case 'id': return 'ID';
+      case 'userId': return 'USER ID';
+      case 'productId': return 'Product ID';
+      case 'productName': return 'Product Name';
+      case 'productCategory': return 'Product Category';
+      case 'productQuantity': return 'Product Quantity';
+      case 'productPrice': return 'Product Price';
+      case 'productSalePrice': return 'Product Sales Price';
+      case 'isOnSale': return 'Product is On Sale';
+      case 'postedDate': return 'Date Posted';
+      case 'img': return 'Image';
+
+      default: return '';
+    }
+  }
+  getProductValue(product: Product, column: string): string | number | boolean | Date {
+    // Add logic to return appropriate product value based on the column name
+    switch (column) {
+      case 'id': return product.id;
+      case 'userId': return product.userId;
+      case 'productId': return product.productId;
+      case 'productName': return product.productName;
+      case 'productCategory': return product.productCategory;
+      case 'productQuantity': return product.productQuantity;
+      case 'productPrice': return product.productPrice;
+      case 'productSalePrice': return product.productSalePrice;
+      case 'isOnSale': return product.isOnSale;
+      case 'postedDate': return product.postedDate;
+      case 'img': return product.img;
+
+
+        // You might not need a value for the 'action' column
+      default: return '';
+    }
+  }
+  }
+
+

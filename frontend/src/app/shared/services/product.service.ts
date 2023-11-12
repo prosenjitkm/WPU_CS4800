@@ -6,12 +6,18 @@ import { Product } from '../models/product';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
 
-  private apiUrl = 'http://localhost:8088/api/products';
+export class ProductService{
+
+  private apiUrl = "/assets/data/products.json";
 
   constructor(private http: HttpClient) { }
 
+
+  getAllProducts(): Observable<Product[]> {
+    // Productデータを取得するAPI呼び出しを実行
+    return this.http.get<Product[]>(this.apiUrl);
+  }
   getAllProductsForUser(userId: number): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.apiUrl}/${userId}`);
   }

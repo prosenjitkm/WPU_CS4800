@@ -1,0 +1,112 @@
+<div class="container">
+<mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{ getColumnHeader(column) }}</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{ getProductValue(product, column) }}</mat-cell>
+
+    </ng-container>
+
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="bar">
+  <div class="menu"> </div>
+  <div  class="logo-wrap">
+    <div class="logo"></div> </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search">
+      <button>Search</button>
+    </div>
+    <div class="login-button">
+      <a href="/login"></a><button>Login</button>
+    </div>
+  <div class="register-button">
+    <div class="register">
+      <a href="/register"></a>
+    </div>
+  </div>
+  </div>
+
+
+.bar {
+  display: flex;
+  margin: auto;
+  margin-top: 5%;
+  align-items: center;
+
+  height: auto;
+  width: 80%;
+  backdrop-filter: blur(20px);
+  color: #fff;
+  padding: 0 20px;
+}
+
+/* Styling for the logo n menu */
+.menu{
+  content: url(src/app/header/menu.png);
+  width: 50%; /* Adjust the percentage as needed */
+  height: 50%; /* This ensures the aspect ratio is maintained */
+  max-width: 75px; /* Set a maximum width to limit scaling */
+  max-height: 75px; /* Set a maximum height to limit scaling */
+  margin-right: 25px; /* Margin for positioning */
+
+}
+
+.logo-wrap{
+  margin-left: 0;
+}
+.logo {
+  content: url(src/app/header/logo.svg);
+  width: 70%; /* Adjust the percentage as needed */
+  height: auto; /* This ensures the aspect ratio is maintained */
+  max-width: 75px; /* Set a maximum width to limit scaling */
+  max-height: 75px; /* Set a maximum height to limit scaling */
+  margin: 0px; /* Margin for positioning */
+}
+
+/* Styling for the search bar */
+.search-bar {
+  flex: 2;
+}
+
+/* Styling for the login and register buttons */
+.login-button, .register-button {
+  flex: 1;
+  text-align: right;
+}
+.register{
+  content: url(src/app/header/account.png);
+  position: relative;
+
+  width: 45%; /* Adjust the percentage as needed */
+  height: auto; /* This ensures the aspect ratio is maintained */
+  max-width: 75px; /* Set a maximum width to limit scaling */
+  max-height: 75px; /* Set a maximum height to limit scaling */
+  margin: 0px; /* Margin for positioning */
+  margin-right: 0;
+
+}
+.register-button{
+  margin-right: 0;
+}
+
+
+
+

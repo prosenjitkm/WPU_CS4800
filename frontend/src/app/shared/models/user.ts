@@ -1,5 +1,5 @@
 export class User {
-  id?: number;
+  id: number;
   userId: number = 0;  // Default value, but do reconsider the redundancy with 'id'
   userName: string = '';
   password: string = '';  // Ideally, password should never be sent to frontend. This is just for completeness.
@@ -15,7 +15,8 @@ export class User {
   state: string = '';
   zipCode: string = '';
   country: string = '';
-  role: Roles = Roles.BUYER;  // Default role, adjust if needed
+  role: number = 2;  // Default role, adjust if needed
+
   isActive: boolean = false;
 }
 

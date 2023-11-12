@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+//import { AuthGuard } from './guard/auth.guard';
+
 import { RegisterComponent } from './components/authentication/register/register.component';
 import { LoginComponent } from './components/authentication/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -17,6 +19,7 @@ const routes: Routes = [
   { path: 'product', component: ProductListComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
+
 ];
 
 @NgModule({
