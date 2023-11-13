@@ -1,0 +1,38 @@
+.container{
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+.box{
+  border-radius: 15px;
+  border: 1px solid black;
+  height: 250px;
+  width: 250px;
+  display: inline-block;
+  margin: 10px;
+  padding: 5px;
+
+}
+.box:hover{
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3),
+  -2px -2px 5px rgb(15, 45, 75);
+}
+
+.image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 66.666%;
+
+}
+
+.text{
+  height: 33.333%;
+  padding: 10px;
+}
+
+h6{
+  font-size: 13px;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

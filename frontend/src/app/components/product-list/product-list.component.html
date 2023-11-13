@@ -3,8 +3,32 @@
   <mat-table [dataSource]="dataSource" matSort>
 
     <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>{{ getColumnHeader(column) }}</mat-header-cell>
-      <mat-cell *matCellDef="let product">{{ getProductValue(product, column) }}</mat-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header>{{column | titlecase}}</mat-header-cell>
+      <mat-cell *matCellDef="let products">
+        <ng-container [ngSwitch]="column">
+          <ng-container *ngSwitchCase="'category'">
+            <!-- Content for the 'category' column -->
+            {{ products[column][0]["name"] }}
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'image'">
+            <div>
+              <img [src]="products[column]" alt="Product Image" width=100% height=100%>
+            </div>
+          </ng-container>
+
+          <ng-container *ngSwitchCase="'url'">
+            <!-- Content for the 'url' column -->
+            <a [href]="products[column]" target="_blank" style=":hover ">Best Buy</a>
+          </ng-container>
+
+          <ng-container *ngSwitchDefault>
+            <!-- Default content for other columns -->
+            {{ products[column] }}
+          </ng-container>
+        </ng-container>
+
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -15,5 +39,4 @@
   <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
 
 </div>
-
 

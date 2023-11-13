@@ -34,6 +34,7 @@ export class ProductListComponent implements OnInit {
 
   }
 
+  /*
 getProductValue(product: Product, column: string): string | number | boolean {
     // Add logic to return appropriate product value based on the column name
     switch (column) {
@@ -76,7 +77,7 @@ getColumnHeader(column: string): string {
       default: return '';
     }
   }
-
+*/
 }
 
 

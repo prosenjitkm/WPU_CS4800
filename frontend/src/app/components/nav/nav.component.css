@@ -1,5 +1,5 @@
 nav {
-  display: inline-flex;
+  display: inline-block;
   background-color: #121212;
   max-width: 200px; /* Dynamic navigation width based on viewport width (3.5% of the viewport width) */
   height: 95vh; /* Full viewport height for the navigation */
@@ -9,17 +9,30 @@ nav:hover {
 }
 
 /* Style the logo or link in the header */
-.links{
-
+.link{
+  width: 70%;
   margin: 2px 0 0 0;
+  padding: 0 0 0 25px;
 }
 
 /* Style the navigation menu */
-.uno, .dos {
-
+.footer{
+  display: inline;
+  justify-content: center;
+  align-items: center;
 }
 
-.uno li, .dos li {
+
+.footer h6{
+  margin: 0 22px 0 0;
+  display: inline-block;
+  font-size: 80%;
+  color: #fff;
+}
+.footer h6:hover{
+  color: rgba(239, 239, 239, 0.3);
+}
+.uno li, .dos li, .tres li, .quarter li{
   position: relative;
   right: 30px;
   width: 173px;
@@ -28,16 +41,16 @@ nav:hover {
   height: 35px;
   display: inline-flex;
 }
-.uno li:hover, .dos li:hover{
+.uno li:hover, .dos li:hover, .tres li:hover{
   backdrop-filter: blur();
   background: #252424;
   transition: background .2s;
-  .uno li h4, .dos li h4{
+  .uno li h4, .dos li h4, .tres li h4{
     text-shadow: #008ABF;
   }
 }
 
-.uno li h4, .dos li h4 {
+.uno li h4, .dos li h4, .tres li h4 {
 
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
@@ -82,12 +95,12 @@ nav:hover {
 
   }
 
-  .uno li:hover, .dos li:hover {
+  .uno li:hover, .dos li:hover, tres li:hover {
     border: 0;
     width: 50px;
   }
 
-  .uno li h4, .dos li h4 {
+  .uno li h4, .dos li h4, .tres li h4 {
     display: none;
   }
 }
