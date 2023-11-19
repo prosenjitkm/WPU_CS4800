@@ -1,0 +1,11 @@
+Tables
+
+User Table (Buyer Seller Admin) Admin x access to user list, user
+
+Product Table
+
+Notifications table (stores max 1000 latest) each notif row with sub col; user id, date sent, seen boolean
+
+Orders Table (products, user Id, Status, Delivery info ...)
+
+

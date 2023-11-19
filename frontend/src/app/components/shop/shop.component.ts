@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from '../../shared/services/product.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { Product, columnNames } from "../../shared/models/product";
+import { PaginatorComponent } from "../paginator/paginator.component";
 
 @Component({
   selector: 'app-shop',
@@ -12,32 +10,31 @@ import { Product, columnNames } from "../../shared/models/product";
 })
 
 export class ShopComponent implements OnInit {
-  displayedColumns: string[] = columnNames;
-  //product: Product[] | undefined;
+  @ViewChild(PaginatorComponent) paginator!: PaginatorComponent;
   products : Product[] = [];
-  limitedProducts : Product[] = [];
-  dataSource: any;
+  //displayedProducts: any | undefined = this.paginator.displayedItems;
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private productService: ProductService) {
   }
-
   ngOnInit() {
     // this.loadProducts();
     this.productService.getAllProducts()
       .subscribe(response => {
         this.products = response;
-        this.dataSource = new MatTableDataSource(this.products);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;});
+        //this.dataSource = new MatTableDataSource(this.products);
+        //this.dataSource.paginator = this.paginator;
+        //this.dataSource.sort = this.sort;
+
+      });
 
 
     //const limit :number = 40;
     //this.limitedProducts = this.getLimitedProducts(limit);
 
   }
+
+
   //getLimitedProducts(limit: number): Product[] {
     // Return a limited number of products
    // return this.products.slice(0, limit);
@@ -87,6 +84,7 @@ export class ShopComponent implements OnInit {
     }
   }
   */
+
 
 
 }

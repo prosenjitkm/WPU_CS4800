@@ -24,6 +24,11 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ShopComponent } from './components/shop/shop.component';
+import { AccountComponent } from './components/account/account.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { CartComponent } from './components/cart/cart.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 // ... other imports
 
 @NgModule({
@@ -39,7 +44,12 @@ import { ShopComponent } from './components/shop/shop.component';
     ProductListComponent,
     PageNotFoundComponent,
     NavComponent,
-    ShopComponent
+    ShopComponent,
+    AccountComponent,
+    NotificationsComponent,
+    CartComponent,
+    OrdersComponent,
+    PaginatorComponent
 
   ],
   imports: [

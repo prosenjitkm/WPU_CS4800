@@ -2,29 +2,36 @@ nav {
   display: inline-block;
   background-color: #121212;
   max-width: 200px; /* Dynamic navigation width based on viewport width (3.5% of the viewport width) */
-  height: 95vh; /* Full viewport height for the navigation */
-
+  height: 100%; /* Full viewport height for the navigation */
 }
 nav:hover {
+
 }
 
 /* Style the logo or link in the header */
-.link{
-  width: 70%;
-  margin: 2px 0 0 0;
-  padding: 0 0 0 25px;
-}
+
+
+
 
 /* Style the navigation menu */
-.footer{
-  display: inline;
-  justify-content: center;
-  align-items: center;
+
+  .footer {
+    position: relative;
+    bottom: -144px;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
+    gap: 12px; /* Adjust the spacing as needed */
+    align-items: center;
+    justify-content: center;
+
+  }
+
+
+.footer h6 {
+  margin:  0; /* Remove default margin on h6 elements */
 }
 
-
 .footer h6{
-  margin: 0 22px 0 0;
   display: inline-block;
   font-size: 80%;
   color: #fff;
@@ -49,11 +56,15 @@ nav:hover {
     text-shadow: #008ABF;
   }
 }
-
+@font-face {
+  font-family: tall-font;
+  src: url(src/app/components/nav/CreteRound-Regular.ttf);
+}
 .uno li h4, .dos li h4, .tres li h4 {
 
   text-decoration: none;
-  font-family: "Montserrat", sans-serif;
+  font-family: tall-font;
+
   font-weight: bold;
   color: #fff;
   margin: auto;
@@ -102,5 +113,15 @@ nav:hover {
 
   .uno li h4, .dos li h4, .tres li h4 {
     display: none;
+  }
+  .footer{
+    position: relative;
+    bottom: 0;
+    gap: 2px;
+    margin: 40px 0 0 0;
+  }
+  .footer h6{
+    text-align: center;
+    font-size: 80%;
   }
 }

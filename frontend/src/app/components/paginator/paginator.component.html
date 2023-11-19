@@ -1,0 +1,5 @@
+<div class="paginator">
+  <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>{{getStartIndex()}} – {{getEndIndex()}} of {{items.length}}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
