@@ -54,6 +54,7 @@ import {NgOptimizedImage} from "@angular/common";
 
   ],
     imports: [
+
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,

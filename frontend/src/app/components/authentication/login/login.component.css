@@ -1,7 +1,7 @@
 .container{
-  background-color: #2c435e;
+  background: transparent;
   width: 100%;
-  height: 81%;
+  height: inherit;
 }
 mat-card{
     display: flex;
@@ -11,27 +11,54 @@ mat-card{
     top: 10%;
     margin: 10%;
     width: 80%;
-    max-width: 800px;
+    max-width: 64rem;
+    background: transparent;
+  border-radius: 24px;
+  background-color: rgba(42, 50, 56, .75);
 }
 
-mat-card-content{
+mat-card-content {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-
+  background: transparent;
   padding: 1%;
   width: 80%;
-}
-
-.fname{
-
 
 }
 
-.email{
+h1{
+  font-family: "system-ui";
+  font-size: 3vmax;
+  font-weight: bolder;
+  color: rgb(19, 27, 35);
+}
+
+.uname, .pword{
+  width: 64vw;
+  max-width: 800px;
+  border-radius: 50px;
+
   }
 
-.button{
-  flex: 1 0 5rem;
-  background-color: rgba(42, 50, 56, 0.79);
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+}
+.buttons button{
+  width: 54vw;
+  height: 5vh;
+  max-width: 664px;
+  margin: 0 0 17px 0;
+  background-color: rgba(29, 45, 61, 0.5);
+  font-size: 1.5em;
+}
+.buttons a{
+  width: 24vw;
+  max-width: 30rem;
+  height: 4.5vh;
+  background-color: rgba(29, 45, 61, 0.5);
 }

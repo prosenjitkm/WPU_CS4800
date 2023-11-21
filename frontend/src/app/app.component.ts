@@ -14,12 +14,7 @@ export class AppComponent implements DoCheck{
 
   ngDoCheck(): void {
     let currentUrl = this.router.url;
-    if(currentUrl == '/login' || currentUrl =='/register'){
-      this.isMenuRequired = false;
-    }
-    else {
-      this.isMenuRequired = true;
-    }
+    this.isMenuRequired = !(currentUrl == '/login' || currentUrl == '/register');
   }
 
 }

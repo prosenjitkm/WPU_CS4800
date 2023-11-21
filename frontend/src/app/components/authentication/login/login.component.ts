@@ -8,7 +8,7 @@ import { LoginRequestDTO } from '../../../shared/models/login-request.dto';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit{
   LoginRequestDTO: LoginRequestDTO;

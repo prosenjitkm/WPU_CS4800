@@ -2,14 +2,12 @@
 
 
 <!-- Your header/navigation content if any -->
-<app-header></app-header>
+<app-header *ngIf="(isMenuRequired)"></app-header>
 
 <div class="container">
-<app-nav></app-nav>
+<app-nav *ngIf="(isMenuRequired)"></app-nav>
   <div class="content">
 <router-outlet></router-outlet>
   </div>
-
 <!-- Your footer content if any -->
-
 </div>

@@ -7,21 +7,21 @@
   <mat-card-content>
     <form class="form" [formGroup]="LoginRequestDTO.loginForm" (ngSubmit)="proceedLogin()">
 
-      <div>
-        <mat-form-field class="uname">
+      <div class="user">
+        <mat-form-field appearance="fill" class="uname" >
           <mat-label>User Name</mat-label>
           <input matInput formControlName="userName">
         </mat-form-field>
       </div>
 
       <div>
-        <mat-form-field class="pword">
+        <mat-form-field appearance="fill" class="pword">
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="password">
         </mat-form-field>
       </div>
 
-      <div>
+      <div class="buttons">
         <button mat-raised-button color="primary">Submit</button>
         <a routerLink="/register" mat-raised-button color="accent">New User?</a>
       </div>
