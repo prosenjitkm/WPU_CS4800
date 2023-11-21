@@ -1,0 +1,63 @@
+.container{
+  background-color: #16191c;
+  height: 100%;
+  display: block;
+
+}
+.trending{
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.latest{
+  margin: 50px 0 0 0;
+}
+.buy-now{
+  margin: 35px 0 0 3%;
+}
+.categories{
+  height: 75%;
+}
+.categories p {
+  position: relative;
+  left: 10%;  /*Apply to any H and P tags for scale*/
+  top: 20px;
+}
+
+h2{
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 60px;
+  font-weight: bolder;
+  color: white;
+}
+p{
+  color: #b9b9b9;
+}
+.moshi{
+  position: relative;
+  left: 0.3%;
+}
+span{
+  color: #a69b1d;
+}
+
+
+
+
+
+/*
+aside from header and nav bar
+
+would have "View Latest Arrivals"
+
+A COUNTDOWN especially for days like black friday
+Newsletter SignUp and link to view the latest newsletter
+
+Responsive positioning, link design :hover + transition ease
+Page color - Dark orange and grey
+
+             Payment portal security and site security badges
+             Assurance info
+*/

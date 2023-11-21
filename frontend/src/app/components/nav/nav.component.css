@@ -47,14 +47,16 @@ nav:hover {
   margin-left: 0;
   height: 35px;
   display: inline-flex;
+  transition: .2s ease-in-out;
 }
 .uno li:hover, .dos li:hover, .tres li:hover{
   backdrop-filter: blur();
   background: #252424;
-  transition: background .2s;
+
   .uno li h4, .dos li h4, .tres li h4{
     text-shadow: #008ABF;
   }
+  border-radius: 5px;
 }
 @font-face {
   font-family: tall-font;
@@ -109,6 +111,7 @@ nav:hover {
   .uno li:hover, .dos li:hover, tres li:hover {
     border: 0;
     width: 50px;
+
   }
 
   .uno li h4, .dos li h4, .tres li h4 {

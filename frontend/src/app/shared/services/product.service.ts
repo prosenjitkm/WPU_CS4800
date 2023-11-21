@@ -13,7 +13,9 @@ export class ProductService{
 
   constructor(private http: HttpClient) { }
 
-
+  getProductsByCategory(category: string ): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl);
+  }
   getAllProducts(): Observable<Product[]> {
     // Productデータを取得するAPI呼び出しを実行
     return this.http.get<Product[]>(this.apiUrl);

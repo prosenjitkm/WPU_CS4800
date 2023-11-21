@@ -1,12 +1,22 @@
-aside from header and nav bar
-
-would have "View Latest Arrivals"
-
-A COUNTDOWN especially for days like black friday
-Newsletter SignUp and link to view the latest newsletter
-
-Responsive positioning, link design :hover + transition ease
-Page color - Dark orange and grey
-
-Payment portal security and site security badges
-Assurance info
+<div class="container">
+  <div class="trending">
+    <div class="latest">
+      <h2> Black Friday <span>is here.</span></h2>
+      <p class="moshi">Save time. Save money.<br> And make the most of your tech with our help. </p>
+    </div>
+    <div class="buy-now">
+      <p>Limited quantities.<br>See<span> Black Friday Deals</span></p>
+    </div>
+  </div>
+  <div class="categories">
+    <p> Shop By Categories</p>
+    <div class="category-bubbles">
+        <div *ngFor="let category of Object.keys(map)">
+            <div class="bubble" *ngFor="let url of Object.values(map)">
+                 <img [src]="url" alt="" height="70px" width="60px">
+            </div>
+            <h6> {{ category | titlecase}}</h6>
+        </div>
+    </div>
+  </div>
+</div>

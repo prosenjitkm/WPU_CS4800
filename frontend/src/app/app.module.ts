@@ -29,6 +29,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { CartComponent } from './components/cart/cart.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import {NgOptimizedImage} from "@angular/common";
 // ... other imports
 
 @NgModule({
@@ -52,20 +53,21 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     PaginatorComponent
 
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    MatButtonModule,
-    RouterOutlet,
-    ReactiveFormsModule,
-    ToastrModule.forRoot(),
-    MaterialModule
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        MatButtonModule,
+        RouterOutlet,
+        ReactiveFormsModule,
+        ToastrModule.forRoot(),
+        MaterialModule,
+        NgOptimizedImage,
 
-    // ... other modules here
-  ],
+        // ... other modules here
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
