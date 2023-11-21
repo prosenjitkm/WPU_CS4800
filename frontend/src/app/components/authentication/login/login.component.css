@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 20%;
+}
+
+.form{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  border: 2px solid grey;
+  padding: 1%;
+  max-width: 40%;
+}
+
+.fname{
+
+
+}
+
+.email{
+  }
+
+.button{
+  flex: 1 0 5rem;
+  background-color: rgba(42, 50, 56, 0.79);
+}
