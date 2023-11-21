@@ -1,18 +1,26 @@
 .container{
+  background-color: #2c435e;
+  width: 100%;
+  height: 81%;
+}
+mat-card{
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 20%;
+    top: 10%;
+    margin: 10%;
+    width: 80%;
+    max-width: 800px;
 }
 
-.form{
+mat-card-content{
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
-  border: 2px solid grey;
+
   padding: 1%;
-  max-width: 40%;
+  width: 80%;
 }
 
 .fname{

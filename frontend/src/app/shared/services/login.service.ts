@@ -12,7 +12,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
-  login(loginRequest: LoginRequestDTO): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, loginRequest);
+  login(loginRequest: LoginRequestDTO): Observable<LoginRequestDTO> {
+    return this.http.post<LoginRequestDTO>(`${this.apiUrl}/login`, loginRequest);
   }
 }
