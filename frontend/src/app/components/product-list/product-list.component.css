@@ -1,7 +1,9 @@
-mat-table {
-  width: 87vw;
 
-}
 .container{
-  max-height: 50vh;
+  max-height: calc(100vh - 110px);
+}
+mat-table {
+  max-width: inherit;
+  max-height: inherit;
+
 }

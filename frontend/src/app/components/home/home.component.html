@@ -11,12 +11,13 @@
   <div class="categories">
     <p> Shop By Categories</p>
     <div class="category-bubbles">
-        <div *ngFor="let category of Object.keys(map)">
-            <div class="bubble" *ngFor="let url of Object.values(map)">
-                 <img [src]="url" alt="" height="70px" width="60px">
-            </div>
-            <h6> {{ category | titlecase}}</h6>
+      <div class="cat" *ngFor="let cate of category">
+        <div class="bubble" [routerLink]="['/products/', cate.category]" style="cursor: pointer;">
+          <div class="img" [innerHTML]="svgCode">
+          </div>
         </div>
+        <h6 class="cate" [routerLink]="['/products/', cate.category]" style="cursor: pointer;"> {{ cate.category | titlecase}}</h6>
+      </div>
     </div>
   </div>
 </div>

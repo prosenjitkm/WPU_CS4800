@@ -1,7 +1,9 @@
 .container{
   display: inline-flex;
   width: 100%;
+  max-width: 100%;
   height: calc(100vh - 54px);
+  max-height: calc(100vh - 54px);
   background: transparent;
 }
 

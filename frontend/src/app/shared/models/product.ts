@@ -20,6 +20,11 @@ interface Category {
   name: string;
 }
 
+export interface Cate {
+  category: string;
+  url: string;
+}
+
 const exampleProduct: Product = {
   sku: 43900,
   name: "Duracell - AAA Batteries (4-Pack)",

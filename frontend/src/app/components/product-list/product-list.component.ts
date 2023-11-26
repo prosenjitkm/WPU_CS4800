@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ProductService } from '../../shared/services/product.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import {Product, columnNames} from "../../shared/models/product";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { ActivatedRoute, Router, NavigationEnd} from "@angular/router";
+import { filter } from 'rxjs/operators';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {columnNames, Product} from "../../shared/models/product";
+import { ProductService } from "../../shared/services/product.service";
+
 
 
 @Component({
@@ -13,28 +16,60 @@ import {Product, columnNames} from "../../shared/models/product";
 })
 export class ProductListComponent implements OnInit {
   displayedColumns: string[] = columnNames;
-    //product: Product[] | undefined;
-  public products : Product[] = [];
   dataSource: any;
+  products: Product[] = [];
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router, private Category: String) {
+
   }
 
   ngOnInit() {
-   // this.loadProducts();
     this.productService.getAllProducts()
-      .subscribe(response => {
-        this.products = response;
-        this.dataSource = new MatTableDataSource(this.products);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;});
-
+        .subscribe(response => {
+          this.products = response;
+          this.dataSource = new MatTableDataSource(this.products);
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        });
   }
 
+
   /*
+
+
+    this.route.queryParams
+        .subscribe(params => {
+          const query: string = params['id'];
+          if (query ) {
+            this.Category = decodeURIComponent(query);
+            this.productService.getAllProducts()
+                .subscribe(response => {
+                  this.products = response;
+                  this.products = this.products.filter(product => product.category[0].name === this.Category);
+                  console.log(this.products);
+                  this.dataSource = new MatTableDataSource(this.products);
+                  this.dataSource.paginator = this.paginator;
+                  this.dataSource.sort = this.sort;
+                });
+          }
+          else {
+            this.productService.getAllProducts()
+                .subscribe(response => {
+                  this.products = response;
+                  this.dataSource = new MatTableDataSource(this.products);
+                  this.dataSource.paginator = this.paginator;
+                  this.dataSource.sort = this.sort;
+                });
+          }
+        });
+
+
+
+
 getProductValue(product: Product, column: string): string | number | boolean {
     // Add logic to return appropriate product value based on the column name
     switch (column) {
@@ -56,6 +91,7 @@ getProductValue(product: Product, column: string): string | number | boolean {
       // You might not need a value for other columns
       default: return '';
     }
+
   }
 getColumnHeader(column: string): string {
     // Add logic to return appropriate header based on the column name

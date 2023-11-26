@@ -30,6 +30,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import {NgOptimizedImage} from "@angular/common";
+
 // ... other imports
 
 @NgModule({
@@ -50,7 +51,8 @@ import {NgOptimizedImage} from "@angular/common";
     NotificationsComponent,
     CartComponent,
     OrdersComponent,
-    PaginatorComponent
+    PaginatorComponent,
+
 
   ],
     imports: [

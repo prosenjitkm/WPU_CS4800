@@ -11,9 +11,8 @@ header {
   border-bottom: 2px solid rgb(32, 33, 36);
   font-size: 20px;
    /* Takes up 1/2 of the available horizontal space */
-  min-width: auto;
   /* Dynamic header height based on viewport height (3.5% of the viewport height) */
-  width: auto;
+  width: inherit;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;

@@ -1,9 +1,10 @@
-.container{
+.container {
   background-color: #16191c;
   height: 100%;
   display: block;
 
 }
+
 .trending{
   height: 25%;
   display: flex;
@@ -18,17 +19,21 @@
   margin: 35px 0 0 3%;
 }
 .categories{
-  height: 75%;
+  max-height: inherit;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 3% 0 0 0;
+  padding: 0 0 0 15%;
+
 }
 .categories p {
-  position: relative;
-  left: 10%;  /*Apply to any H and P tags for scale*/
-  top: 20px;
+  margin-bottom: 20px;
 }
 
 h2{
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 60px;
+  font-size: 3em;
   font-weight: bolder;
   color: white;
 }
@@ -42,10 +47,63 @@ p{
 span{
   color: #a69b1d;
 }
+@media screen and (max-width: 900px) {
+  /* Adjust header styles for smaller screens */
+  h2 {
+    font-size: 2rem;
+    /* Other necessary adjustments */
+  }
+}
+h6{
+  font-size: 11px;
+}
+.categories p{
+  padding-left: 50px;
+}
+.category-bubbles{
+  display: flex;
+  width: 80%;
+  flex-wrap: wrap;
+
+}
+.cat{
+  display: block;
+  text-align: center;
+  margin: 11px;
+  color: #a59a1d;
+}
+.cat:hover{
+    text-decoration: underline;
+    color: #dad7e5;
+
+}
+.bubble {
+  height: 9rem;
+  width: 9rem;
+  max-height: 9rem;
+  max-width: 9rem;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: contain;
+
+}
+.img{
+  width: 60%;
+  height: 60%;
+  content: url("./category/ref.svg");
+}
 
 
+.bubble:hover{
+
+  border: 3px solid #ffffff;
 
 
+}
 
 /*
 aside from header and nav bar
