@@ -18,38 +18,24 @@ export class ProductListComponent implements OnInit {
   displayedColumns: string[] = columnNames;
   dataSource: any;
   products: Product[] = [];
-
+  cate: string = "";
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router, private Category: String) {
-
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
-    this.productService.getAllProducts()
-        .subscribe(response => {
-          this.products = response;
-          this.dataSource = new MatTableDataSource(this.products);
-          this.dataSource.paginator = this.paginator;
-          this.dataSource.sort = this.sort;
-        });
-  }
-
-
-  /*
-
-
     this.route.queryParams
         .subscribe(params => {
           const query: string = params['id'];
-          if (query ) {
-            this.Category = decodeURIComponent(query);
+          if (query) {
+            this.cate = decodeURIComponent(query);
             this.productService.getAllProducts()
                 .subscribe(response => {
                   this.products = response;
-                  this.products = this.products.filter(product => product.category[0].name === this.Category);
+                  this.products = this.products.filter(product => product.category[0].name === this.cate);
                   console.log(this.products);
                   this.dataSource = new MatTableDataSource(this.products);
                   this.dataSource.paginator = this.paginator;
@@ -66,9 +52,10 @@ export class ProductListComponent implements OnInit {
                 });
           }
         });
+  }
 
 
-
+  /*
 
 getProductValue(product: Product, column: string): string | number | boolean {
     // Add logic to return appropriate product value based on the column name
