@@ -6,6 +6,7 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {columnNames, Product} from "../../shared/models/product";
 import { ProductService } from "../../shared/services/product.service";
+import {Subscription} from "rxjs";
 
 
 
@@ -18,24 +19,31 @@ export class ProductListComponent implements OnInit {
   displayedColumns: string[] = columnNames;
   dataSource: any;
   products: Product[] = [];
-  cate: string = "";
+  cate: any;
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {
+
   }
 
   ngOnInit() {
-    this.route.queryParams
+
+    this.route.paramMap
         .subscribe(params => {
-          const query: string = params['id'];
-          if (query) {
-            this.cate = decodeURIComponent(query);
+         // params && params.hasOwnProperty('id')
+          this.cate = params.get('id');
+          if (this.cate) {
+
+            console.log('Query parameter "category" value:', this.cate);
+            //this.cate = decodeURIComponent(query);
             this.productService.getAllProducts()
                 .subscribe(response => {
-                  this.products = response;
-                  this.products = this.products.filter(product => product.category[0].name === this.cate);
+                  //this.products = response;
+                  this.products = this.filterProductsByCategory(response, this.cate)
+                  //this.products = this.products.filter(product => product.category[0].name === this.cate);
                   console.log(this.products);
                   this.dataSource = new MatTableDataSource(this.products);
                   this.dataSource.paginator = this.paginator;
@@ -45,7 +53,7 @@ export class ProductListComponent implements OnInit {
           else {
             this.productService.getAllProducts()
                 .subscribe(response => {
-                  this.products = response;
+                  // this.products = response;
                   this.dataSource = new MatTableDataSource(this.products);
                   this.dataSource.paginator = this.paginator;
                   this.dataSource.sort = this.sort;
@@ -53,6 +61,23 @@ export class ProductListComponent implements OnInit {
           }
         });
   }
+
+  filterProductsByCategory(products: Product[], categoryName: string): Product[] {
+    return products.filter(product =>
+        product.category.some(category => category.name === categoryName)
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 
   /*
@@ -101,6 +126,6 @@ getColumnHeader(column: string): string {
     }
   }
 */
-}
+
 
 

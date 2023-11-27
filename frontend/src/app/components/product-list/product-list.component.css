@@ -7,3 +7,17 @@ mat-table {
   max-height: inherit;
 
 }
+mat-cell{
+  overflow: hidden;
+  max-height: 35vh;
+
+  text-overflow: ellipsis; /* Truncate text with an ellipsis (...) */
+
+}
+
+.img{
+
+}
+.img ng-star-inserted{
+
+}

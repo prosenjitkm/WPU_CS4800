@@ -2,7 +2,7 @@
   background-color: #16191c;
   height: 100%;
   display: block;
-
+  overflow: auto;
 }
 
 .trending{
@@ -25,6 +25,7 @@
   flex-direction: column;
   margin: 3% 0 0 0;
   padding: 0 0 0 15%;
+  overflow: clip;
 
 }
 .categories p {
@@ -64,6 +65,7 @@ h6{
   display: flex;
   width: 80%;
   flex-wrap: wrap;
+  overflow: clip;
 
 }
 .cat{
@@ -89,6 +91,7 @@ h6{
   justify-content: center;
   align-items: center;
   background-size: contain;
+  overflow: clip;
 
 }
 .img{

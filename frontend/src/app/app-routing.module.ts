@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'shop', component: ShopComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'products', component: ProductListComponent },
- // { path: 'products/:id', component: ProductListComponent},
+  { path: 'products/:id', component: ProductListComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 

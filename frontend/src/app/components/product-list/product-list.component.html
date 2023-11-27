@@ -12,14 +12,14 @@
           </ng-container>
 
           <ng-container *ngSwitchCase="'image'">
-            <div>
-              <img [src]="products[column]" alt="Product Image" width=100% height=100%>
+            <div class="img">
+              <img [src]="products[column]" alt="Product Image" width=100% height=100% style="max-height: 70px; ">
             </div>
           </ng-container>
 
           <ng-container *ngSwitchCase="'url'">
             <!-- Content for the 'url' column -->
-            <a [href]="products[column]" target="_blank" style=":hover ">Best Buy</a>
+            <a [href]="products[column]" target="_blank" >Best Buy</a>
           </ng-container>
 
           <ng-container *ngSwitchDefault>

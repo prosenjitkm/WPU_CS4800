@@ -8,7 +8,7 @@ export interface Product {
   upc: string;
   category: Category[];
   shipping: number;
-  description: string;
+  //description: string;
   manufacturer: string;
   model: string;
   url: string;
@@ -38,7 +38,7 @@ const exampleProduct: Product = {
     { id: "abcat0208002", name: "Alkaline Batteries" },
   ],
   shipping: 5.49,
-  description: "Compatible with select electronic devices; AAA size; DURALOCK Power Preserve technology; 4-pack",
+  //description: "Compatible with select electronic devices; AAA size; DURALOCK Power Preserve technology; 4-pack",
   manufacturer: "Duracell",
   model: "MN2400B4Z",
   url: "http://www.bestbuy.com/site/duracell-aaa-batteries-4-pack/43900.p?id=1051384074145&skuId=43900&cmp=RMXCC",
