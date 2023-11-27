@@ -5,11 +5,11 @@
       "username": "admin",
       "firstname": "NT Infotech",
       "lastname": "NT Infotech",
-      "password": "Test$1234",
+      "password": "test123",
       "email": "test@gmail.com",
       "gender": "male",
       "role": "admin",
-      "isactive": true
+      "isActive": true
     },
     {
       "username": "adminbabu",

@@ -17,6 +17,10 @@ export class AuthService {
     return this.http.get(this.apiUrl+'/'+code);
   }
 
+  GetUserByUserName(username: string) {
+    return this.http.get(`${this.apiUrl}?username=${username}`);
+  }
+
   proceedRegister(inputData:any){
     return this.http.post(this.apiUrl, inputData);
   }
