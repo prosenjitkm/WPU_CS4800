@@ -38,6 +38,7 @@ export class ProductListComponent implements OnInit {
           if (this.cate) {
 
             console.log('Query parameter "category" value:', this.cate);
+
             //this.cate = decodeURIComponent(query);
             this.productService.getAllProducts()
                 .subscribe(response => {

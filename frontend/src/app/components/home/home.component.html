@@ -12,7 +12,7 @@
     <p> Shop By Categories</p>
     <div class="category-bubbles">
       <div class="cat" *ngFor="let cate of category">
-        <div class="bubble" [routerLink]="['/products/', cate.category]" [queryParams]= "{id: cate.category}" style="cursor: pointer;">
+        <div class="bubble" [routerLink]="['/products/', cate.category]" style="cursor: pointer;">
 
           <div class="img" [innerHTML]="svgCode">
           </div>
