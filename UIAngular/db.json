@@ -1,0 +1,26 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "username": "admin",
+      "firstname": "NT Infotech",
+      "lastname": "NT Infotech",
+      "password": "Test$1234",
+      "email": "test@gmail.com",
+      "gender": "male",
+      "role": "admin",
+      "isactive": true
+    },
+    {
+      "username": "adminbabu",
+      "firstname": "prosenjit",
+      "lastname": "mandal",
+      "password": "dfasfasdfsdfsfg",
+      "email": "petwr@gmail.com",
+      "gender": "female",
+      "role": "",
+      "isActive": false,
+      "id": 2
+    }
+  ]
+}
