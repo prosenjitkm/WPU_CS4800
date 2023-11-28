@@ -23,31 +23,28 @@ export class LoginComponent {
   }
 
   loginForm = this.builder.group({
-    username:this.builder.control('', Validators.compose([Validators.required])),
+    userName:this.builder.control('', Validators.compose([Validators.required])),
     password:this.builder.control('', Validators.compose([Validators.required])),
   });
 
   proceedLogin() {
     if (this.loginForm.valid) {
-      const username = this.loginForm.value.username || '';
+      const username = this.loginForm.value.userName || '';
 
       this.service.GetUserByUserName(username).subscribe(
-        (response: any) => { // Adjusting the type to 'any'
-          // Assuming response is an array, but using 'any' to avoid type conflict
+        (response: any) => {
           const user = Array.isArray(response) && response.length > 0 ? response[0] : null;
-
           if (user) {
-            // Comparing the password and checking if the user is active
             if (user.password === this.loginForm.value.password) {
               if (user.isActive == true) {
-                sessionStorage.setItem('username', user.username);
-                sessionStorage.setItem('role', user.role);
+                sessionStorage.setItem('userName', user.userName);
+                sessionStorage.setItem('userCategory', user.userCategory);
                 this.router.navigate(['']);
               } else {
                 this.toastr.error('Inactive User. Please contact admin');
               }
             } else {
-              this.toastr.error('Invalid credentials');
+              this.toastr.error('Invalid password');
             }
           } else {
             this.toastr.error('User not found');

@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
 export class AuthService {
 
   constructor(private http:HttpClient) { }
-  apiUrl='http://localhost:3000/user';
+  apiUrl='http://localhost:3000/users';
 
   GetAllUsers(){
     return this.http.get(this.apiUrl);
@@ -17,8 +17,8 @@ export class AuthService {
     return this.http.get(this.apiUrl+'/'+code);
   }
 
-  GetUserByUserName(username: string) {
-    return this.http.get(`${this.apiUrl}?username=${username}`);
+  GetUserByUserName(userName: string) {
+    return this.http.get(`${this.apiUrl}?userName=${userName}`);
   }
 
   proceedRegister(inputData:any){
@@ -30,11 +30,12 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    return sessionStorage.getItem('username')!=null;
+    return sessionStorage.getItem('userName')!=null;
   }
 
-  getUserRole(){
-    return sessionStorage.getItem('role')!=null ? sessionStorage.getItem('role')?.toString():'';
+  getUserCategory(): number {
+    const userCategory = sessionStorage.getItem('userCategory');
+    return userCategory !== null ? parseInt(userCategory) : 0;
   }
 
 

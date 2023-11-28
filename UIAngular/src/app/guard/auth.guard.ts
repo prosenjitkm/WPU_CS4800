@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private service: AuthService,
     private router: Router,
-    private tostr:ToastrService) { }
+    private toastr:ToastrService) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -21,11 +21,11 @@ export class AuthGuard implements CanActivate {
       if (route.url.length > 0) {
         let menu = route.url[0].path;
         if (menu == 'user') {
-          if (this.service.getUserRole() == 'admin') {
+          if (this.service.getUserCategory() == 1) {
             return true;
           } else {
             this.router.navigate(['']);
-            this.tostr.warning('You dont have access.')
+            this.toastr.warning('You dont have access.')
             return false;
           }
         }else{

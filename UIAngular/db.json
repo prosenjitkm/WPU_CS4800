@@ -1,26 +1,62 @@
 {
-  "user": [
+  "USER_CATEGORIES": [
     {
-      "id": 1,
-      "username": "admin",
-      "firstname": "NT Infotech",
-      "lastname": "NT Infotech",
-      "password": "test123",
-      "email": "test@gmail.com",
-      "gender": "male",
-      "role": "admin",
-      "isActive": true
+      "userCategoryId": 1,
+      "categoryName": "ADMIN",
+      "users": [1, 2]
     },
     {
-      "username": "adminbabu",
-      "firstname": "prosenjit",
-      "lastname": "mandal",
-      "password": "dfasfasdfsdfsfg",
-      "email": "petwr@gmail.com",
-      "gender": "female",
-      "role": "",
-      "isActive": false,
-      "id": 2
+      "userCategoryId": 2,
+      "categoryName": "BUYER",
+      "users": [3]
+    }
+  ],
+  "USERS": [
+    {
+      "userId": 1,
+      "userName": "admin",
+      "password": "test123",
+      "firstName": "John",
+      "lastName": "Doe",
+      "dateOfBirth": "1990-01-01",
+      "gender": "Male",
+      "email": "john@example.com",
+      "phone": "1234567890",
+      "houseNumber": "100",
+      "streetName": "Main St",
+      "city": "Anytown",
+      "state": "Anystate",
+      "zipCode": "12345",
+      "country": "USA",
+      "isActive": true,
+      "createdDate": "2023-11-01T00:00:00Z",
+      "lastModifiedDate": "2023-11-02T00:00:00Z",
+      "userCategory": 1,
+      "products": [1, 2]
+    }
+  ],
+  "PRODUCT_CATEGORIES": [
+    {
+      "productCategoryId": 1,
+      "categoryName": "Electronics",
+      "products": [1, 3]
+    }
+  ],
+  "PRODUCTS": [
+    {
+      "productId": 1,
+      "productName": "Smartphone",
+      "productQuantity": 100,
+      "productPrice": 299.99,
+      "productDescription": "Latest model smartphone with high-end features",
+      "productImageUrl": "https://example.com/products/smartphone.jpg",
+      "productSalePrice": 279.99,
+      "isOnSale": false,
+      "isAvailable": true,
+      "createdDate": "2023-11-01T00:00:00Z",
+      "lastModifiedDate": "2023-11-02T00:00:00Z",
+      "user": 1,
+      "productCategory": 1
     }
   ]
 }

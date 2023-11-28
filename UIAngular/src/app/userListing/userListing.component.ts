@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {AuthService} from "../service/auth.service";
-import {MatTableDataSource} from "@angular/material/table";
+import { AuthService } from "../service/auth.service";
+import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
   selector: 'app-userListing',
@@ -10,13 +10,14 @@ import {MatTableDataSource} from "@angular/material/table";
 export class UserListingComponent {
 
   constructor(private service:AuthService) {
+    this.loadUser();
   }
 
   userList: any;
   dataSource: any;
   element: any;
 
-  displayedColumns: string[] = ['id', 'username', 'firstname', 'lastname', 'gender', 'email', 'role', 'isActive','action'];
+  displayedColumns: string[] = ['userId', 'userName', 'firstName', 'lastName', 'dateOfBirth', 'gender', 'email', 'phone', 'address', 'userCategory', 'isActive','action'];
 
 
   loadUser(){

@@ -7,18 +7,8 @@
     <form class="example-form" [formGroup]="registerForm" (ngSubmit)="proceedRegistration()">
 
       <mat-form-field class="example-full-width">
-        <mat-label>First Name</mat-label>
-        <input type="name" matInput formControlName="firstname">
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Last Name</mat-label>
-        <input type="name" matInput formControlName="lastname">
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
         <mat-label>User Name</mat-label>
-        <input matInput formControlName="username">
+        <input type="text" matInput formControlName="username">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
@@ -27,9 +17,60 @@
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput formControlName="firstname">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput formControlName="lastname">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>DOB</mat-label>
+        <input type="date" matInput formControlName="dateOfBirth">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input type="email" matInput formControlName="email">
       </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Phone</mat-label>
+        <input type="tel" matInput formControlName="phone">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>House Number</mat-label>
+        <input type="text" matInput formControlName="houseNumber">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Street Name</mat-label>
+        <input type="text" matInput formControlName="streetName">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>City</mat-label>
+        <input type="text" matInput formControlName="city">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>State</mat-label>
+        <input type="text" matInput formControlName="state">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Zip Code</mat-label>
+        <input type="text" matInput formControlName="zipCode">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Country</mat-label>
+        <input type="text" matInput formControlName="country">
+      </mat-form-field>
+
       <div>
         <mat-radio-group formControlName="gender" aria-label="Gender">
           <mat-radio-button value="male">Male</mat-radio-button>
