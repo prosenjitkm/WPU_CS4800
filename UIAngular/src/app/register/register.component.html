@@ -4,11 +4,11 @@
     <h1>User Registration</h1>
   </mat-card-header>
   <mat-card-content >
-    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="proceedRegistration()">
+    <form class="example-form" [formGroup]="registerForm" (ngSubmit)="updateUser()">
 
       <mat-form-field class="example-full-width">
         <mat-label>User Name</mat-label>
-        <input type="text" matInput formControlName="username">
+        <input type="text" matInput formControlName="userName">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
@@ -18,12 +18,12 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>First Name</mat-label>
-        <input type="text" matInput formControlName="firstname">
+        <input type="text" matInput formControlName="firstName">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">
         <mat-label>Last Name</mat-label>
-        <input type="text" matInput formControlName="lastname">
+        <input type="text" matInput formControlName="lastName">
       </mat-form-field>
 
       <mat-form-field class="example-full-width">

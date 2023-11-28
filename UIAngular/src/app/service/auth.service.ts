@@ -7,26 +7,27 @@ import {HttpClient} from "@angular/common/http";
 export class AuthService {
 
   constructor(private http:HttpClient) { }
-  apiUrl='http://localhost:3000/users';
+  apiUrlUsers='http://localhost:3000/users';
+  apiUrlUserCategory='http://localhost:3000/user_categories';
 
   GetAllUsers(){
-    return this.http.get(this.apiUrl);
+    return this.http.get(this.apiUrlUsers);
   }
 
   GetAllUserByCode(code: any){
-    return this.http.get(this.apiUrl+'/'+code);
+    return this.http.get(this.apiUrlUsers+'/'+code);
   }
 
   GetUserByUserName(userName: string) {
-    return this.http.get(`${this.apiUrl}?userName=${userName}`);
+    return this.http.get(`${this.apiUrlUsers}?userName=${userName}`);
   }
 
   proceedRegister(inputData:any){
-    return this.http.post(this.apiUrl, inputData);
+    return this.http.post(this.apiUrlUsers, inputData);
   }
 
   updateUser(code: any, inputData:any){
-    return this.http.put(this.apiUrl+'/'+code, inputData);
+    return this.http.put(this.apiUrlUsers+'/'+code, inputData);
   }
 
   isLoggedIn(){
@@ -37,7 +38,7 @@ export class AuthService {
     const userCategory = sessionStorage.getItem('userCategory');
     return userCategory !== null ? parseInt(userCategory) : 0;
   }
-
-
-
+  GetAllUserCategory() {
+    return this.http.get(this.apiUrlUserCategory);
+  }
 }

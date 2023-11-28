@@ -48,4 +48,8 @@ export class RegisterComponent {
       this.toastr.warning('Please send valid data');
     }
   }
+
+  updateUser() {
+
+  }
 }
