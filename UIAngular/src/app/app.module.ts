@@ -10,8 +10,9 @@ import { AppComponent } from "./app.component";
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { HomeComponent } from "./home/home.component";
-import {FooterComponent} from "./footer/footer.component";
-import {HeaderComponent} from "./header/header.component";
+import { FooterComponent } from "./footer/footer.component";
+import { HeaderComponent } from "./header/header.component";
+import { UserListingComponent } from "./userListing/userListing.component";
 
 @NgModule({
   declarations:[
@@ -20,7 +21,8 @@ import {HeaderComponent} from "./header/header.component";
     LoginComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent],
+    FooterComponent,
+    UserListingComponent],
   imports:[
     BrowserModule,
     AppRoutingModule,
