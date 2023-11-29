@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -10,35 +10,30 @@ export class AuthService {
   apiUrlUsers='http://localhost:3000/users';
   apiUrlUserCategory='http://localhost:3000/user_categories';
 
-  GetAllUsers(){
+  getAllUsers(){
     return this.http.get(this.apiUrlUsers);
   }
-
-  GetAllUserByCode(code: any){
-    return this.http.get(this.apiUrlUsers+'/'+code);
+  getUserByUserId(userId: any){
+    return this.http.get(`${this.apiUrlUsers}?userId=${userId}`);
   }
-
-  GetUserByUserName(userName: string) {
+  getUserByUserName(userName: string) {
     return this.http.get(`${this.apiUrlUsers}?userName=${userName}`);
   }
-
   proceedRegister(inputData:any){
     return this.http.post(this.apiUrlUsers, inputData);
   }
-
-  updateUser(code: any, inputData:any){
-    return this.http.put(this.apiUrlUsers+'/'+code, inputData);
-  }
-
   isLoggedIn(){
     return sessionStorage.getItem('userName')!=null;
   }
-
-  getUserCategory(): number {
+  getUsersUserCategory(): number {
     const userCategory = sessionStorage.getItem('userCategory');
     return userCategory !== null ? parseInt(userCategory) : 0;
   }
-  GetAllUserCategory() {
+  getAllUserCategory() {
     return this.http.get(this.apiUrlUserCategory);
+  }
+
+  updateUser(userId:any,inputdata:any){
+    return this.http.put(this.apiUrlUsers+'/'+userId,inputdata);
   }
 }

@@ -17,7 +17,7 @@ export class RegisterComponent {
     private service:AuthService,
     private router: Router) {
   }
-  registerForm = this.builder.group({
+  registrationForm = this.builder.group({
     userName:this.builder.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
     password:this.builder.control('', Validators.compose([Validators.required])),
     firstName:this.builder.control('', Validators.required),
@@ -36,10 +36,10 @@ export class RegisterComponent {
     isActive:this.builder.control(false),
   });
 
-  proceedRegistration(){
-    if(this.registerForm.valid)
+  submitRegistration(){
+    if(this.registrationForm.valid)
     {
-      this.service.proceedRegister(this.registerForm.value).subscribe(
+      this.service.proceedRegister(this.registrationForm.value).subscribe(
         response => {
           this.toastr.success('Please contact admin for enable access', 'Registered Successfully');
           this.router.navigate(['login']);
@@ -47,9 +47,5 @@ export class RegisterComponent {
     }else{
       this.toastr.warning('Please send valid data');
     }
-  }
-
-  updateUser() {
-
   }
 }

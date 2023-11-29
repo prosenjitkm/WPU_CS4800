@@ -31,7 +31,7 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const username = this.loginForm.value.userName || '';
 
-      this.service.GetUserByUserName(username).subscribe(
+      this.service.getUserByUserName(username).subscribe(
         (response: any) => {
           const user = Array.isArray(response) && response.length > 0 ? response[0] : null;
           if (user) {

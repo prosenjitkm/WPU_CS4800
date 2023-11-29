@@ -4,7 +4,7 @@ import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatDialog } from "@angular/material/dialog";
-import {UpdatePopUpComponent} from "../updatePopUp/updatePopUp.component";
+import { UpdatePopUpComponent } from "../updatePopUp/updatePopUp.component";
 
 @Component({
   selector: 'app-userListing',
@@ -13,14 +13,14 @@ import {UpdatePopUpComponent} from "../updatePopUp/updatePopUp.component";
 })
 export class UserListingComponent {
 
-  constructor(private service:AuthService, private dialog:MatDialog) {
-    this.loadUser();
-  }
-
   userList: any;
   dataSource: any;
   @ViewChild(MatPaginator) paginator !:MatPaginator;
   @ViewChild(MatSort) sort !:MatSort;
+
+  constructor(private service:AuthService, private dialog:MatDialog) {
+    this.loadUser();
+  }
 
   displayedColumns: string[] = [
       'userId',
@@ -38,36 +38,38 @@ export class UserListingComponent {
 
 
   loadUser(){
-    this.service.GetAllUsers().subscribe(
+    this.service.getAllUsers().subscribe(
       response =>{
+        console.log('Fetched users:', response);
         this.userList = response;
         this.dataSource = new MatTableDataSource(this.userList);
         this.dataSource.paginator=this.paginator;
         this.dataSource.sort=this.sort;
-    })
+    },
+            error => {
+        console.error('Error fetching users:', error);
+      });
   }
 
   updateUser(element: any) {
-  this.dialog.open(UpdatePopUpComponent,{
-    enterAnimationDuration:'1000ms',
-    exitAnimationDuration:'500ms',
-    width:'50%',
-    data:{
-      userElement:element
-    }
+    this.OpenDialog('1000ms', '600ms', element);
+  }
+
+  OpenDialog(enterAnimation: any, exitAnimation: any, element: any) {
+    console.log('Opening update dialog for user:', element);
+    const popUp = this.dialog.open(UpdatePopUpComponent,{
+      enterAnimationDuration:enterAnimation,
+      exitAnimationDuration:exitAnimation,
+      width:'50%',
+      data:{
+        userId:element.userId
+
+      }
+
   });
-  }
-
-  deleteUser(element: any) {
-
-  }
-
-  openDialog(){
-
-
-  }
-
-  getAllProductsForTheUserId(element: any) {
-
+    popUp.afterClosed().subscribe(
+        response=>{
+          this.loadUser();
+    })
   }
 }

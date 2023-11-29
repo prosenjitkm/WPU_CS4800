@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "../service/auth.service";
-import { Router } from "@angular/router";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-updatePopUp',
@@ -11,28 +11,39 @@ import { Router } from "@angular/router";
 })
 export class UpdatePopUpComponent implements OnInit{
 
-  userCategoryList: any;
+  UserCategoryList: any;
+  editData: any;
 
   constructor(
       private builder:FormBuilder,
       private toastr: ToastrService,
-      private router: Router,
-      private service:AuthService) {
+      private service: AuthService,
+      @Inject(MAT_DIALOG_DATA) public data:any,
+      public dialogRef: MatDialogRef<UpdatePopUpComponent>) {
+
+    this.service.getAllUserCategory().subscribe(
+        response =>{this.UserCategoryList = response;
+        });
   }
 
   ngOnInit(): void {
-        this.service.GetAllUserCategory().subscribe(response =>{
-          this.userCategoryList = response;
-        });
+    console.log('Received userId for update:', this.data);
+    if(this.data.userId != null && this.data.userId != ''){
+        this.loadUserData(this.data.userId);
+        console.log(this.data.userId);
+      }else {
+      console.error('No userId provided to UpdatePopUpComponent');
     }
+  }
 
-  registerForm = this.builder.group({
+  updateForm = this.builder.group({
+    userId:this.builder.control(''),
     userName:this.builder.control(''),
     password:this.builder.control(''),
     firstName:this.builder.control(''),
     lastName:this.builder.control(''),
     dateOfBirth:this.builder.control(''),
-    gender:this.builder.control(''),
+    gender:this.builder.control('Male'),
     email:this.builder.control(''),
     phone:this.builder.control(''),
     houseNumber:this.builder.control(''),
@@ -45,17 +56,46 @@ export class UpdatePopUpComponent implements OnInit{
     isActive:this.builder.control(false),
   });
 
-  proceedRegistration(){
-    if(this.registerForm.valid)
-    {
-      this.service.proceedRegister(this.registerForm.value).subscribe(
-          response => {
-            this.toastr.success('Please contact admin for enable access', 'Registered Successfully');
-            this.router.navigate(['login']);
-          });
-    }else{
-      this.toastr.warning('Please send valid data');
-    }
+  loadUserData(userId: number){
+    this.service.getUserByUserId(this.data.userId).subscribe(response=>{
+      console.log('Loaded user data for update:', response);
+      this.editData = response;
+      this.updateForm.setValue({
+        userId: this.editData.userId,
+        userName: this.editData.userName,
+        password: null,
+        firstName: this.editData.firstName,
+        lastName: this.editData.lastName,
+        dateOfBirth: this.editData.dateOfBirth,
+        gender: this.editData.gender,
+        email: this.editData.email,
+        phone: this.editData.phone,
+        houseNumber: this.editData.houseNumber,
+        streetName: this.editData.streetName,
+        city: this.editData.city,
+        state: this.editData.state,
+        zipCode: this.editData.zipCode,
+        country: this.editData.country,
+        userCategory: this.editData.userCategory,
+        isActive: this.editData.isActive
+      });
+    },
+            error => {
+      console.error('Error loading user data:', error);
+    });
   }
 
+  updateUser(){
+    if(this.updateForm.valid) {
+      console.log('Updating user with data:', this.updateForm.value);
+      this.service.updateUser(this.updateForm.value.userId, this.updateForm.value).subscribe(
+          response=>{
+            this.toastr.success('Update Successfully completed.');
+            this.dialogRef.close();
+          });
+    }else{
+      console.warn('Update form is invalid');
+      this.toastr.warning('Please enter valid data');
+    }
+  }
 }
