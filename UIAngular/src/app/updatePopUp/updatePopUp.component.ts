@@ -63,7 +63,7 @@ export class UpdatePopUpComponent implements OnInit{
       this.updateForm.setValue({
         id: this.editData.id,
         userName: this.editData.userName,
-        password: null,
+        password: this.editData.password,
         firstName: this.editData.firstName,
         lastName: this.editData.lastName,
         dateOfBirth: this.editData.dateOfBirth,

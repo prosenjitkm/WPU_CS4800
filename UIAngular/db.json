@@ -26,7 +26,7 @@
     {
       "id": 1,
       "userName": "prosenjit",
-      "password": null,
+      "password": "abc123",
       "firstName": "Prosenjit",
       "lastName": "Mandal",
       "dateOfBirth": "1991-06-28",
@@ -49,7 +49,7 @@
       "firstName": "Prantika",
       "lastName": "Tanni",
       "dateOfBirth": "2001-10-09",
-      "gender": "female",
+      "gender": "male",
       "email": "prantikaroytanni@gmail.com",
       "phone": "9298996881",
       "houseNumber": "21",
