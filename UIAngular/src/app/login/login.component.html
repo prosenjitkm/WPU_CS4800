@@ -1,33 +1,29 @@
 
 <div class="login-container">
-<mat-card>
-  <mat-card-header>
-    <h1>Login</h1>
-  </mat-card-header>
-  <mat-card-content >
-    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="proceedLogin()">
+  <mat-card>
+    <mat-card-header><h1>Login</h1></mat-card-header>
+    <mat-card-content >
+      <form class="example-form" [formGroup]="loginForm" (ngSubmit)="proceedLogin()">
 
-      <mat-form-field class="example-full-width">
-        <mat-label>User Name</mat-label>
-        <input matInput formControlName="userName">
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>User Name</mat-label>
+          <input matInput formControlName="userName">
+        </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password">
-      </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
 
-      <mat-divider></mat-divider>
-        <section>
-          <br>
-          <div class="button-container">
-            <button mat-raised-button color="primary">Submit</button>
-            <button routerLink="/register" mat-raised-button color="accent">New User?</button>
-          </div>
-          <br>
-        </section>
-      <mat-divider></mat-divider>
-    </form>
-  </mat-card-content>
-</mat-card>
-  </div>
+        <mat-divider></mat-divider>
+          <section>
+            <div class="button-container">
+              <button mat-raised-button color="primary">Submit</button>
+              <button routerLink="/register" mat-raised-button color="accent">New User?</button>
+            </div>
+          </section>
+        <mat-divider></mat-divider>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
