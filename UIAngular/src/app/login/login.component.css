@@ -1,3 +1,20 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px; /* Adjust spacing as needed */
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .example-form {
   min-width: 150px;
   max-width: 500px;
@@ -6,10 +23,6 @@
 
 .example-full-width {
   width: 100%;
-}
-
-.mat-mdc-radio-button ~ .mat-mdc-radio-button {
-  margin-left: 16px;
 }
 
 section {

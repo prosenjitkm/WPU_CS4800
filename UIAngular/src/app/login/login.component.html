@@ -1,4 +1,5 @@
 
+<div class="login-container">
 <mat-card>
   <mat-card-header>
     <h1>Login</h1>
@@ -16,12 +17,17 @@
         <input type="password" matInput formControlName="password">
       </mat-form-field>
 
-      <div>
-        <button mat-raised-button color="primary">Submit</button>
-        <a routerLink="/register" mat-raised-button color="accent">New User?</a>
-      </div>
-
+      <mat-divider></mat-divider>
+        <section>
+          <br>
+          <div class="button-container">
+            <button mat-raised-button color="primary">Submit</button>
+            <button routerLink="/register" mat-raised-button color="accent">New User?</button>
+          </div>
+          <br>
+        </section>
+      <mat-divider></mat-divider>
     </form>
-
   </mat-card-content>
 </mat-card>
+  </div>

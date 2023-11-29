@@ -15,6 +15,8 @@ import { HeaderComponent } from "./header/header.component";
 import { UserListingComponent } from "./userListing/userListing.component";
 import { UpdatePopUpComponent } from "./updatePopUp/updatePopUp.component";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   declarations:[
@@ -26,7 +28,7 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
     FooterComponent,
     UserListingComponent,
     UpdatePopUpComponent],
-  imports:[
+  imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -34,7 +36,10 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
     ReactiveFormsModule,
     HttpClientModule,
     MatSlideToggleModule,
-    ToastrModule.forRoot()],
+    ToastrModule.forRoot(),
+    MatButtonModule,
+    MatDividerModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
