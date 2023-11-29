@@ -45,7 +45,7 @@
     {
       "id": 2,
       "userName": "prantika",
-      "password": null,
+      "password": "abc123",
       "firstName": "Prantika",
       "lastName": "Tanni",
       "dateOfBirth": "2001-10-09",
@@ -58,13 +58,13 @@
       "state": "NJ",
       "zipCode": "07502",
       "country": "USA",
-      "userCategory": 1,
+      "userCategory": 2,
       "isActive": true
     },
     {
       "id": 3,
       "userName": "pro3",
-      "password": null,
+      "password": "abc123",
       "firstName": "John",
       "lastName": "Doe",
       "dateOfBirth": "1990-01-01",
@@ -83,7 +83,7 @@
     {
       "id": 4,
       "userName": "abc123",
-      "password": null,
+      "password": "abc123",
       "firstName": "Prosenjit",
       "lastName": "Mandal",
       "dateOfBirth": "1991-06-28",

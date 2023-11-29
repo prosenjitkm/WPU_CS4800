@@ -1,4 +1,4 @@
-import {Component, DoCheck} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -6,21 +6,8 @@ import {Router} from "@angular/router";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements DoCheck {
-  isNavigationBarRequired = false;
+export class HeaderComponent{
+
   constructor(private router: Router) {}
 
-  logout() {
-    this.router.navigate(['/login']);
-  }
-
-  ngDoCheck() {
-    let currentUrl = this.router.url;
-    if(currentUrl == '/login' || currentUrl == '/register')
-    {
-      this.isNavigationBarRequired = false;
-    }else {
-      this.isNavigationBarRequired = true;
-    }
-  }
 }

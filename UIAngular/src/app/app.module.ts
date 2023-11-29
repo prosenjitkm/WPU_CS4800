@@ -17,6 +17,7 @@ import { UpdatePopUpComponent } from "./updatePopUp/updatePopUp.component";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatButtonModule } from "@angular/material/button";
+import {NavigationBarComponent} from "./navigation-bar/navigation-bar.component";
 
 @NgModule({
   declarations:[
@@ -24,6 +25,7 @@ import { MatButtonModule } from "@angular/material/button";
     RegisterComponent,
     LoginComponent,
     HomeComponent,
+    NavigationBarComponent,
     HeaderComponent,
     FooterComponent,
     UserListingComponent,

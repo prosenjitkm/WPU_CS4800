@@ -71,4 +71,12 @@ export class UserListingComponent {
           this.loadUser();
     })
   }
+
+  deleteUser(element: any) {
+
+  }
+
+  getAllProductsForTheUserId(element: any) {
+
+  }
 }
