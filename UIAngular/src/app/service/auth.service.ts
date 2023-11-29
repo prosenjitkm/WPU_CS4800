@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import {catchError, tap, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,22 @@ export class AuthService {
   getAllUsers(){
     return this.http.get(this.apiUrlUsers);
   }
-  getUserByUserId(userId: any){
-    return this.http.get(`${this.apiUrlUsers}?userId=${userId}`);
+  getUserByUserId(id: any){
+    return this.http.get(`${this.apiUrlUsers}?id=${id}`);
   }
   getUserByUserName(userName: string) {
     return this.http.get(`${this.apiUrlUsers}?userName=${userName}`);
   }
   proceedRegister(inputData:any){
-    return this.http.post(this.apiUrlUsers, inputData);
+    console.log('Sending registration data:', inputData);
+    return this.http.post(this.apiUrlUsers, inputData)
+        .pipe(
+            tap(response => console.log('Received response:', response)),
+            catchError(error => {
+              console.error('Error occurred:', error);
+              return throwError(error);
+            })
+        );
   }
   isLoggedIn(){
     return sessionStorage.getItem('userName')!=null;
@@ -33,7 +42,12 @@ export class AuthService {
     return this.http.get(this.apiUrlUserCategory);
   }
 
-  updateUser(userId:any,inputdata:any){
-    return this.http.put(this.apiUrlUsers+'/'+userId,inputdata);
+  updateUser(id:any,inputdata:any){
+    return this.http.put(this.apiUrlUsers+'/'+id, inputdata);
+  }
+
+  GetUserbyCode(id: any) {
+    return this.http.get(this.apiUrlUsers+'/'+id);
+
   }
 }

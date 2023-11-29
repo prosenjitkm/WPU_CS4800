@@ -22,22 +22,22 @@ export class UpdatePopUpComponent implements OnInit{
       public dialogRef: MatDialogRef<UpdatePopUpComponent>) {
 
     this.service.getAllUserCategory().subscribe(
-        response =>{this.UserCategoryList = response;
-        });
+        response =>{this.UserCategoryList = response;}
+    );
   }
 
   ngOnInit(): void {
     console.log('Received userId for update:', this.data);
-    if(this.data.userId != null && this.data.userId != ''){
-        this.loadUserData(this.data.userId);
-        console.log(this.data.userId);
+    if(this.data.id != null && this.data.id != ''){
+        this.loadUserData(this.data.id);
+        console.log(this.data.id);
       }else {
       console.error('No userId provided to UpdatePopUpComponent');
     }
   }
 
   updateForm = this.builder.group({
-    userId:this.builder.control(''),
+    id:this.builder.control(''),
     userName:this.builder.control(''),
     password:this.builder.control(''),
     firstName:this.builder.control(''),
@@ -56,12 +56,12 @@ export class UpdatePopUpComponent implements OnInit{
     isActive:this.builder.control(false),
   });
 
-  loadUserData(userId: number){
-    this.service.getUserByUserId(this.data.userId).subscribe(response=>{
+  loadUserData(code: any){
+    this.service.GetUserbyCode(code).subscribe(response=>{
       console.log('Loaded user data for update:', response);
       this.editData = response;
       this.updateForm.setValue({
-        userId: this.editData.userId,
+        id: this.editData.id,
         userName: this.editData.userName,
         password: null,
         firstName: this.editData.firstName,
@@ -88,7 +88,7 @@ export class UpdatePopUpComponent implements OnInit{
   updateUser(){
     if(this.updateForm.valid) {
       console.log('Updating user with data:', this.updateForm.value);
-      this.service.updateUser(this.updateForm.value.userId, this.updateForm.value).subscribe(
+      this.service.updateUser(this.updateForm.value.id, this.updateForm.value).subscribe(
           response=>{
             this.toastr.success('Update Successfully completed.');
             this.dialogRef.close();

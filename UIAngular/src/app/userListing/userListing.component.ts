@@ -23,7 +23,7 @@ export class UserListingComponent {
   }
 
   displayedColumns: string[] = [
-      'userId',
+      'id',
     'userName',
     'firstName',
     'lastName',
@@ -62,8 +62,7 @@ export class UserListingComponent {
       exitAnimationDuration:exitAnimation,
       width:'50%',
       data:{
-        userId:element.userId
-
+        id:element.id
       }
 
   });

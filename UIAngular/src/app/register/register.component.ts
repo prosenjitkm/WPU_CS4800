@@ -37,14 +37,23 @@ export class RegisterComponent {
   });
 
   submitRegistration(){
+    console.log('Form data:', this.registrationForm.value);
+
     if(this.registrationForm.valid)
     {
       this.service.proceedRegister(this.registrationForm.value).subscribe(
         response => {
+          console.log('Registration successful:', response);
           this.toastr.success('Please contact admin for enable access', 'Registered Successfully');
           this.router.navigate(['login']);
-        });
-    }else{
+        },
+          error => {
+            console.error('Registration failed:', error);
+            this.toastr.error('Registration failed. Please try again.');
+          }
+      );
+    } else {
+      console.warn('Form is invalid:', this.registrationForm.errors);
       this.toastr.warning('Please send valid data');
     }
   }

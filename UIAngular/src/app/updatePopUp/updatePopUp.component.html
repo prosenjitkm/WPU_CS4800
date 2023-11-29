@@ -4,96 +4,19 @@
     <mat-card-content class="dialog-content">
         <form class="example-form" [formGroup]="updateForm" (ngSubmit)="updateUser()">
 
-<!--            <mat-form-field class="example-full-width">
-                <mat-label>User ID</mat-label>
-                <input type="text" matInput formControlName="userId">
-            </mat-form-field>-->
-
-            <mat-form-field class="example-full-width">
-                <mat-label>User Name</mat-label>
-                <input type="text" matInput formControlName="userName">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>Password</mat-label>
-                <input type="password" matInput formControlName="password">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>First Name</mat-label>
-                <input type="text" matInput formControlName="firstName">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>Last Name</mat-label>
-                <input type="text" matInput formControlName="lastName">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>DOB</mat-label>
-                <input type="date" matInput formControlName="dateOfBirth">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput formControlName="email">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>Phone</mat-label>
-                <input type="tel" matInput formControlName="phone">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>House Number</mat-label>
-                <input type="text" matInput formControlName="houseNumber">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>Street Name</mat-label>
-                <input type="text" matInput formControlName="streetName">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>City</mat-label>
-                <input type="text" matInput formControlName="city">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>State</mat-label>
-                <input type="text" matInput formControlName="state">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>Zip Code</mat-label>
-                <input type="text" matInput formControlName="zipCode">
-            </mat-form-field>
-
-            <mat-form-field class="example-full-width">
-                <mat-label>Country</mat-label>
-                <input type="text" matInput formControlName="country">
-            </mat-form-field>
-
             <mat-form-field class="example-full-width">
                 <mat-select formControlName="userCategory">
                     <mat-option value="">Select Role</mat-option>
-                    <mat-option *ngFor="let item of UserCategoryList" [value]="item.userCategoryId">{{item.categoryName}}</mat-option>
+                    <mat-option *ngFor="let item of UserCategoryList" [value]="item.code">{{item.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
-
-            <div>
-                <mat-radio-group formControlName="gender" aria-label="Gender">
-                    <mat-radio-button value="male">Male</mat-radio-button>
-                    <mat-radio-button value="female">Female</mat-radio-button>
-                </mat-radio-group>
-            </div>
 
             <br>
             <div>
                 <mat-checkbox class="example-margin" formControlName="isActive">Is Active</mat-checkbox>
             </div>
 
-            <div>
+            <div mat-dialog-actions>
                 <button type="submit" mat-raised-button color="primary">Save</button>
                 <button mat-raised-button color="warn" mat-dialog-close>Close</button>
             </div>
