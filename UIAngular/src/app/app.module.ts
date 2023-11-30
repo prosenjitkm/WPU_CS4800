@@ -17,8 +17,11 @@ import { UpdatePopUpComponent } from "./updatePopUp/updatePopUp.component";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatButtonModule } from "@angular/material/button";
-import {NavigationBarComponent} from "./navigation-bar/navigation-bar.component";
-import {DeleteUserPopUpComponent} from "./delete-user-pop-up/delete-user-pop-up.component";
+import { NavigationBarComponent } from "./navigation-bar/navigation-bar.component";
+import { DeleteUserPopUpComponent } from "./delete-user-pop-up/delete-user-pop-up.component";
+import { MatSortModule } from "@angular/material/sort";
+import { MatTableModule } from "@angular/material/table";
+import { MatPaginatorModule } from "@angular/material/paginator";
 
 @NgModule({
   declarations:[
@@ -42,7 +45,10 @@ import {DeleteUserPopUpComponent} from "./delete-user-pop-up/delete-user-pop-up.
     MatSlideToggleModule,
     ToastrModule.forRoot(),
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSortModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

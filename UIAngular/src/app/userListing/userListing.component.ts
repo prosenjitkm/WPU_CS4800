@@ -1,40 +1,48 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { AuthService } from "../service/auth.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatDialog } from "@angular/material/dialog";
 import { UpdatePopUpComponent } from "../updatePopUp/updatePopUp.component";
-import {DeleteUserPopUpComponent} from "../delete-user-pop-up/delete-user-pop-up.component";
+import { DeleteUserPopUpComponent } from "../delete-user-pop-up/delete-user-pop-up.component";
 
 @Component({
   selector: 'app-userListing',
   templateUrl: './userListing.component.html',
   styleUrl: './userListing.component.css'
 })
-export class UserListingComponent {
-
+export class UserListingComponent implements AfterViewInit{
   userList: any;
-  dataSource: any;
+  dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !:MatPaginator;
   @ViewChild(MatSort) sort !:MatSort;
 
-  constructor(private service:AuthService, private dialog:MatDialog) {
+  constructor(
+    private service:AuthService,
+    private dialog:MatDialog) {
+    this.dataSource = new MatTableDataSource<any>();
     this.loadUser();
   }
 
-  displayedColumns: string[] = ['id', 'userName', 'firstName', 'lastName', 'dateOfBirth', 'gender', 'email', 'phone', 'address', 'userCategory', 'isActive', 'action'];
+  ngAfterViewInit() {
+    if (this.dataSource) {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
+  }
 
-  loadUser(){
-    this.service.getAllUsers().subscribe(
-      response =>{
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'phone', 'userCategory', 'isActive', 'action'];
+
+  loadUser() {
+    this.service.getAllUsers().subscribe(response => {
         console.log('Fetched users:', response);
         this.userList = response;
-        this.dataSource = new MatTableDataSource(this.userList);
-        this.dataSource.paginator=this.paginator;
-        this.dataSource.sort=this.sort;
-    },
-            error => {
+        this.dataSource.data = this.userList;
+        this.dataSource.paginator = this.paginator; // Assign paginator
+        this.dataSource.sort = this.sort; // Assign sort
+      },
+      error => {
         console.error('Error fetching users:', error);
       });
   }

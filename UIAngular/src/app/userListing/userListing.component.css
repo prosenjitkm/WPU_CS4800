@@ -1,34 +1,56 @@
-table {
+/* Container Styling */
+.table-container {
+  overflow-x: auto;
+  max-width: 80%;
+  margin: auto; /* Centering the table */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Shadow for hovering effect */
+  border-radius: 10px; /* Rounded corners */
+  background-color: white; /* Background for the table */
+  padding: 20px;
+}
+
+/* Table Styling */
+.mat-elevation-z8 table {
   width: 100%;
-}
-section {
-  display: table;
-}
-
-.example-label {
-  display: table-cell;
-  font-size: 14px;
-  margin-left: 8px;
-  min-width: 120px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border-radius: 10px;
 }
 
-.example-button-row {
-  display: table-cell;
-  max-width: 600px;
+th, td {
+  padding: 12px;
+  text-align: left;
+  vertical-align: middle;
 }
 
-.example-button-row .mat-mdc-button-base {
-  margin: 8px 8px 8px 0;
+th {
+  background-color: #333;
+  color: black;
+  font-weight: regular;
 }
 
-.example-flex-container {
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Action Buttons Styling */
+.action-buttons {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.example-button-container {
-  display: flex;
-  justify-content: center;
-  width: 120px;
+/* Paginator Styling */
+.mat-paginator {
+  padding-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table-container {
+    max-width: 95%;
+  }
+
+  .action-buttons button {
+    padding: 0 10px;
+  }
 }
