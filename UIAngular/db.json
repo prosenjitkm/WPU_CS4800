@@ -61,11 +61,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        1,
-        2,
-        3
-      ]
+      "products": [1]
     },
     {
       "id": 3,
@@ -84,7 +80,8 @@
       "zipCode": "07502",
       "country": "USA",
       "userCategory": 3,
-      "isActive": true
+      "isActive": true,
+      "products": [2]
     },
     {
       "id": 4,
@@ -104,9 +101,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        5
-      ]
+      "products": [3]
     },
     {
       "id": 5,
@@ -126,9 +121,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        6
-      ]
+      "products": [4]
     },
     {
       "id": 6,
@@ -148,9 +141,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        7
-      ]
+      "products": [5]
     },
     {
       "id": 7,
@@ -170,9 +161,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        8
-      ]
+      "products": [6]
     },
     {
       "id": 8,
@@ -192,9 +181,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        7
-      ]
+      "products": [7]
     },
     {
       "id": 9,
@@ -214,9 +201,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        8
-      ]
+      "products": [8]
     },
     {
       "id": 10,
@@ -236,9 +221,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        9
-      ]
+      "products": [9]
     },
     {
       "id": 11,
@@ -258,9 +241,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        10
-      ]
+      "products": [10]
     },
     {
       "id": 12,
@@ -280,9 +261,7 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [
-        11
-      ]
+      "products": [11]
     }
   ],
   "PRODUCT_CATEGORIES": [

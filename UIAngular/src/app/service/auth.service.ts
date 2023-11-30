@@ -69,4 +69,15 @@ export class AuthService {
         })
       );
   }
+
+  getProductsByUserId(userId: number) {
+    return this.http.get(`${this.apiUrlUsers}/${userId}/products`)
+      .pipe(
+        tap(response => console.log('Received products:', response)),
+        catchError(error => {
+          console.error('Error fetching products:', error);
+          return throwError(error);
+        })
+      );
+  }
 }

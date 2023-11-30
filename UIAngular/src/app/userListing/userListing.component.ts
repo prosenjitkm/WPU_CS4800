@@ -6,6 +6,7 @@ import { MatSort } from "@angular/material/sort";
 import { MatDialog } from "@angular/material/dialog";
 import { UpdatePopUpComponent } from "../updatePopUp/updatePopUp.component";
 import { DeleteUserPopUpComponent } from "../delete-user-pop-up/delete-user-pop-up.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-userListing',
@@ -19,6 +20,7 @@ export class UserListingComponent implements AfterViewInit{
   @ViewChild(MatSort) sort !:MatSort;
 
   constructor(
+    private router: Router,
     private service:AuthService,
     private dialog:MatDialog) {
     this.dataSource = new MatTableDataSource<any>();
@@ -94,6 +96,6 @@ export class UserListingComponent implements AfterViewInit{
   }
 
   onClickProductListOfUser(element: any) {
-
+    this.router.navigate(['/products', element.id]);
   }
 }
