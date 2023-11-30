@@ -1,0 +1,11 @@
+
+<mat-card>
+  <mat-card-header><h1>Delete User</h1></mat-card-header>
+  <mat-card-content class="dialog-content">
+      <p>Are you sure you want to delete the user?</p>
+      <div mat-dialog-actions>
+        <button mat-button (click)="onDismiss()">No</button>
+        <button mat-button (click)="onConfirm()">Yes</button>
+      </div>
+  </mat-card-content>
+</mat-card>

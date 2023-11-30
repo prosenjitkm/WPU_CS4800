@@ -5,6 +5,7 @@ import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatDialog } from "@angular/material/dialog";
 import { UpdatePopUpComponent } from "../updatePopUp/updatePopUp.component";
+import {DeleteUserPopUpComponent} from "../delete-user-pop-up/delete-user-pop-up.component";
 
 @Component({
   selector: 'app-userListing',
@@ -22,20 +23,7 @@ export class UserListingComponent {
     this.loadUser();
   }
 
-  displayedColumns: string[] = [
-      'id',
-    'userName',
-    'firstName',
-    'lastName',
-    'dateOfBirth',
-    'gender',
-    'email',
-    'phone',
-    'address',
-    'userCategory',
-    'isActive',
-    'action'];
-
+  displayedColumns: string[] = ['id', 'userName', 'firstName', 'lastName', 'dateOfBirth', 'gender', 'email', 'phone', 'address', 'userCategory', 'isActive', 'action'];
 
   loadUser(){
     this.service.getAllUsers().subscribe(
@@ -73,7 +61,28 @@ export class UserListingComponent {
   }
 
   deleteUser(element: any) {
+    console.log('Attempting to delete user:', element);
+    const dialogRef = this.dialog.open(DeleteUserPopUpComponent, {
+      width: '250px',
+      data: { id: element.id }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Confirmed deletion of user:', element);
+        this.service.deleteUser(element.id).subscribe(
+          response => {
+            console.log('User deleted:', response);
+            this.loadUser(); // Refresh the user list
+          },
+          error => {
+            console.error('Error deleting user:', error);
+          }
+        );
+      } else {
+        console.log('Deletion cancelled for user:', element);
+      }
+    });
   }
 
   getAllProductsForTheUserId(element: any) {

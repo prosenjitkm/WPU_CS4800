@@ -18,6 +18,7 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatButtonModule } from "@angular/material/button";
 import {NavigationBarComponent} from "./navigation-bar/navigation-bar.component";
+import {DeleteUserPopUpComponent} from "./delete-user-pop-up/delete-user-pop-up.component";
 
 @NgModule({
   declarations:[
@@ -29,7 +30,8 @@ import {NavigationBarComponent} from "./navigation-bar/navigation-bar.component"
     HeaderComponent,
     FooterComponent,
     UserListingComponent,
-    UpdatePopUpComponent],
+    UpdatePopUpComponent,
+    DeleteUserPopUpComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
