@@ -22,6 +22,7 @@ import { DeleteUserPopUpComponent } from "./delete-user-pop-up/delete-user-pop-u
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
+import {ProductListOfUserComponent} from "./product-list-of-user/product-list-of-user.component";
 
 @NgModule({
   declarations:[
@@ -34,7 +35,8 @@ import { MatPaginatorModule } from "@angular/material/paginator";
     FooterComponent,
     UserListingComponent,
     UpdatePopUpComponent,
-    DeleteUserPopUpComponent],
+    DeleteUserPopUpComponent,
+    ProductListOfUserComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

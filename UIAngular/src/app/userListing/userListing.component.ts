@@ -93,7 +93,7 @@ export class UserListingComponent implements AfterViewInit{
     });
   }
 
-  getAllProductsForTheUserId(element: any) {
+  onClickProductListOfUser(element: any) {
 
   }
 }

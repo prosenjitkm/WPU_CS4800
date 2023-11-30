@@ -1,57 +1,43 @@
-.example-section {
-    margin: 12px 0;
-}
-
-.example-margin {
-    margin: 0 12px;
-}
-
-ul {
-    list-style-type: none;
-    margin-top: 4px;
-}
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin: auto; /* Center form in card */
 }
 
-.example-full-width {
-    width: 100%;
-}
-section {
-    display: table;
-}
-
-.example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    min-width: 120px;
+.form-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 15px; /* Spacing between rows */
 }
 
-.example-button-row {
-    display: table-cell;
-    max-width: 600px;
+.form-field {
+  flex: 1; /* Flex-grow to fill available space */
+  margin: 5px; /* Spacing around fields */
 }
 
-.example-button-row .mat-mdc-button-base {
-    margin: 8px 8px 8px 0;
+/* Style adjustments for smaller screens */
+@media (max-width: 600px) {
+  .form-field {
+    width: 100%; /* Full width for small screens */
+  }
 }
 
-.example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 15px;
 }
 
-.example-button-container {
-    display: flex;
-    justify-content: center;
-    width: 120px;
-}
-
-.dialog-content {
-    max-height: 500px; /* Adjust as needed */
-    overflow-y: auto;  /* Enables vertical scrolling */
+.mat-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
