@@ -3,9 +3,9 @@
   <table mat-table [dataSource]="productDataSource" matSort class="mat-elevation-z8">
 
     <!-- Product ID Column -->
-    <ng-container matColumnDef="productId">
+    <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Product ID</th>
-      <td mat-cell *matCellDef="let product">{{product.productId}}</td>
+      <td mat-cell *matCellDef="let product">{{product.id}}</td>
     </ng-container>
 
     <!-- Product Name Column -->

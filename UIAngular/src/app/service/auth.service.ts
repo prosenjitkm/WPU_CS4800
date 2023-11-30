@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import {catchError, tap, throwError} from "rxjs";
+import {catchError, forkJoin, switchMap, tap, throwError} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,9 @@ export class AuthService {
 
   apiUrlUsers = 'http://localhost:3000/users';
   apiUrlUserCategory = 'http://localhost:3000/user_categories';
+  apiUrlProducts = 'http://localhost:3000/PRODUCTS';
 
-  getAllUsers() {
+    getAllUsers() {
     return this.http.get(this.apiUrlUsers);
   }
 
@@ -70,14 +71,23 @@ export class AuthService {
       );
   }
 
-  getProductsByUserId(userId: number) {
-    return this.http.get(`${this.apiUrlUsers}/${userId}/products`)
-      .pipe(
-        tap(response => console.log('Received products:', response)),
-        catchError(error => {
-          console.error('Error fetching products:', error);
-          return throwError(error);
-        })
-      );
-  }
+    getProductsByUserId(userId: number) {
+        return this.http.get<any>(`${this.apiUrlUsers}/${userId}`).pipe(
+            switchMap(user => {
+                if (!user.products || user.products.length === 0) {
+                    return throwError(() => new Error('No products found for user.'));
+                }
+
+                const productRequests = user.products.map((productId: number) => // Explicitly declare productId as number
+                    this.http.get(`${this.apiUrlProducts}/${productId}`) // Corrected URL for fetching products
+                );
+
+                return forkJoin(productRequests);
+            }),
+            catchError(error => {
+                console.error('Error fetching products:', error);
+                return throwError(() => new Error('Error fetching products.'));
+            })
+        );
+    }
 }

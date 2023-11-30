@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {AuthService} from "../service/auth.service";
-import {MatDialog} from "@angular/material/dialog";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -10,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ProductListOfUserComponent {
   productDataSource: any;
-  displayedColumns: string[] = ['productId', 'productName', 'productQuantity', 'productPrice', 'action'];
+  displayedColumns: string[] = ['id', 'productName', 'productQuantity', 'productPrice', 'action'];
 
   constructor(private route: ActivatedRoute, private authService: AuthService) {
     this.route.params.subscribe(params => {
@@ -20,11 +19,20 @@ export class ProductListOfUserComponent {
     });
   }
 
-  fetchProducts(userId: number) {
-    this.authService.getProductsByUserId(userId).subscribe(products => {
-      this.productDataSource = products;
-    });
-  }
+    ngOnInit() {
+        this.route.params.subscribe(params => {
+            const userId = +params['userId']; // Use '+' to convert string to number
+            this.fetchProducts(userId);
+        });
+    }
+
+    fetchProducts(userId: number) {
+        this.authService.getProductsByUserId(userId).subscribe(products => {
+            this.productDataSource = products;
+        }, error => {
+            console.error('Error fetching products:', error);
+        });
+    }
 
   onClickUpdateProduct(product: any) {
 
@@ -35,6 +43,6 @@ export class ProductListOfUserComponent {
   }
 
   onClickViewProductDetails(product: any) {
-    
+
   }
 }
