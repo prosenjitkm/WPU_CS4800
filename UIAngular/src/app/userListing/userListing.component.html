@@ -35,7 +35,9 @@
     <!-- User Category Column -->
     <ng-container matColumnDef="userCategory">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Role</th>
-      <td mat-cell *matCellDef="let element">{{element.userCategory}}</td>
+      <td mat-cell *matCellDef="let element">
+        {{  element.userCategory === 1 ? 'ADMIN' : element.userCategory === 2 ? 'BUYER' : element.userCategory === 3 ? 'SELLER' : 'Unknown' }}
+      <td>
     </ng-container>
 
     <!-- Active Status Column -->
