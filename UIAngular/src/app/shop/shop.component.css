@@ -1,0 +1,31 @@
+/* shop.component.css */
+
+.shop-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* 1 part side-nav, 3 parts product grid */
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust as per your design */
+    gap: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}

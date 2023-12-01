@@ -1,0 +1,16 @@
+/* side-nav.component.css */
+
+.side-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.side-nav li {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.side-nav li:hover {
+    background-color: #f0f0f0;
+}

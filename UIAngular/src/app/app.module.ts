@@ -24,6 +24,8 @@ import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import {ProductListOfUserComponent} from "./product-list-of-user/product-list-of-user.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
+import {ShopComponent} from "./shop/shop.component";
+import {SideNavComponent} from "./side-nav/side-nav.component";
 
 @NgModule({
   declarations:[
@@ -38,6 +40,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     UpdatePopUpComponent,
     DeleteUserPopUpComponent,
     ProductListOfUserComponent,
+    ShopComponent,
+    SideNavComponent,
   ],
   imports: [
     BrowserModule,

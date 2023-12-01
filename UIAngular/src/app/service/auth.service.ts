@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {catchError, forkJoin, switchMap, tap, throwError} from "rxjs";
+import {Product} from "../productModel";
+import {ProductCategory} from "../productCategoryModel";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +13,9 @@ export class AuthService {
   }
 
   apiUrlUsers = 'http://localhost:3000/users';
-  apiUrlUserCategory = 'http://localhost:3000/user_categories';
+  apiUrlUserCategorys = 'http://localhost:3000/user_categories';
   apiUrlProducts = 'http://localhost:3000/PRODUCTS';
+    apiUrlProductCategories = 'http://localhost:3000/PRODUCTS';
 
     getAllUsers() {
     return this.http.get(this.apiUrlUsers);
@@ -48,7 +51,7 @@ export class AuthService {
   }
 
   getAllUserCategory() {
-    return this.http.get(this.apiUrlUserCategory);
+    return this.http.get(this.apiUrlUserCategorys);
   }
 
   updateUser(id: any, inputdata: any) {
@@ -89,5 +92,13 @@ export class AuthService {
                 return throwError(() => new Error('Error fetching products.'));
             })
         );
+    }
+
+    getAllProducts() {
+        return this.http.get<Product[]>(this.apiUrlProducts);
+    }
+
+    getAllProductCategories() {
+        return this.http.get<ProductCategory[]>(this.apiUrlProductCategories);
     }
 }
