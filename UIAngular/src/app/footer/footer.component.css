@@ -1,9 +1,8 @@
 .footer {
   background-color: #f8f8f8;
   padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* Ensure that the footer doesn't have a margin that pushes it away from the bottom */
+  margin-top: auto;
 }
 
 .footer-content {

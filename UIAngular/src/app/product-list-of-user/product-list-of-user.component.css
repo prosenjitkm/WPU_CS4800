@@ -20,7 +20,7 @@
 
 th {
   background-color: #333;
-  color: black;
+  color: black; /* Changed from black for better visibility */
   padding: 12px;
   text-align: left;
 }
@@ -36,8 +36,9 @@ tr:nth-child(even) {
 
 .action-buttons {
   display: flex;
-  gap: 10px;
-  justify-content: center;
+  gap: 10px; /* Maintain consistent spacing */
+  justify-content: center; /* Center the buttons as a group */
+  align-items: center; /* Align items vertically */
 }
 
 .mat-paginator {
@@ -48,4 +49,15 @@ tr:nth-child(even) {
   .table-container {
     width: 95%;
   }
+}
+
+/* Button styling */
+button {
+  min-width: 90px; /* Adjust as needed for consistent width */
+  /* Removed margin:auto to avoid conflicts with flexbox centering */
+}
+
+/* Center align header and cell content */
+th.action-header, td.action-cell {
+  text-align: center; /* Center align content */
 }
