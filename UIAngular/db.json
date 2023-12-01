@@ -61,7 +61,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [1]
+      "products": [
+        1
+      ]
     },
     {
       "id": 3,
@@ -81,7 +83,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [2]
+      "products": [
+        2
+      ]
     },
     {
       "id": 4,
@@ -101,7 +105,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [3]
+      "products": [
+        3
+      ]
     },
     {
       "id": 5,
@@ -121,7 +127,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [4]
+      "products": [
+        4
+      ]
     },
     {
       "id": 6,
@@ -141,7 +149,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [5]
+      "products": [
+        5
+      ]
     },
     {
       "id": 7,
@@ -161,7 +171,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [6]
+      "products": [
+        6
+      ]
     },
     {
       "id": 8,
@@ -181,7 +193,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [7]
+      "products": [
+        7
+      ]
     },
     {
       "id": 9,
@@ -201,7 +215,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [8]
+      "products": [
+        8
+      ]
     },
     {
       "id": 10,
@@ -221,7 +237,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [9]
+      "products": [
+        9
+      ]
     },
     {
       "id": 11,
@@ -241,7 +259,9 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [10]
+      "products": [
+        10
+      ]
     },
     {
       "id": 12,
@@ -261,7 +281,29 @@
       "country": "USA",
       "userCategory": 3,
       "isActive": true,
-      "products": [11, 12]
+      "products": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": 13,
+      "userName": "prachi",
+      "password": "abc123",
+      "firstName": "Prachi",
+      "lastName": "Roy",
+      "dateOfBirth": "1995-01-01",
+      "gender": "female",
+      "email": "prachiroybindu@gmail.com",
+      "phone": "9298996880",
+      "houseNumber": "21",
+      "streetName": "Lenox Avenue",
+      "city": "Paterson",
+      "state": "NJ",
+      "zipCode": "07502",
+      "country": "USA",
+      "userCategory": 2,
+      "isActive": true
     }
   ],
   "PRODUCT_CATEGORIES": [

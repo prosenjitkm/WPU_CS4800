@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'UIAngular';
+  title = 'WPU Student Store';
 
   constructor(private router:Router) {
   }
