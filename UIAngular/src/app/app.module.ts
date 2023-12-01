@@ -23,6 +23,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import {ProductListOfUserComponent} from "./product-list-of-user/product-list-of-user.component";
+import {MatSidenavModule} from "@angular/material/sidenav";
 
 @NgModule({
   declarations:[
@@ -36,7 +37,8 @@ import {ProductListOfUserComponent} from "./product-list-of-user/product-list-of
     UserListingComponent,
     UpdatePopUpComponent,
     DeleteUserPopUpComponent,
-    ProductListOfUserComponent],
+    ProductListOfUserComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -50,7 +52,8 @@ import {ProductListOfUserComponent} from "./product-list-of-user/product-list-of
     MatDividerModule,
     MatSortModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]
