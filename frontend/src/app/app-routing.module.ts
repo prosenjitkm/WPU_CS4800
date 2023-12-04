@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { PageNotFoundComponent } from './pagenotfound/pagenotfound.component';
+import {NotificationsComponent} from "./components/notifications/notifications.component";
 
 
 
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'products/:id', component: ProductListComponent},
+  { path: 'alerts', component: NotificationsComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 

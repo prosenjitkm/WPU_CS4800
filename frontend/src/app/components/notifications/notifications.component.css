@@ -1,0 +1,43 @@
+.notifications-container {
+  width: 100%;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transition effects */
+}
+
+.notification-item:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+  cursor: pointer;
+}
+
+.notification-item:hover .notification-date {
+  font-weight: bold; /* Make date bold on hover */
+}
+
+.notification-details {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+.notification-title {
+  font-weight: bold;
+}
+
+.notification-description {
+  color: #666;
+}
+
+.notification-date {
+  font-size: 0.9em;
+  color: #888;
+}

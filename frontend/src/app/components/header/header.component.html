@@ -5,8 +5,8 @@
       <h1> ECOMMERCE </h1>
 
       <div class="search">
-      <form class="search-container">
-        <input type="text" id="search-bar" placeholder="What can I help you with today?">
+        <form class="search-container" (ngSubmit)="submitSearch()">
+          <input type="text" id="search-bar" placeholder="What can I help you with today?" [(ngModel)]="searchQuery">
         <a href="#"><img class="search-icon" alt="search"></a>
       </form>
       </div>

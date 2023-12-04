@@ -1,1 +1,8 @@
-<p>notifications works!</p>
+<div class="notifications-container">
+  <div *ngFor="let notification of notificationsArray" class="notification-item">
+    <p>Date: {{ notification.date | date }}</p>
+    <h3>{{ notification.title }}</h3>
+    <p>{{ notification.description }}</p>
+    <!-- You can display other details of the notification here -->
+  </div>
+</div>
