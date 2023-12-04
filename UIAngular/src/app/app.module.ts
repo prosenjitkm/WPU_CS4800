@@ -28,6 +28,7 @@ import {ProductListOfUserComponent} from "./product-list-of-user/product-list-of
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {ShopComponent} from "./shop/shop.component";
 import {SideNavComponent} from "./side-nav/side-nav.component";
+import {ProductDetailComponent} from "./product-detail/product-detail.component";
 
 @NgModule({
   declarations:[
@@ -44,6 +45,7 @@ import {SideNavComponent} from "./side-nav/side-nav.component";
     ProductListOfUserComponent,
     ShopComponent,
     SideNavComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

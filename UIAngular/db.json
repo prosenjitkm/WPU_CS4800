@@ -302,7 +302,7 @@
       "state": "NJ",
       "zipCode": "07502",
       "country": "USA",
-      "userCategory": 2,
+      "userCategory": 3,
       "isActive": true
     }
   ],
@@ -327,14 +327,12 @@
     {
       "productCategoryId": 2,
       "categoryName": "Mugs",
-      "products": [
-      ]
+      "products": []
     },
     {
       "productCategoryId": 3,
       "categoryName": "T-shirt",
-      "products": [
-      ]
+      "products": []
     }
   ],
   "PRODUCTS": [
@@ -517,6 +515,36 @@
       "lastModifiedDate": "2023-11-02T00:00:00Z",
       "user": 12,
       "productCategory": 1
+    },
+    {
+      "id": 13,
+      "productName": "T Shirt",
+      "productQuantity": 100,
+      "productPrice": 149.99,
+      "productDescription": "iPhone 5s with A7 chip and Touch ID",
+      "productImageUrl": "https://m.media-amazon.com/images/I/A13usaonutL._CLa%7C2140%2C2000%7C710r%2BYjSWzL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX679_.png",
+      "productSalePrice": 129.99,
+      "isOnSale": false,
+      "isAvailable": true,
+      "createdDate": "2023-11-01T00:00:00Z",
+      "lastModifiedDate": "2023-11-02T00:00:00Z",
+      "user": 12,
+      "productCategory": 3
+    },
+    {
+      "id": 14,
+      "productName": "Mugs",
+      "productQuantity": 100,
+      "productPrice": 149.99,
+      "productDescription": "iPhone 5s with A7 chip and Touch ID",
+      "productImageUrl": "https://m.media-amazon.com/images/I/81WME4-g0ZL.__AC_SY300_SX300_QL70_FMwebp_.jpg",
+      "productSalePrice": 129.99,
+      "isOnSale": false,
+      "isAvailable": true,
+      "createdDate": "2023-11-01T00:00:00Z",
+      "lastModifiedDate": "2023-11-02T00:00:00Z",
+      "user": 12,
+      "productCategory": 2
     }
   ]
 }

@@ -2,7 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import {catchError, forkJoin, switchMap, tap, throwError} from "rxjs";
+import {catchError, forkJoin, Observable, switchMap, tap, throwError} from "rxjs";
 import {Product} from "../models/productModel";
 import {ProductCategory} from "../models/productCategoryModel";
 
@@ -15,16 +15,12 @@ export class AuthService {
   }
 
   apiUrlUsers = 'http://localhost:3000/users';
-  apiUrlUserCategorys = 'http://localhost:3000/user_categories';
+  apiUrlUserCategories = 'http://localhost:3000/user_categories';
   apiUrlProducts = 'http://localhost:3000/products';
   apiUrlProductCategories = 'http://localhost:3000/product_categories';
 
     getAllUsers() {
     return this.http.get(this.apiUrlUsers);
-  }
-
-  getUserByUserId(id: any) {
-    return this.http.get(`${this.apiUrlUsers}?id=${id}`);
   }
 
   getUserByUserName(userName: string) {
@@ -53,7 +49,7 @@ export class AuthService {
   }
 
   getAllUserCategory() {
-    return this.http.get(this.apiUrlUserCategorys);
+    return this.http.get(this.apiUrlUserCategories);
   }
 
   updateUser(id: any, inputdata: any) {
@@ -107,4 +103,8 @@ export class AuthService {
   getProductsByCategory(categoryId: number) {
     return this.http.get<Product[]>(`${this.apiUrlProducts}?productCategory=${categoryId}`);
   }
+
+    getProductByProductId(productId: number): Observable<Product> {
+        return this.http.get<Product>(`${this.apiUrlProducts}/${productId}`);
+    }
 }

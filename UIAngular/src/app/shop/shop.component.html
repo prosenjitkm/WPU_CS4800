@@ -6,7 +6,7 @@
       <img [src]="product.productImageUrl" alt="Product Image">
       <h3>{{ product.productName }}</h3>
       <p>Price: {{ product.productPrice | currency }}</p>
-      <!-- Add more product details as needed -->
+      <button [routerLink]="['/product', product.id]">View Details</button>
     </div>
   </div>
 </div>
