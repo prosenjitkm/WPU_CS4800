@@ -327,12 +327,12 @@
     {
       "productCategoryId": 2,
       "categoryName": "Mugs",
-      "products": []
+      "products": [14]
     },
     {
       "productCategoryId": 3,
       "categoryName": "T-shirt",
-      "products": []
+      "products": [13]
     }
   ],
   "PRODUCTS": [
