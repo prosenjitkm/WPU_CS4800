@@ -1,8 +1,9 @@
-
-<mat-card>
+<div class="container">
+  <h2>WPU Store</h2>
+  <mat-card class="registration-card">
   <mat-card-header><h1>User Registration</h1></mat-card-header>
   <mat-card-content class="registration-content">
-    <form class="registration-form" [formGroup]="registrationForm" (ngSubmit)="submitRegistration()">
+    <form class="registration-form" [formGroup]="UserRequestDTO.registrationForm" (ngSubmit)="submitRegistration()">
 
       <div class="form-row">
         <mat-form-field class="form-field">
@@ -34,10 +35,10 @@
           <input type="date" matInput formControlName="dateOfBirth">
         </mat-form-field>
 
-        <div>
+        <div class="form-radio">
           <mat-radio-group formControlName="gender" aria-label="Gender">
-            <mat-radio-button value="male">Male</mat-radio-button>
-            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button class="male" value="male">Male</mat-radio-button>
+            <mat-radio-button class="female" value="female">Female</mat-radio-button>
           </mat-radio-group>
         </div>
       </div>
@@ -88,16 +89,12 @@
         </mat-form-field>
       </div>
 
-      <section>
-        <br>
         <div class="button-container">
-          <div class="button-container">
-            <button mat-raised-button color="primary">Submit</button>
-            <button routerLink="/login" mat-raised-button color="accent">Back</button>
-          </div>
+          <button mat-raised-button color="primary">Submit</button>
+          <button class="back" routerLink="/login" mat-raised-button >Back</button>
         </div>
-        <br>
-      </section>
+
     </form>
   </mat-card-content>
 </mat-card>
+</div>

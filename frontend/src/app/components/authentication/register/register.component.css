@@ -1,0 +1,92 @@
+/* Container and Card Styling */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #3e4d5d;
+}
+
+h2 {
+  margin: auto;
+  font-size: 3em;
+  font-weight: bold;
+  color: rgb(212, 212, 218);
+}
+h1{
+  margin: auto;
+  font-weight: bold;
+  color: rgb(212, 212, 218);
+}
+
+mat-card {
+  width: 70%;
+  max-width: 800px;
+  border-radius: 24px;
+  background-color: rgba(42, 50, 56, 0.75);
+  margin: 0 0 30px 0;
+
+}
+
+h1 {
+  font-family: "system-ui";
+  font-size: 24px;
+  font-weight: bolder;
+  color: rgb(178, 180, 189);
+  margin: auto;
+}
+
+.mat-card.registration-card .registration-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Rest of your existing CSS for form fields, buttons, etc. remains unchanged */
+.mat-form-field {
+  width: 100%;
+}
+
+.form-field{
+  width: 44%;
+  border-radius: 20px;
+  border: none;
+  background-color: rgba(29, 45, 61, 0.5);
+  margin: 2% 0 0 3.5%; /* Center horizontally */
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.form-row .mat-form-field {
+  flex: 1;
+}
+/* Unique colors for each radio button */
+.mat-radio-button label {
+  color: blue; /* Change the label color */
+}
+
+.form-radio {
+  margin: auto;
+}
+
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container button {
+  width: 70%;
+  height: 50px;
+  background-color: rgba(29, 45, 61, 0.5);
+  font-size: 16px;
+  margin: 2% 0 0 0;
+}
+

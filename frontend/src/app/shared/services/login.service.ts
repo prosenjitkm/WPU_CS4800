@@ -27,6 +27,6 @@ export class LoginService {
     }
 }
   isLoggedIn(){
-    return sessionStorage.getItem.('username') != null;
+    return sessionStorage.getItem('username') != null;
   }
 }
