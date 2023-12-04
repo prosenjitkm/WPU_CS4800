@@ -1,3 +1,5 @@
+/*userListing.component.ts*/
+
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { AuthService } from "../service/auth.service";
 import { MatTableDataSource } from "@angular/material/table";

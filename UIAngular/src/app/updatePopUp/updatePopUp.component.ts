@@ -1,4 +1,6 @@
-import {Component, OnInit, Inject} from '@angular/core';
+/*updatePopUp.component.ts*/
+
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { AuthService } from "../service/auth.service";

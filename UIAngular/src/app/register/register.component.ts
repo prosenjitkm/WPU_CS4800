@@ -1,8 +1,10 @@
+/*register.component.ts*/
+
 import { Component } from '@angular/core';
-import {FormBuilder, Validators} from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import {AuthService} from "../service/auth.service";
-import {Router} from "@angular/router";
+import { AuthService } from "../service/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',

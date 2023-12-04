@@ -1,3 +1,5 @@
+/*userCategoryModel.ts*/
+
 import {User} from "./userModel";
 
 export interface UserCategory {

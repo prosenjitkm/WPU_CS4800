@@ -1,3 +1,5 @@
+/*navigation-bar.component.ts*/
+
 import {Component, DoCheck} from '@angular/core';
 import {Router} from "@angular/router";
 

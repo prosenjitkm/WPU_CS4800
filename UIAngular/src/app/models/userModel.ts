@@ -1,3 +1,5 @@
+/*userModel.ts*/
+
 import {UserCategory} from "./userCategoryModel";
 import {Product} from "./productModel";
 

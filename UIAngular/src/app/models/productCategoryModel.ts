@@ -1,3 +1,5 @@
+/*productCategoryModel.ts*/
+
 import {Product} from "./productModel";
 
 export interface ProductCategory {

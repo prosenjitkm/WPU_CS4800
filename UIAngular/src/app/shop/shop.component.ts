@@ -1,3 +1,5 @@
+/*shop.component.ts*/
+
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../service/auth.service";
 import { Product } from "../models/productModel";

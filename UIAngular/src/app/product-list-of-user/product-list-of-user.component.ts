@@ -1,3 +1,5 @@
+/*product-list-of-user.component.ts*/
+
 import { Component } from '@angular/core';
 import {AuthService} from "../service/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
