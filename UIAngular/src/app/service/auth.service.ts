@@ -16,8 +16,8 @@ export class AuthService {
 
   apiUrlUsers = 'http://localhost:3000/users';
   apiUrlUserCategorys = 'http://localhost:3000/user_categories';
-  apiUrlProducts = 'http://localhost:3000/PRODUCTS';
-    apiUrlProductCategories = 'http://localhost:3000/PRODUCTS';
+  apiUrlProducts = 'http://localhost:3000/products';
+  apiUrlProductCategories = 'http://localhost:3000/product_categories';
 
     getAllUsers() {
     return this.http.get(this.apiUrlUsers);
@@ -96,11 +96,15 @@ export class AuthService {
         );
     }
 
-    getAllProducts() {
-        return this.http.get<Product[]>(this.apiUrlProducts);
-    }
+  getAllProducts() {
+    return this.http.get<Product[]>(this.apiUrlProducts);
+  }
 
-    getAllProductCategories() {
-        return this.http.get<ProductCategory[]>(this.apiUrlProductCategories);
-    }
+  getAllProductCategories() {
+    return this.http.get<ProductCategory[]>(this.apiUrlProductCategories);
+  }
+
+  getProductsByCategory(categoryId: number) {
+    return this.http.get<Product[]>(`${this.apiUrlProducts}?productCategory=${categoryId}`);
+  }
 }

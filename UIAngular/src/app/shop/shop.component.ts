@@ -1,9 +1,8 @@
 /*shop.component.ts*/
-
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../service/auth.service";
-import { Product } from "../models/productModel";
-import { ProductCategory } from "../models/productCategoryModel";
+import {Product} from "../models/productModel";
+import {ProductCategory} from "../models/productCategoryModel";
 
 @Component({
   selector: 'app-shop',
@@ -22,24 +21,27 @@ export class ShopComponent implements OnInit {
   }
 
   loadProducts() {
+    // Replace with your actual data fetching logic
     this.authService.getAllProducts().subscribe((data: Product[]) => {
       this.products = data;
     });
   }
 
   loadCategories() {
+    // Replace with your actual data fetching logic
     this.authService.getAllProductCategories().subscribe((data: ProductCategory[]) => {
       this.categories = data;
     });
   }
 
   onCategorySelected(categoryId: number) {
-    // Implement filtering logic here
+    // Add your category filtering logic here
     if (categoryId === 0) {
       this.loadProducts();
     } else {
-      this.authService.getAllProducts().subscribe((data: Product[]) => {
-        this.products = data.filter(product => product.productCategory.productCategoryId === categoryId);
+      // Replace with your actual data fetching logic
+      this.authService.getProductsByCategory(categoryId).subscribe((data: Product[]) => {
+        this.products = data;
       });
     }
   }

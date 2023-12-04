@@ -1,9 +1,10 @@
 <!-- side-nav.component.html -->
 <div class="side-nav">
-    <ul>
-        <li (click)="selectCategory(0)">All Products</li>
-        <li *ngFor="let category of categories" (click)="selectCategory(category.productCategoryId)">
-            {{ category.categoryName }}
-        </li>
-    </ul>
+  <ul>
+    <li (click)="selectCategory(0)">All Products</li>
+    <li *ngFor="let category of categories" (click)="selectCategory(category.productCategoryId)">
+      {{ category.categoryName }}
+    </li>
+  </ul>
 </div>
+
