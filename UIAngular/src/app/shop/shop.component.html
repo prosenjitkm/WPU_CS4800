@@ -1,6 +1,6 @@
 <!-- shop.component.html -->
 <div class="shop-container">
-  <app-side-nav [categories]="categories" (categorySelected)="onCategorySelected($event)"></app-side-nav>
+  <app-side-nav [categories]="productCategories" (categorySelected)="onCategorySelected($event)"></app-side-nav>
   <div class="product-grid">
     <div class="product-card" *ngFor="let product of products">
       <img [src]="product.productImageUrl" alt="Product Image">

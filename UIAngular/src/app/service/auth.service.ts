@@ -100,11 +100,11 @@ export class AuthService {
     return this.http.get<ProductCategory[]>(this.apiUrlProductCategories);
   }
 
-  getProductsByCategory(categoryId: number) {
+  getProductsByProductCategory(categoryId: number) {
     return this.http.get<Product[]>(`${this.apiUrlProducts}?productCategory=${categoryId}`);
   }
 
-    getProductByProductId(productId: number): Observable<Product> {
-        return this.http.get<Product>(`${this.apiUrlProducts}/${productId}`);
+    getProductByProductId(id: number): Observable<Product> {
+        return this.http.get<Product>(`${this.apiUrlProducts}/${id}`);
     }
 }
