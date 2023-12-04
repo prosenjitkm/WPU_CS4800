@@ -1,5 +1,5 @@
 export class User {
-  id: number;
+  id: number = 0;
   userId: number = 0;  // Default value, but do reconsider the redundancy with 'id'
   userName: string = '';
   password: string = '';  // Ideally, password should never be sent to frontend. This is just for completeness.

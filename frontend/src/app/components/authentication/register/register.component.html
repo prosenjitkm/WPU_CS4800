@@ -1,1 +1,103 @@
-<p>register works!</p>
+
+<mat-card>
+  <mat-card-header><h1>User Registration</h1></mat-card-header>
+  <mat-card-content class="registration-content">
+    <form class="registration-form" [formGroup]="registrationForm" (ngSubmit)="submitRegistration()">
+
+      <div class="form-row">
+        <mat-form-field class="form-field">
+          <mat-label>User Name</mat-label>
+          <input type="text" matInput formControlName="userName">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field class="form-field">
+          <mat-label>First Name</mat-label>
+          <input type="text" matInput formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>Last Name</mat-label>
+          <input type="text" matInput formControlName="lastName">
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field class="form-field">
+          <mat-label>DOB</mat-label>
+          <input type="date" matInput formControlName="dateOfBirth">
+        </mat-form-field>
+
+        <div>
+          <mat-radio-group formControlName="gender" aria-label="Gender">
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field class="form-field">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>Phone</mat-label>
+          <input type="tel" matInput formControlName="phone">
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field class="form-field">
+          <mat-label>House Number</mat-label>
+          <input type="text" matInput formControlName="houseNumber">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>Street Name</mat-label>
+          <input type="text" matInput formControlName="streetName">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>City</mat-label>
+          <input type="text" matInput formControlName="city">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>State</mat-label>
+          <input type="text" matInput formControlName="state">
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field class="form-field">
+          <mat-label>Zip Code</mat-label>
+          <input type="text" matInput formControlName="zipCode">
+        </mat-form-field>
+
+        <mat-form-field class="form-field">
+          <mat-label>Country</mat-label>
+          <input type="text" matInput formControlName="country">
+        </mat-form-field>
+      </div>
+
+      <section>
+        <br>
+        <div class="button-container">
+          <div class="button-container">
+            <button mat-raised-button color="primary">Submit</button>
+            <button routerLink="/login" mat-raised-button color="accent">Back</button>
+          </div>
+        </div>
+        <br>
+      </section>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -24,37 +24,39 @@ export class LoginComponent implements OnInit{
 ngOnInit() {
 }
 
-  userdata:any;
 
-  proceedLogin() : boolean {
-    let LoggedIn: boolean = false;
+
+  proceedLogin() {
+
     if (this.LoginRequestDTO.loginForm.valid) {
-      this.service.login(this.LoginRequestDTO.loginForm.value.username).subscribe(async response => {
-
-        if (Array.isArray(response) && response.length) {
-          this.userdata = response[0]; // Get the first user from the array response
-        } else {
-          this.toastr.error('Invalid username');
-          return;
-        }
-
-        if (this.userdata.password === this.LoginRequestDTO.loginForm.value.password) {
-
-          if (this.userdata.isActive === true) {
-            sessionStorage.setItem('userName', this.userdata.userName);
-            sessionStorage.setItem('role', this.userdata.role);
-            LoggedIn = await this.router.navigate(['']);
-
+      this.service.login(this.LoginRequestDTO.loginForm.value.username)
+        .subscribe(response => {
+          const user = Array.isArray(response) && response.length > 0 ? response[0] : null;
+            if (user) {
+          if (user.password === this.LoginRequestDTO.loginForm.value.password) {
+            if (user.isActive == true) {
+              sessionStorage.setItem('username', user.username);
+              sessionStorage.setItem('userid', user.id);
+              this.router.navigate(['']);
+            } else {
+              this.toastr.error('Inactive User. Please contact admin');
+            }
           } else {
-            this.toastr.error('Please contact admin', 'InActive User')
+            this.toastr.error('Invalid password');
           }
-
         } else {
-          this.toastr.error('Invalid credentials');
-        }
-      })
-
+        this.toastr.error('User not found');
+      }
+    },
+    error => {
+      // Handle error scenario
+      this.toastr.error('Error occurred during login');
     }
-    return(LoggedIn);
-  }
+  );
+  } else {
+     this.toastr.error('Form is not valid');
+    }
+}
+
+
 }

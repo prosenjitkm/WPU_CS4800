@@ -13,6 +13,20 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(loginRequest: LoginRequestDTO): Observable<LoginRequestDTO> {
-    return this.http.post<LoginRequestDTO>(`${this.apiUrl}/login`, loginRequest);
+    return this.http.get<LoginRequestDTO>(`${this.apiUrl}?userName=${loginRequest.loginForm.value.username}`);
+  }
+  getUsersId(): number{
+    const userid = sessionStorage.getItem('userid');
+    if(userid)
+    {
+      return parseInt(userid);
+    }
+    else
+    {
+      return 0;
+    }
+}
+  isLoggedIn(){
+    return sessionStorage.getItem.('username') != null;
   }
 }
