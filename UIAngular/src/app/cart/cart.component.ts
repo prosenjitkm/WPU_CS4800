@@ -1,6 +1,6 @@
 /*cart.component.ts*/
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/productModel';
+import { Product } from '../core/models/productModel';
 import { CartService } from "../service/cart/cart.service"; // Adjust the path as per your project structure
 
 @Component({
@@ -29,4 +29,7 @@ export class CartComponent implements OnInit {
     this.total = this.cartItems.reduce((acc, item) => acc + item.productPrice, 0);
   }
 
+  onAddToCart(product: any) {
+    
+  }
 }

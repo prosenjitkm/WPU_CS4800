@@ -1,8 +1,8 @@
 /*shop.component.ts*/
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../service/auth/auth.service";
-import { Product } from "../models/productModel";
-import { ProductCategory } from "../models/productCategoryModel";
+import { Product } from "../core/models/productModel";
+import { ProductCategory } from "../core/models/productCategoryModel";
 import { CartService } from "../service/cart/cart.service";
 
 @Component({

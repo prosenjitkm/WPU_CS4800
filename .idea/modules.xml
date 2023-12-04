@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UIAngular.iml" filepath="$PROJECT_DIR$/UIAngular.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/WPU_CS4800.iml" filepath="$PROJECT_DIR$/.idea/WPU_CS4800.iml" />
-      <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
-      <module fileurl="file://$PROJECT_DIR$/frontend.iml" filepath="$PROJECT_DIR$/frontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/frontendAngular.iml" filepath="$PROJECT_DIR$/frontendAngular.iml" />
     </modules>
   </component>

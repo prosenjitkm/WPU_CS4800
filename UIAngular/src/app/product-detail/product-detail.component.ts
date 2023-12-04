@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from "../service/auth/auth.service";
-import { Product } from "../models/productModel";
+import { Product } from "../core/models/productModel";
 
 @Component({
     selector: 'app-product-detail',

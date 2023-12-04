@@ -3,8 +3,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import {catchError, forkJoin, Observable, switchMap, tap, throwError} from "rxjs";
-import {Product} from "../../models/productModel";
-import {ProductCategory} from "../../models/productCategoryModel";
+import {Product} from "../../core/models/productModel";
+import {ProductCategory} from "../../core/models/productCategoryModel";
 
 @Injectable({
   providedIn: 'root'

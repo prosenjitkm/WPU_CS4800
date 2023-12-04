@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserListingComponent } from "./userListing/userListing.component";
-import { AuthGuard } from "./guard/auth.guard";
+import { AuthGuard } from "./core/guard/auth.guard";
 import {ProductListOfUserComponent} from "./product-list-of-user/product-list-of-user.component";
 import {ShopComponent} from "./shop/shop.component";
 import {ProductDetailComponent} from "./product-detail/product-detail.component";
