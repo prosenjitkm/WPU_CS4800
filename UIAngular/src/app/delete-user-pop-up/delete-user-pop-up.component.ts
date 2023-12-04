@@ -1,7 +1,7 @@
 // delete-user-pop-up.component.ts
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { AuthService } from "../service/auth.service";
+import { AuthService } from "../service/auth/auth.service";
 
 @Component({
   selector: 'app-delete-user-pop-up',

@@ -3,7 +3,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { AuthService } from "../service/auth.service";
+import { AuthService } from "../service/auth/auth.service";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 
 @Component({

@@ -1,0 +1,19 @@
+<!--cart.component.html-->
+
+<div *ngFor="let item of cartItems">
+
+    <div *ngIf="cartItems.length === 0">Your cart is empty.</div>
+
+    <h3>{{ item.productName }}</h3>
+    <p>Price: {{ item.productPrice | currency }}</p>
+
+    <div>Total: {{ total | currency }}</div>
+
+
+    <div *ngFor="let product of products">
+        <!-- ... Product details ... -->
+        <button (click)="onAddToCart(product)">Add to Cart</button>
+    </div>
+
+    <button (click)="onRemoveItem(item.id)">Remove from Cart</button>
+</div>

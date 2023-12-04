@@ -3,7 +3,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { AuthService } from "../service/auth.service";
+import { AuthService } from "../service/auth/auth.service";
 import { Router } from "@angular/router";
 
 @Component({

@@ -1,8 +1,9 @@
 /*shop.component.ts*/
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../service/auth.service";
+import { AuthService } from "../service/auth/auth.service";
 import { Product } from "../models/productModel";
 import { ProductCategory } from "../models/productCategoryModel";
+import { CartService } from "../service/cart/cart.service";
 
 @Component({
   selector: 'app-shop',
@@ -13,7 +14,8 @@ export class ShopComponent implements OnInit {
   products: Product[] = [];
   productCategories: ProductCategory[] = [];
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+              private cartService: CartService) {}
 
   ngOnInit() {
     this.loadProducts();
@@ -32,6 +34,11 @@ export class ShopComponent implements OnInit {
     this.authService.getAllProductCategories().subscribe((data: ProductCategory[]) => {
       this.productCategories = data;
     });
+  }
+
+  addToCart(product: Product) {
+    this.cartService.addToCart(product);
+    // Optionally show a message to the user
   }
 
   onCategorySelected(productCategoryId: number) {

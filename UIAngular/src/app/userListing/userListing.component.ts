@@ -1,7 +1,7 @@
 /*userListing.component.ts*/
 
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { AuthService } from "../service/auth.service";
+import { AuthService } from "../service/auth/auth.service";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
