@@ -4,7 +4,7 @@ import {User} from "./userModel";
 import {ProductCategory} from "./productCategoryModel";
 
 export interface Product {
-    productId: number;
+    id: number;
     productName: string;
     productQuantity: number;
     productPrice: number;

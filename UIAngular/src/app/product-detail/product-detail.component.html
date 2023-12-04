@@ -1,0 +1,20 @@
+<!--product-detail.component.html-->
+
+<div *ngIf="product" class="product-details">
+  <h2>{{ product.productName }}</h2>
+  <img [src]="product.productImageUrl" alt="Product Image" class="product-image">
+
+  <div class="product-info">
+    <p><strong>Price:</strong> {{ product.productPrice | currency }}</p>
+    <p><strong>Sale Price:</strong> {{ product.productSalePrice | currency }}</p>
+    <p><strong>Description:</strong> {{ product.productDescription }}</p>
+    <p><strong>Quantity Available:</strong> {{ product.productQuantity }}</p>
+    <p><strong>Available:</strong> {{ product.isAvailable ? 'Yes' : 'No' }}</p>
+    <p><strong>On Sale:</strong> {{ product.isOnSale ? 'Yes' : 'No' }}</p>
+    <p><strong>Creation Date:</strong> {{ product.createdDate | date }}</p>
+    <p><strong>Last Modified Date:</strong> {{ product.lastModifiedDate | date }}</p>
+    <!-- You can add more details as needed -->
+  </div>
+
+  <button (click)="goBack()">Back to Shop</button>
+</div>
