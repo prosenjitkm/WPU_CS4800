@@ -46,7 +46,7 @@ export class ShopComponent implements OnInit {
     });
   }
 
-  addToCart(product: Product) {
+  /*addToCart(product: Product) {
     const userId = this.authService.getCurrentUserId();
     if (userId) {
       this.cartService.addProductToCart(userId, product.id, 1).subscribe(() => {
@@ -58,7 +58,7 @@ export class ShopComponent implements OnInit {
     } else {
       this.toastr.error('User not identified');
     }
-  }
+  }*/
 
   onCategorySelected(productCategoryId: number) {
     if (productCategoryId === 0) {

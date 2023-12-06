@@ -21,7 +21,7 @@ export class ProductListForShopComponent implements OnInit {
     // Get your products here
   }
 
-  onAddToCart(product: Product) {
+/*  onAddToCart(product: Product) {
     const userId = this.authService.getCurrentUserId();
     if (userId) {
       this.cartService.addProductToCart(userId, product.id, 1).subscribe(() => {
@@ -33,5 +33,5 @@ export class ProductListForShopComponent implements OnInit {
     } else {
       this.toastr.error('User not identified');
     }
-  }
+  }*/
 }

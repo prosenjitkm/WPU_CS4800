@@ -7,7 +7,7 @@
       <h3>{{ product.productName }}</h3>
       <p>Price: {{ product.productPrice | currency }}</p>
       <button [routerLink]="['/product', product.id]">View Details</button>
-      <button (click)="addToCart(product)">Add to Cart</button>
+      <button>Add to Cart</button>
     </div>
   </div>
 </div>
