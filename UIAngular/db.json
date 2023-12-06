@@ -385,6 +385,9 @@
     {
       "id": "ORD002",
       "userId": 2,
+      "orderedDate": "2023-11-01T00:00:00Z",
+      "deliveredDate": "2023-11-01T00:00:00Z",
+      "total": 100,
       "orderedItems": [
         {
           "productId": 1,
@@ -399,6 +402,9 @@
     {
       "id": "ORD002",
       "userId": 2,
+      "orderedDate": "2023-11-01T00:00:00Z",
+      "deliveredDate": "2023-11-01T00:00:00Z",
+      "total": 100,
       "orderedItems": [
         {
           "productId": 1,

@@ -35,6 +35,7 @@ import {ProductListOfCurrentUserComponent} from "./components/product-list-of-cu
 import {
   ProductListOfCurrentUserDeleteAProductComponent
 } from "./components/product-list-of-current-user-delete-a-product/product-list-of-current-user-delete-a-product.component";
+import {OrdersComponent} from "./components/orders/orders.component";
 
 @NgModule({
   declarations:[
@@ -55,7 +56,8 @@ import {
     CartComponent,
     ProductListForShopComponent,
     ProductListOfCurrentUserComponent,
-    ProductListOfCurrentUserDeleteAProductComponent
+    ProductListOfCurrentUserDeleteAProductComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

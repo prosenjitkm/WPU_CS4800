@@ -18,10 +18,12 @@ import {SellerGuard} from "./guards/seller.guard";
 import {
   ProductListOfCurrentUserDeleteAProductComponent
 } from "./components/product-list-of-current-user-delete-a-product/product-list-of-current-user-delete-a-product.component";
+import {OrdersComponent} from "./components/orders/orders.component";
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { component: HomeComponent, path: 'home'},
   { component: RegisterComponent, path: 'register'},
   { component: LoginComponent, path: 'login' },
   { component: UserListOfAllUsersComponent, path: 'user', canActivate:[AdminGuard]},
@@ -32,7 +34,7 @@ const routes: Routes = [
   { component: ProductListOfCurrentUserDeleteAProductComponent, path: 'update-product/:id', canActivate: [SellerGuard]},
   { component: CartComponent, path: 'cart', canActivate: [BuyerGuard]},
   { component: ShopComponent, path: 'shop', canActivate: [BuyerGuard]},
-  { component: HomeComponent, path: 'home'},
+  { component: OrdersComponent, path: 'orders', canActivate: [BuyerGuard]},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

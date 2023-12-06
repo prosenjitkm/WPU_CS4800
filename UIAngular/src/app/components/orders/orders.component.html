@@ -1,0 +1,33 @@
+<!-- orders.component.html -->
+<table>
+    <thead>
+    <tr>
+        <th>Order ID</th>
+        <th>Ordered Date</th>
+        <th>Delivered Date</th>
+        <th>Product Names</th>
+        <th>Product Quantity</th>
+        <th>Total Cost</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.orderedDate | date }}</td>
+        <td>{{ order.deliveredDate | date }}</td>
+        <td>
+            <!-- Display product names -->
+            <div *ngFor="let item of order.orderedItems">
+                {{ productDetailsMap.get(item.productId)?.productName }}
+            </div>
+        </td>
+        <td>
+            <!-- Display product names -->
+            <div *ngFor="let item of order.orderedItems">
+                (Quantity: {{ item.quantity }})
+            </div>
+        </td>
+        <td>{{ order.total | currency }}</td>
+    </tr>
+    </tbody>
+</table>

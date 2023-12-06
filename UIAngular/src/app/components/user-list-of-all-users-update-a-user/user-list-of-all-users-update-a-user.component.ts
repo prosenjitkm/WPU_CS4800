@@ -6,98 +6,112 @@ import { UserService } from "../../service/user/user.service";
 import { UserCategory } from '../../models/userCategoryModel';
 import { ActivatedRoute, Router } from "@angular/router";
 
+interface FormFields {
+    [key: string]: any[]; // Specify a more accurate type instead of any[] if possible
+}
+
 @Component({
-  selector: 'app-user-update',
-  templateUrl: './user-list-of-all-users-update-a-user.component.html',
-  styleUrls: ['./user-list-of-all-users-update-a-user.component.css']
+    selector: 'app-user-update',
+    templateUrl: './user-list-of-all-users-update-a-user.component.html',
+    styleUrls: ['./user-list-of-all-users-update-a-user.component.css']
 })
 export class UserListOfAllUsersUpdateAUserComponent implements OnInit {
-  userCategoryList: UserCategory[] = [];
-  updateForm: FormGroup;
-  userId!: number;
+    userCategoryList: UserCategory[] = [];
+    updateForm: FormGroup;
+    userId!: number;
 
-  constructor(private formBuilder: FormBuilder,
-              private toastr: ToastrService,
-              private userService: UserService,
-              private route: ActivatedRoute,
-              private router: Router) {
-    this.updateForm = this.createFormGroup();
-  }
+    private formFields: FormFields = {
+        id: [''],
+        userName: ['', Validators.required],
+        password: [''],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        dateOfBirth: [''],
+        gender: ['Male'],
+        email: ['', [Validators.required, Validators.email]],
+        phone: [''],
+        houseNumber: [''],
+        streetName: [''],
+        city: [''],
+        state: [''],
+        zipCode: [''],
+        country: [''],
+        userCategory: [''],
+        isActive: [''],
+        cart: [''],
+        userImageUrl: [''],
+        orders: [''],
+    };
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.userId = +params.get('id')!;
-      if (this.userId) {
-        this.loadUserData(this.userId);
-        this.loadAllUserCategories();
-      } else {
-        this.toastr.error('Invalid user ID');
-        this.router.navigate(['/user']);
-      }
-    });
-  }
+    constructor(private formBuilder: FormBuilder,
+                private toastr: ToastrService,
+                private userService: UserService,
+                private route: ActivatedRoute,
+                private router: Router) {
+        this.updateForm = this.createFormGroup();
+    }
 
+    ngOnInit(): void {
+        this.route.paramMap.subscribe(params => {
+            this.userId = +params.get('id')!;
+            if (this.userId) {
+                this.loadUserData(this.userId);
+                this.loadAllUserCategories();
+            } else {
+                this.toastr.error('Invalid user ID');
+                this.router.navigate(['/user']);
+            }
+        });
+    }
 
-  private createFormGroup(): FormGroup {
-    return this.formBuilder.group({
-      id: [''],
-      userName: ['', Validators.required],
-      password: [''],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      dateOfBirth: [''],
-      gender: ['Male'],
-      email: ['', [Validators.required, Validators.email]],
-      phone: [''],
-      houseNumber: [''],
-      streetName: [''],
-      city: [''],
-      state: [''],
-      zipCode: [''],
-      country: [''],
-      userCategory: [''],
-      isActive: [false],
-      cart: [''],
-      userImageUrl: [''],
-      orders: [''],
-    });
-  }
-
-  private loadUserData(userId: number): void {
-    this.userService.getUserByUserId(userId).subscribe(
-        response => {
-          console.log('User data loaded:', response); // Debugging line
-
-          this.updateForm.setValue({
-            id: response.id,
-            userName: response.userName,
-            password: response.password,
-            firstName: response.firstName,
-            lastName: response.lastName,
-            dateOfBirth: response.dateOfBirth,
-            gender: response.gender,
-            email: response.email,
-            phone: response.phone,
-            houseNumber: response.houseNumber,
-            streetName: response.streetName,
-            city: response.city,
-            state: response.state,
-            zipCode: response.zipCode,
-            country: response.country,
-            userCategory: response.userCategory.id,
-            isActive: response.isActive,
-            cart: response.cart,
-            userImageUrl: response.userImageUrl,
-            orders: response.orders,
-          });
-        },
-        error => {
-          console.error('Error loading user data:', error);
-          this.toastr.error('Error loading user data');
+    private createFormGroup(): FormGroup {
+        let group: {[key: string]: any} = {};
+        for (const key in this.formFields) {
+            if (this.formFields.hasOwnProperty(key)) {
+                // Assuming each field is either a FormControl or an array with the first element being the initial value and the second being the validators
+                const control = this.formFields[key] instanceof Array
+                    ? this.formBuilder.control(this.formFields[key][0], this.formFields[key][1])
+                    : this.formBuilder.control(this.formFields[key]);
+                group[key] = control;
+            }
         }
-    );
-  }
+        return this.formBuilder.group(group);
+    }
 
+    private loadUserData(userId: number): void {
+        this.userService.getUserByUserId(userId).subscribe(
+            response => {
+                console.log('User data loaded:', response);
+                // Here you set the form values based on the response
+                this.updateForm.setValue({
+                    id: response.id,
+                    userName: response.userName,
+                    password: response.password, // Consider security implications here
+                    firstName: response.firstName,
+                    lastName: response.lastName,
+                    dateOfBirth: response.dateOfBirth,
+                    gender: response.gender,
+                    email: response.email,
+                    phone: response.phone,
+                    houseNumber: response.houseNumber,
+                    streetName: response.streetName,
+                    city: response.city,
+                    state: response.state,
+                    zipCode: response.zipCode,
+                    country: response.country,
+                    userCategory: response.userCategory ? response.userCategory.id : '',
+                    isActive: response.isActive,
+                    cart: response.cart,
+                    userImageUrl: response.userImageUrl,
+                    orders: response.orders,
+                });
+            },
+            error => {
+                console.error('Error loading user data:', error);
+                this.toastr.error('Error loading user data');
+            }
+        );
+    }
   private loadAllUserCategories(): void {
     this.userService.getAllUserCategories().subscribe(
         response => {
