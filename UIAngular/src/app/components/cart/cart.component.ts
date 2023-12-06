@@ -13,8 +13,9 @@ import { ProductService } from "../../service/product/product.service";
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit{
-  cart!: Cart;
+export class CartComponent {
+/*export class CartComponent implements OnInit{*/
+  /*cart!: Cart;
   total = 0;
   products: Product[] = [];
 
@@ -82,5 +83,5 @@ export class CartComponent implements OnInit{
       const product = this.getProductById(item.productId);
       return total + (product.productPrice * item.quantity);
     }, 0);
-  }
+  }*/
 }

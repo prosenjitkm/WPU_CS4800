@@ -15,6 +15,7 @@ import {Product} from "../../models/productModel";
 export class OrdersComponent implements OnInit {
   orders: Order[] = [];
   productDetailsMap = new Map<number, Product>(); // Map to store product details
+  displayedColumns: string[] = ['id', 'orderedDate', 'deliveredDate', 'productNames', 'quantity', 'total'];
 
   constructor(private orderService: OrderService,
               private authService: AuthorizationService,

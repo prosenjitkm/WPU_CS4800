@@ -1,33 +1,52 @@
 <!-- orders.component.html -->
-<table>
-    <thead>
-    <tr>
-        <th>Order ID</th>
-        <th>Ordered Date</th>
-        <th>Delivered Date</th>
-        <th>Product Names</th>
-        <th>Product Quantity</th>
-        <th>Total Cost</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let order of orders">
-        <td>{{ order.id }}</td>
-        <td>{{ order.orderedDate | date }}</td>
-        <td>{{ order.deliveredDate | date }}</td>
-        <td>
-            <!-- Display product names -->
-            <div *ngFor="let item of order.orderedItems">
-                {{ productDetailsMap.get(item.productId)?.productName }}
-            </div>
-        </td>
-        <td>
-            <!-- Display product names -->
-            <div *ngFor="let item of order.orderedItems">
-                (Quantity: {{ item.quantity }})
-            </div>
-        </td>
-        <td>{{ order.total | currency }}</td>
-    </tr>
-    </tbody>
-</table>
+<div class="table-container">
+    <h2 class="table-heading">Orders Listing</h2>
+    <table mat-table [dataSource]="orders" class="mat-elevation-z8">
+
+        <!-- Order ID Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Order ID</th>
+            <td mat-cell *matCellDef="let order">{{order.id}}</td>
+        </ng-container>
+
+        <!-- Ordered Date Column -->
+        <ng-container matColumnDef="orderedDate">
+            <th mat-header-cell *matHeaderCellDef>Ordered Date</th>
+            <td mat-cell *matCellDef="let order">{{order.orderedDate | date}}</td>
+        </ng-container>
+
+        <!-- Delivered Date Column -->
+        <ng-container matColumnDef="deliveredDate">
+            <th mat-header-cell *matHeaderCellDef>Delivered Date</th>
+            <td mat-cell *matCellDef="let order">{{order.deliveredDate | date}}</td>
+        </ng-container>
+
+        <!-- Product Names Column -->
+        <ng-container matColumnDef="productNames">
+            <th mat-header-cell *matHeaderCellDef>Product Names</th>
+            <td mat-cell *matCellDef="let order">
+                <div *ngFor="let item of order.orderedItems">
+                    {{ productDetailsMap.get(item.productId)?.productName }}
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Product Quantity Column -->
+        <ng-container matColumnDef="productQuantity">
+            <th mat-header-cell *matHeaderCellDef>Product Quantity</th>
+            <td mat-cell *matCellDef="let order">
+                <div *ngFor="let item of order.orderedItems">{{ item.quantity }}</div>
+            </td>
+        </ng-container>
+
+        <!-- Total Cost Column -->
+        <ng-container matColumnDef="total">
+            <th mat-header-cell *matHeaderCellDef>Total Cost</th>
+            <td mat-cell *matCellDef="let order">{{order.total | currency}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
