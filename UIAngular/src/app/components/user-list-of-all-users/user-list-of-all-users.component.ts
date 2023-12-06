@@ -1,21 +1,21 @@
-/*userListing.component.ts*/
+/*user-list-of-all-users.component.ts*/
 
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { MatTableDataSource } from "@angular/material/table";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { MatDialog } from "@angular/material/dialog";
-import { DeleteUserPopUpComponent } from "../delete-user-pop-up/delete-user-pop-up.component";
+import { UserListOfAllUsersDeleteAUserComponent } from "../user-list-of-all-users-delete-a-user/user-list-of-all-users-delete-a-user.component";
 import { Router } from "@angular/router";
 import { UserService } from "../../service/user/user.service";
 import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-userListing',
-  templateUrl: './userListing.component.html',
-  styleUrl: './userListing.component.css'
+  templateUrl: './user-list-of-all-users.component.html',
+  styleUrl: './user-list-of-all-users.component.css'
 })
-export class UserListingComponent implements OnInit, AfterViewInit{
+export class UserListOfAllUsersComponent implements OnInit, AfterViewInit{
   userList: any;
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator !:MatPaginator;
@@ -76,7 +76,7 @@ export class UserListingComponent implements OnInit, AfterViewInit{
 
   deleteUser(user: any) {
     console.log('Attempting to delete user:', user);
-    const dialogRef = this.dialog.open(DeleteUserPopUpComponent, {
+    const dialogRef = this.dialog.open(UserListOfAllUsersDeleteAUserComponent, {
       width: '250px',
       data: { id: user.id }
     });

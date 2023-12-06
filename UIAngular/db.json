@@ -91,6 +91,25 @@
       ],
       "orders": [],
       "cart": []
+    },
+    {
+      "userName": "wpustudent",
+      "password": "abc123",
+      "firstName": "wpu",
+      "lastName": "student",
+      "dateOfBirth": "1991-08-08",
+      "gender": "male",
+      "email": "wpustudent@gmail.com",
+      "phone": "9298996880",
+      "houseNumber": "21",
+      "streetName": "Lenox",
+      "city": "Paterson",
+      "state": "NJ",
+      "zipCode": "07502",
+      "country": "USA",
+      "userCategory": 0,
+      "isActive": false,
+      "id": 4
     }
   ],
   "USER_CATEGORIES": [

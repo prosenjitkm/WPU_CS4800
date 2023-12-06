@@ -14,13 +14,13 @@ import { LoginComponent } from "./components/login/login.component";
 import { HomeComponent } from "./components/home/home.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HeaderComponent } from "./components/header/header.component";
-import { UserListingComponent } from "./components/userListing/userListing.component";
-import { UserUpdateComponent } from "./components/user-update/user-update.component";
+import { UserListOfAllUsersComponent } from "./components/user-list-of-all-users/user-list-of-all-users.component";
+import { UserListOfAllUsersUpdateAUserComponent } from "./components/user-list-of-all-users-update-a-user/user-list-of-all-users-update-a-user.component";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatButtonModule } from "@angular/material/button";
 import { NavigationBarComponent } from "./components/navigation-bar/navigation-bar.component";
-import { DeleteUserPopUpComponent } from "./components/delete-user-pop-up/delete-user-pop-up.component";
+import { UserListOfAllUsersDeleteAUserComponent } from "./components/user-list-of-all-users-delete-a-user/user-list-of-all-users-delete-a-user.component";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { MatPaginatorModule } from "@angular/material/paginator";
@@ -45,9 +45,9 @@ import {
     NavigationBarComponent,
     HeaderComponent,
     FooterComponent,
-    UserListingComponent,
-    UserUpdateComponent,
-    DeleteUserPopUpComponent,
+    UserListOfAllUsersComponent,
+    UserListOfAllUsersUpdateAUserComponent,
+    UserListOfAllUsersDeleteAUserComponent,
     ProductListOfAllUsersComponent,
     ShopComponent,
     SideNavComponent,

@@ -1,4 +1,4 @@
-/*user-update.component.ts*/
+/*user-list-of-all-users-update-a-user.component.ts*/
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
@@ -8,10 +8,10 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
   selector: 'app-user-update',
-  templateUrl: './user-update.component.html',
-  styleUrls: ['./user-update.component.css']
+  templateUrl: './user-list-of-all-users-update-a-user.component.html',
+  styleUrls: ['./user-list-of-all-users-update-a-user.component.css']
 })
-export class UserUpdateComponent implements OnInit {
+export class UserListOfAllUsersUpdateAUserComponent implements OnInit {
   userCategoryList: UserCategory[] = [];
   updateForm: FormGroup;
   userId!: number;

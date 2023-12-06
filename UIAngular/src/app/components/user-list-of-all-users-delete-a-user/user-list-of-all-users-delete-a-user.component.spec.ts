@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeleteUserPopUpComponent } from './delete-user-pop-up.component';
+import { UserListOfAllUsersDeleteAUserComponent } from './user-list-of-all-users-delete-a-user.component';
 
 describe('DeleteUserPopUpComponent', () => {
-  let component: DeleteUserPopUpComponent;
-  let fixture: ComponentFixture<DeleteUserPopUpComponent>;
+  let component: UserListOfAllUsersDeleteAUserComponent;
+  let fixture: ComponentFixture<UserListOfAllUsersDeleteAUserComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeleteUserPopUpComponent]
+      imports: [UserListOfAllUsersDeleteAUserComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(DeleteUserPopUpComponent);
+
+    fixture = TestBed.createComponent(UserListOfAllUsersDeleteAUserComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
