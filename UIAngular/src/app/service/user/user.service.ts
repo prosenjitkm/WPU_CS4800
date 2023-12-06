@@ -46,8 +46,8 @@ export class UserService {
     return this.http.get<UserCategory[]>(this.apiUrlUserCategories);
   }
 
-    getUsersUserCategory() {
-      const userCategory = sessionStorage.getItem('userCategory');
-      return userCategory ? parseInt(userCategory, 10) : 0;
-    }
+  getUsersUserCategory() {
+    const userCategory = sessionStorage.getItem('userCategory');
+    return userCategory ? parseInt(userCategory, 10) : 0;
+  }
 }

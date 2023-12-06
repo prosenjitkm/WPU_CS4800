@@ -70,6 +70,7 @@ export class UserListOfAllUsersComponent implements OnInit, AfterViewInit{
   }
 
   updateUser(userId: number): void {
+    console.log(`Navigating to update user with ID: ${userId}`);
     this.router.navigate(['/update-user', userId]);
   }
 

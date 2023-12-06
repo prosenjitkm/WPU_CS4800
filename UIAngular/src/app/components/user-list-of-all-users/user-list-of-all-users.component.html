@@ -56,7 +56,7 @@
                   [style.color]="user.userCategory !== 3 ? 'white' : ''"
                   color="primary"
                   (click)="onClickProductListOfUser(user)">Products</button>
-          <button mat-raised-button color="accent" (click)="updateUser(user)">Update</button>
+          <button mat-raised-button color="accent" (click)="updateUser(user.id)">Update</button>
           <button mat-raised-button color="warn" (click)="deleteUser(user)">Delete</button>
         </div>
       </td>

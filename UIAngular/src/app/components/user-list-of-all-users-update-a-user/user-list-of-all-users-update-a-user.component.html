@@ -33,7 +33,6 @@
           <input type="text" matInput formControlName="lastName">
         </mat-form-field>
       </div>
-
       <div class="form-row">
         <mat-form-field class="form-field">
           <mat-label>DOB</mat-label>
@@ -46,7 +45,6 @@
           </mat-radio-group>
         </div>
       </div>
-
       <div class="form-row">
         <mat-form-field class="form-field">
           <mat-label>Email</mat-label>
@@ -57,7 +55,6 @@
           <input type="tel" matInput formControlName="phone">
         </mat-form-field>
       </div>
-
       <div class="form-row">
         <mat-form-field class="form-field">
           <mat-label>House Number</mat-label>
@@ -72,7 +69,6 @@
           <input type="text" matInput formControlName="city">
         </mat-form-field>
       </div>
-
       <div class="form-row">
         <mat-form-field class="form-field">
           <mat-label>State</mat-label>
@@ -87,11 +83,10 @@
           <input type="text" matInput formControlName="country">
         </mat-form-field>
       </div>
-
       <mat-divider></mat-divider>
       <section class="button-container">
         <button type="submit" mat-raised-button color="primary">Save</button>
-        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        <button mat-raised-button color="warn" routerLink="/user">Back</button>
       </section>
       <mat-divider></mat-divider>
     </form>

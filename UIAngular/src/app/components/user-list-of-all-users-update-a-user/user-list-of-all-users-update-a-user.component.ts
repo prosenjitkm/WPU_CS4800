@@ -55,18 +55,40 @@ export class UserListOfAllUsersUpdateAUserComponent implements OnInit {
       state: [''],
       zipCode: [''],
       country: [''],
-      userCategory: ['', Validators.required],
-      isActive: [false]
+      userCategory: [''],
+      isActive: [false],
+      cart: [''],
+      userImageUrl: [''],
+      orders: [''],
     });
   }
 
   private loadUserData(userId: number): void {
     this.userService.getUserByUserId(userId).subscribe(
         response => {
+          console.log('User data loaded:', response); // Debugging line
+
           this.updateForm.setValue({
-            ...response,
-            password: '',
-            userCategory: response.userCategory ? response.userCategory.id : ''
+            id: response.id,
+            userName: response.userName,
+            password: response.password,
+            firstName: response.firstName,
+            lastName: response.lastName,
+            dateOfBirth: response.dateOfBirth,
+            gender: response.gender,
+            email: response.email,
+            phone: response.phone,
+            houseNumber: response.houseNumber,
+            streetName: response.streetName,
+            city: response.city,
+            state: response.state,
+            zipCode: response.zipCode,
+            country: response.country,
+            userCategory: response.userCategory.id,
+            isActive: response.isActive,
+            cart: response.cart,
+            userImageUrl: response.userImageUrl,
+            orders: response.orders,
           });
         },
         error => {
