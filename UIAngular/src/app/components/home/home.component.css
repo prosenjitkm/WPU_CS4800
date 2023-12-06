@@ -1,0 +1,65 @@
+/* home.component.css */
+.dashboard-container {
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.picture-container {
+  width: 100px; /* Adjust size as needed */
+  height: 100px;
+  border-radius: 50%; /* Makes it circular */
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.profile-picture {
+  width: 100%;
+  height: auto;
+}
+
+.user-info {
+  font-size: 1.2em;
+}
+
+.charts-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.chart {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 30%; /* Adjust width as needed */
+  text-align: center;
+}
+
+/* Add responsive design as needed */
+@media (max-width: 768px) {
+  .charts-container {
+    flex-direction: column;
+  }
+  .chart {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+.chart h3 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+}

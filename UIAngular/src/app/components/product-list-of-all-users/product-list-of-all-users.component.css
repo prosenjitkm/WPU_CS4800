@@ -1,0 +1,65 @@
+/*product-list-of-all-users.component.css*/
+
+.table-container {
+  overflow-x: auto;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 20px;
+  width: 80%; /* Adjust the width as per your layout */
+}
+
+.table-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mat-elevation-z8 table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #333;
+  color: black; /* Changed from black for better visibility */
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 12px;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px; /* Maintain consistent spacing */
+  justify-content: center; /* Center the buttons as a group */
+  align-items: center; /* Align items vertically */
+}
+
+.mat-paginator {
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    width: 95%;
+  }
+}
+
+/* Button styling */
+button {
+  min-width: 90px; /* Adjust as needed for consistent width */
+  /* Removed margin:auto to avoid conflicts with flexbox centering */
+}
+
+/* Center align header and cell content */
+th.action-header, td.action-cell {
+  text-align: center; /* Center align content */
+}

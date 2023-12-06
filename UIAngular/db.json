@@ -1,31 +1,9 @@
 {
-  "USER_CATEGORIES": [
-    {
-      "code": 1,
-      "name": "ADMIN",
-      "users": [
-        1
-      ]
-    },
-    {
-      "code": 2,
-      "name": "BUYER",
-      "users": [
-        2
-      ]
-    },
-    {
-      "code": 3,
-      "name": "SELLER",
-      "users": [
-        6
-      ]
-    }
-  ],
   "USERS": [
     {
       "id": 1,
       "userName": "prosenjit",
+      "userImageUrl": "https://m.media-amazon.com/images/I/81WME4-g0ZL.__AC_SY300_SX300_QL70_FMwebp_.jpg",
       "password": "abc123",
       "firstName": "Prosenjit",
       "lastName": "Mandal",
@@ -41,11 +19,14 @@
       "country": "USA",
       "userCategory": 1,
       "isActive": true,
-      "products": []
+      "products": [],
+      "orders": [],
+      "cart": []
     },
     {
       "id": 2,
       "userName": "prantika",
+      "userImageUrl": "",
       "password": "abc123",
       "firstName": "Prantika",
       "lastName": "Tanni",
@@ -59,236 +40,24 @@
       "state": "NJ",
       "zipCode": "07502",
       "country": "USA",
-      "userCategory": 3,
+      "userCategory": 2,
       "isActive": true,
-      "products": [
-        1
+      "products": [],
+      "orders": [
+        "ORD001",
+        "ORD002"
+      ],
+      "cart": [
+        {
+          "productId": 2,
+          "quantity": 1
+        }
       ]
     },
     {
       "id": 3,
-      "userName": "abc123",
-      "password": "abc123",
-      "firstName": "Prosenjit",
-      "lastName": "Mandal",
-      "dateOfBirth": "1991-06-28",
-      "gender": "male",
-      "email": "prosenjit@gmail.com",
-      "phone": "9298996880",
-      "houseNumber": "21",
-      "streetName": "Lenox",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07502",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        2
-      ]
-    },
-    {
-      "id": 4,
-      "userName": "jane.doe",
-      "password": "password123",
-      "firstName": "Jane",
-      "lastName": "Doe",
-      "dateOfBirth": "1993-07-15",
-      "gender": "female",
-      "email": "jane.doe@example.com",
-      "phone": "9298996882",
-      "houseNumber": "22",
-      "streetName": "Maple Street",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07503",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        3
-      ]
-    },
-    {
-      "id": 5,
-      "userName": "john.smith",
-      "password": "jsmith123",
-      "firstName": "John",
-      "lastName": "Smith",
-      "dateOfBirth": "1989-12-10",
-      "gender": "male",
-      "email": "john.smith@example.com",
-      "phone": "9298996883",
-      "houseNumber": "10",
-      "streetName": "Elm Street",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07504",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        4
-      ]
-    },
-    {
-      "id": 6,
-      "userName": "alice.jones",
-      "password": "ajones123",
-      "firstName": "Alice",
-      "lastName": "Jones",
-      "dateOfBirth": "1995-03-20",
-      "gender": "female",
-      "email": "alice.jones@example.com",
-      "phone": "9298996884",
-      "houseNumber": "50",
-      "streetName": "Cedar Lane",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07505",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        5
-      ]
-    },
-    {
-      "id": 7,
-      "userName": "mike.brown",
-      "password": "mbrown123",
-      "firstName": "Mike",
-      "lastName": "Brown",
-      "dateOfBirth": "1992-01-18",
-      "gender": "male",
-      "email": "mike.brown@example.com",
-      "phone": "9298996885",
-      "houseNumber": "33",
-      "streetName": "Oak Avenue",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07506",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        6
-      ]
-    },
-    {
-      "id": 8,
-      "userName": "sarah.white",
-      "password": "swhite123",
-      "firstName": "Sarah",
-      "lastName": "White",
-      "dateOfBirth": "1994-05-22",
-      "gender": "female",
-      "email": "sarah.white@example.com",
-      "phone": "9298996886",
-      "houseNumber": "44",
-      "streetName": "Pine Road",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07507",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        7
-      ]
-    },
-    {
-      "id": 9,
-      "userName": "david.lee",
-      "password": "dlee123",
-      "firstName": "David",
-      "lastName": "Lee",
-      "dateOfBirth": "1996-08-31",
-      "gender": "male",
-      "email": "david.lee@example.com",
-      "phone": "9298996887",
-      "houseNumber": "77",
-      "streetName": "Willow Street",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07508",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        8
-      ]
-    },
-    {
-      "id": 10,
-      "userName": "emily.green",
-      "password": "egreen123",
-      "firstName": "Emily",
-      "lastName": "Green",
-      "dateOfBirth": "1988-09-10",
-      "gender": "female",
-      "email": "emily.green@example.com",
-      "phone": "9298996888",
-      "houseNumber": "95",
-      "streetName": "Birch Street",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07509",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        9
-      ]
-    },
-    {
-      "id": 11,
-      "userName": "oliver.hill",
-      "password": "ohill123",
-      "firstName": "Oliver",
-      "lastName": "Hill",
-      "dateOfBirth": "1990-11-05",
-      "gender": "male",
-      "email": "oliver.hill@example.com",
-      "phone": "9298996889",
-      "houseNumber": "18",
-      "streetName": "Maple Avenue",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07510",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        10
-      ]
-    },
-    {
-      "id": 12,
-      "userName": "samuel.king",
-      "password": "sking123",
-      "firstName": "Samuel",
-      "lastName": "King",
-      "dateOfBirth": "1985-02-27",
-      "gender": "male",
-      "email": "samuel.king@example.com",
-      "phone": "9298996891",
-      "houseNumber": "82",
-      "streetName": "Cherry Lane",
-      "city": "Paterson",
-      "state": "NJ",
-      "zipCode": "07512",
-      "country": "USA",
-      "userCategory": 3,
-      "isActive": true,
-      "products": [
-        11,
-        12
-      ]
-    },
-    {
-      "id": 13,
       "userName": "prachi",
+      "userImageUrl": "",
       "password": "abc123",
       "firstName": "Prachi",
       "lastName": "Roy",
@@ -303,13 +72,7 @@
       "zipCode": "07502",
       "country": "USA",
       "userCategory": 3,
-      "isActive": true
-    }
-  ],
-  "PRODUCT_CATEGORIES": [
-    {
-      "productCategoryId": 1,
-      "categoryName": "Electronics",
+      "isActive": true,
       "products": [
         1,
         2,
@@ -321,18 +84,36 @@
         8,
         9,
         10,
-        11
+        11,
+        12,
+        13,
+        14
+      ],
+      "orders": [],
+      "cart": []
+    }
+  ],
+  "USER_CATEGORIES": [
+    {
+      "id": 1,
+      "userCategoryName": "ADMIN",
+      "users": [
+        1
       ]
     },
     {
-      "productCategoryId": 2,
-      "categoryName": "Mugs",
-      "products": [14]
+      "id": 2,
+      "userCategoryName": "BUYER",
+      "users": [
+        2
+      ]
     },
     {
-      "productCategoryId": 3,
-      "categoryName": "T-shirt",
-      "products": [13]
+      "id": 3,
+      "userCategoryName": "SELLER",
+      "users": [
+        3
+      ]
     }
   ],
   "PRODUCTS": [
@@ -348,7 +129,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 2,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -378,22 +159,22 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 4,
+      "user": 3,
       "productCategory": 1
     },
     {
       "id": 4,
-      "productName": "iPhone XS",
+      "productName": "iPhone 11",
       "productQuantity": 55,
-      "productPrice": 499.99,
-      "productDescription": "iPhone XS with A12 Bionic chip and Super Retina HD display",
-      "productImageUrl": "https://i5.walmartimages.com/asr/713d82e2-98ab-43b9-80eb-72415559c0b7.36e11d3eaf3fe447c565fff7617f4873.jpeg?odnHeight=640&odnWidth=640&odnBg=FFFFFF",
-      "productSalePrice": 479.99,
+      "productPrice": 599.99,
+      "productDescription": "iPhone 11 with A13 Bionic chip and Ultra Wide camera",
+      "productImageUrl": "https://www.cricketwireless.com/uiassets/DAPW4944-detail-front.jpg",
+      "productSalePrice": 579.99,
       "isOnSale": false,
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 5,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -408,7 +189,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 6,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -423,7 +204,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 7,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -438,7 +219,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 8,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -453,7 +234,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 9,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -468,7 +249,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 10,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -483,7 +264,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 11,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -498,7 +279,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 12,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -513,7 +294,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 12,
+      "user": 3,
       "productCategory": 1
     },
     {
@@ -528,7 +309,7 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 12,
+      "user": 3,
       "productCategory": 3
     },
     {
@@ -543,8 +324,84 @@
       "isAvailable": true,
       "createdDate": "2023-11-01T00:00:00Z",
       "lastModifiedDate": "2023-11-02T00:00:00Z",
-      "user": 12,
+      "user": 3,
       "productCategory": 2
+    }
+  ],
+  "PRODUCT_CATEGORIES": [
+    {
+      "id": 1,
+      "categoryName": "Electronics",
+      "products": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "id": 2,
+      "categoryName": "Mugs",
+      "products": [
+        14
+      ]
+    },
+    {
+      "id": 3,
+      "categoryName": "T-shirt",
+      "products": [
+        13
+      ]
+    }
+  ],
+  "ORDERS": [
+    {
+      "id": "ORD002",
+      "userId": 2,
+      "orderedItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "ORD002",
+      "userId": 2,
+      "orderedItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        }
+      ]
+    }
+  ],
+  "CART": [
+    {
+      "id": "",
+      "userId": 2,
+      "cartItems": [
+        {
+          "productId": 2,
+          "quantity": 1
+        }
+      ]
     }
   ]
 }

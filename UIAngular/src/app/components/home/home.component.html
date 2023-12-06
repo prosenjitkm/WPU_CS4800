@@ -1,0 +1,47 @@
+<!-- home.component.html -->
+<div class="dashboard-container">
+  <div class="header">
+    <div class="profile">
+      <div class="picture-container">
+<!--        <img *ngIf="user?.userImageUrl" [src]="user.userImageUrl" alt="Profile Picture" class="profile-picture"/>-->
+        <img src="../../../assets/images/home/imagePlaceholder.png"  alt="Profile Picture" class="profile-picture"/>
+ <!--       <img *ngIf="user?.userImageUrl" [src]="user.userImageUrl" alt="Profile Picture" class="profile-picture"/>
+        &lt;!&ndash; Display a default image if user?.userImageUrl is not available &ndash;&gt;
+        <img *ngIf="!user?.userImageUrl" src="./assets/images/home/imagePlaceholder.png" alt="Default Profile Picture" class="profile-picture"/>-->
+      </div>
+    </div>
+  </div>
+  <div class="charts-container">
+    <div class="chart sales-chart">
+      <h3>Sales This Week</h3>
+      <!-- Static bar chart mockup -->
+      <svg width="100%" height="150">
+        <rect x="10" y="10" width="20" height="130" fill="#4CAF50"/>
+        <rect x="40" y="40" width="20" height="100" fill="#2196F3"/>
+        <rect x="70" y="70" width="20" height="70" fill="#f44336"/>
+        <!-- Add more bars as needed -->
+        <!-- Add text labels for each bar as needed -->
+      </svg>
+    </div>
+    <div class="chart rating-chart">
+      <h3>Rating Ranking</h3>
+      <!-- Static pie chart mockup -->
+      <svg width="100%" height="150" viewBox="0 0 32 32">
+        <circle r="16" cx="16" cy="16" fill="#FFEB3B"/>
+        <path d="M16 16 L16 0 A16 16 0 0 1 32 16 Z" fill="#4CAF50"/>
+        <path d="M16 16 L32 16 A16 16 0 0 1 22.627417 2.372583 Z" fill="#2196F3"/>
+        <!-- Add more slices as needed -->
+      </svg>
+    </div>
+    <div class="chart popular-items-chart">
+      <h3>Most Popular Item</h3>
+      <!-- Static line chart mockup -->
+      <svg width="100%" height="150">
+        <polyline points="10,140 30,120 50,130 70,80 90,60 110,70 130,50"
+                  fill="none" stroke="#FF9800" stroke-width="2"/>
+        <!-- Add points and lines as needed -->
+        <!-- Add text labels for points as needed -->
+      </svg>
+    </div>
+  </div>
+</div>
