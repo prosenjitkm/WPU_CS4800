@@ -1,5 +1,5 @@
 /*orderedItem.ts*/
 export interface OrderedItem {
-    productId: number;
-    quantity: number;
+    id: number;
+    productQuantity: number;
 }

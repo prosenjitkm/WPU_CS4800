@@ -1,11 +1,13 @@
 /*orders.component.ts*/
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from "../../service/order/order.service";
 import { ProductService } from "../../service/product/product.service";
 import { AuthorizationService } from "../../service/auth/authorization.service";
 import { Order } from "../../models/orderModel";
 import { ToastrService } from "ngx-toastr";
-import {Product} from "../../models/productModel";
+import { Product } from "../../models/productModel";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-orders',
@@ -14,8 +16,11 @@ import {Product} from "../../models/productModel";
 })
 export class OrdersComponent implements OnInit {
   orders: Order[] = [];
-  productDetailsMap = new Map<number, Product>(); // Map to store product details
-  displayedColumns: string[] = ['id', 'orderedDate', 'deliveredDate', 'productNames', 'quantity', 'total'];
+  productDetailsMap = new Map<number, Product>();
+  displayedColumns: string[] = ['id', 'orderedDate', 'deliveredDate', 'productNames', 'productQuantity', 'total'];
+  dataSource = new MatTableDataSource<Order>([]);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private orderService: OrderService,
               private authService: AuthorizationService,
@@ -26,13 +31,17 @@ export class OrdersComponent implements OnInit {
     this.loadOrders();
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
   loadOrders() {
     const userId = this.authService.getCurrentUserId();
     if (userId !== null) {
       this.orderService.getOrdersByUserId(userId).subscribe(orders => {
         this.orders = orders;
         this.updateProductDetailsInOrders();
-        this.calculateTotalCosts();
+        this.dataSource.data = this.orders;
         this.toastr.success('Orders loaded successfully');
       }, error => {
         this.toastr.error('Failed to load orders');
@@ -42,21 +51,8 @@ export class OrdersComponent implements OnInit {
     }
   }
 
-  calculateTotalCosts() {
-    this.orders.forEach(order => {
-      let total = 0;
-      order.orderedItems.forEach(item => {
-        const product = this.productDetailsMap.get(item.productId);
-        if (product) {
-          total += product.productPrice * item.quantity;
-        }
-      });
-      order.total = total; // Assuming 'total' is a property of the Order model
-    });
-  }
-
   loadProductDetails(productId: number) {
-    if (!this.productDetailsMap.has(productId)) { // Check if product details are already loaded
+    if (!this.productDetailsMap.has(productId)) {
       this.productService.getProductByProductId(productId).subscribe(product => {
         this.productDetailsMap.set(productId, product);
       });
@@ -66,7 +62,7 @@ export class OrdersComponent implements OnInit {
   updateProductDetailsInOrders() {
     this.orders.forEach(order => {
       order.orderedItems.forEach(item => {
-        this.loadProductDetails(item.productId);
+        this.loadProductDetails(item.id);
       });
     });
   }

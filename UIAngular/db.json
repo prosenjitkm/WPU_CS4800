@@ -383,19 +383,19 @@
   ],
   "ORDERS": [
     {
-      "id": "ORD002",
+      "id": "ORD001",
       "userId": 2,
       "orderedDate": "2023-11-01T00:00:00Z",
       "deliveredDate": "2023-11-01T00:00:00Z",
       "total": 100,
       "orderedItems": [
         {
-          "productId": 1,
-          "quantity": 2
+          "id": 1,
+          "productQuantity": 2
         },
         {
-          "productId": 3,
-          "quantity": 1
+          "id": 3,
+          "productQuantity": 1
         }
       ]
     },
@@ -407,12 +407,12 @@
       "total": 100,
       "orderedItems": [
         {
-          "productId": 1,
-          "quantity": 2
+          "id": 1,
+          "productQuantity": 2
         },
         {
-          "productId": 3,
-          "quantity": 1
+          "id": 3,
+          "productQuantity": 1
         }
       ]
     }

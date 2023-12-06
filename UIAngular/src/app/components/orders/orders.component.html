@@ -26,16 +26,17 @@
             <th mat-header-cell *matHeaderCellDef>Product Names</th>
             <td mat-cell *matCellDef="let order">
                 <div *ngFor="let item of order.orderedItems">
-                    {{ productDetailsMap.get(item.productId)?.productName }}
+                    {{ productDetailsMap.get(item.id)?.productName }}
                 </div>
             </td>
         </ng-container>
 
         <!-- Product Quantity Column -->
+        <!-- Product Quantity Column -->
         <ng-container matColumnDef="productQuantity">
             <th mat-header-cell *matHeaderCellDef>Product Quantity</th>
             <td mat-cell *matCellDef="let order">
-                <div *ngFor="let item of order.orderedItems">{{ item.quantity }}</div>
+                <div *ngFor="let item of order.orderedItems">{{ item.productQuantity }}</div>
             </td>
         </ng-container>
 
