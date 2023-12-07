@@ -14,6 +14,7 @@ export class ProductListOfAllUsersComponent {
   displayedColumns: string[] = ['id', 'productName', 'productQuantity', 'productPrice', 'action'];
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private productService: ProductService) {
     this.route.params.subscribe(params => {
       const userId = params['userId'];
@@ -46,6 +47,7 @@ export class ProductListOfAllUsersComponent {
   }
 
   onClickViewProductDetails(product: any) {
-
+    this.router.navigate(["/product", product.id]);
+    console.log("view button clicked");
   }
 }

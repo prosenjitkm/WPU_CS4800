@@ -1,3 +1,25 @@
 <!-- cart.component.html -->
 
-<h1>Under Construction</h1>
+<div class="cart-container">
+  <div *ngIf="userCart; else emptyCart">
+    <h2>Your Cart</h2>
+    <div *ngFor="let item of cartItemsWithDetails" class="cart-item">
+      <img [src]="item.productDetail.productImageUrl" alt="{{ item.productDetail.name }}" width="50" height="50">
+      <span>{{ item.productDetail.productName }} </span>
+      <span>Quantity: {{ item.quantity }} </span>
+      <span>Price: ${{ item.productDetail.productPrice * item.quantity }}</span>
+      <button (click)="removeFromCart(item.productDetail.id)">Remove</button>
+    </div>
+  </div>
+
+  <div class="total-amount">
+    <span>Total Amount: ${{ totalAmount }}</span>
+  </div>
+
+  <button (click)="checkout()">Checkout</button>
+
+
+<ng-template #emptyCart>
+    <p class="empty-cart">Your cart is empty.</p>
+  </ng-template>
+</div>

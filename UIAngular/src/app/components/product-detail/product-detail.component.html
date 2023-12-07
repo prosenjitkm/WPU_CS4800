@@ -15,5 +15,7 @@
     <p><strong>Last Modified Date:</strong> {{ product.lastModifiedDate | date }}</p>
   </div>
 
-  <button (click)="goBack()">Back to Shop</button>
+  <button *ngIf="isBuyer" (click)="goBackToShop()">Back to Shop</button>
+  <button *ngIf="isBuyer" (click)="addToCart()">Add to Cart</button>
+  <button *ngIf="isAdmin" (click)="goBackToProductList()">Back to Product List</button>
 </div>

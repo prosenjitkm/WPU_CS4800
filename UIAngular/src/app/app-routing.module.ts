@@ -28,7 +28,7 @@ const routes: Routes = [
   { component: LoginComponent, path: 'login' },
   { component: UserListOfAllUsersComponent, path: 'user', canActivate:[AdminGuard]},
   { component: ProductListOfAllUsersComponent, path: 'products/:userId', canActivate: [AdminGuard]},
-  { component: ProductDetailComponent, path: 'product/:id' , canActivate: [AdminGuard]},
+  { component: ProductDetailComponent, path: 'product/:id'},
   { component: UserListOfAllUsersUpdateAUserComponent, path: 'update-user/:id', canActivate: [AdminGuard] },
   { component: ProductListOfCurrentUserComponent, path: 'my-products', canActivate: [SellerGuard]},
   { component: ProductListOfCurrentUserDeleteAProductComponent, path: 'update-product/:id', canActivate: [SellerGuard]},

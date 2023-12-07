@@ -47,12 +47,13 @@ export class ShopComponent implements OnInit {
   }
 
   addToCart(product: Product) {
+    console.log("add button clicked");
     const userId = this.authService.getCurrentUserId();
-    if (userId) {
-      this.cartService.addProductToCart(userId, product.id, 1).subscribe(() => {
+    if (userId) {;
+      this.cartService.addToCart(userId, product.id).subscribe(() => {
         this.toastr.success('Product added to cart');
-      }, error => {
-        console.error('Error adding product to cart:', error);
+      }, (error: any) => {
+        console.error('Error adding to cart:', error);
         this.toastr.error('Error adding product to cart');
       });
     } else {

@@ -1,1 +1,43 @@
 /*cart.component.css*/
+/* cart.component.css */
+
+/* Container for the entire cart */
+.cart-container {
+  margin: 20px;
+}
+
+/* Styling for each cart item */
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+/* Styling for the product image */
+.cart-item img {
+  margin-right: 10px;
+}
+
+/* Styling for product details */
+.cart-item span {
+  margin-right: 10px;
+}
+
+/* Styling for the remove button */
+.cart-item button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Styling for the empty cart message */
+.empty-cart {
+  margin: 20px;
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}

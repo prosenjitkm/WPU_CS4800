@@ -56,12 +56,23 @@ export class ProductService {
         );
     }
 
-  deleteProduct(productId: number): Observable<any> {
-    return this.http.delete(`${this.apiUrlProducts}/${productId}`).pipe(
-      catchError(error => {
-        console.error('Error deleting product:', error);
-        return throwError(() => new Error('Error deleting product.'));
-      })
-    );
-  }
+    getProductsByProductIds(productIds: number[]): Observable<Product[]> {
+      const observables: Observable<Product>[] = [];
+
+      for (const productId of productIds) {
+        const productObservable = this.getProductByProductId(productId);
+        observables.push(productObservable);
+      }
+
+      return forkJoin(observables);
+    }
+
+    deleteProduct(productId: number): Observable<any> {
+      return this.http.delete(`${this.apiUrlProducts}/${productId}`).pipe(
+        catchError(error => {
+          console.error('Error deleting product:', error);
+          return throwError(() => new Error('Error deleting product.'));
+        })
+      );
+    }
 }

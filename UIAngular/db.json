@@ -110,6 +110,25 @@
       "userCategory": 0,
       "isActive": false,
       "id": 4
+    },
+    {
+      "userName": "naoki",
+      "password": "abc123",
+      "firstName": "Naoki",
+      "lastName": "Yawata",
+      "dateOfBirth": "2001-09-29",
+      "gender": "male",
+      "email": "viridisy@yahoo.co.jp",
+      "phone": "5513154522",
+      "houseNumber": "300",
+      "streetName": "Pompton Rd",
+      "city": "Wayne",
+      "state": "NJ",
+      "zipCode": "07470",
+      "country": "USA",
+      "userCategory": 1,
+      "isActive": true,
+      "id": 5
     }
   ],
   "USER_CATEGORIES": [
@@ -417,16 +436,28 @@
       ]
     }
   ],
-  "CART": [
+  "CARTS": [
     {
-      "id": "",
       "userId": 2,
       "cartItems": [
         {
+          "productId": 1,
+          "quantity": 4
+        },
+        {
           "productId": 2,
           "quantity": 1
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        },
+        {
+          "productId": 5,
+          "quantity": 1
         }
-      ]
+      ],
+      "id": 1
     }
   ]
 }

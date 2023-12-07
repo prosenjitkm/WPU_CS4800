@@ -14,12 +14,17 @@ import {ToastrService} from "ngx-toastr";
 export class ProductDetailComponent implements OnInit {
     product: Product | any;
 
+    isAdmin= false;
+    isSeller = false;
+    isBuyer = false;
     constructor(
         private route: ActivatedRoute,
         private productService: ProductService,
         private router: Router,
         private toastr: ToastrService,
-    ) {}
+    ) {
+      this.checkUserCategory()
+    }
 
     ngOnInit(): void {
         const id = this.route.snapshot.paramMap.get('id');
@@ -41,7 +46,24 @@ export class ProductDetailComponent implements OnInit {
         }
     }
 
-    goBack() {
+    checkUserCategory() {
+      let userCategory = sessionStorage.getItem('userCategory');
+      let parsedUserCategory = userCategory ? parseInt(userCategory, 10) : 0;
+      parsedUserCategory = isNaN(parsedUserCategory) ? 0 : parsedUserCategory;
+
+      this.isAdmin = parsedUserCategory === 1;
+      this.isSeller = parsedUserCategory === 3;
+      this.isBuyer = parsedUserCategory === 2;
+    }
+    goBackToShop() {
         this.router.navigate(['/shop']); // Make sure the route is defined in your routing module
+    }
+
+    goBackToProductList(){
+      this.router.navigate(["/products", this.product.user])
+    }
+
+    addToCart(){
+
     }
 }
