@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../service/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../service/product/product.service'; // Import ProductService
-import { AuthorizationServicehService } from "../../service/auth/authorization.service"
+import { AuthorizationService } from "../../service/auth/authorization.service"
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
   totalAmount: number=0;
   constructor(
     private cartService: CartService,
-    private authService: AuthorizationServicehService,
+    private authService: AuthorizationService,
     private productService: ProductService, // Inject ProductService
     private toastr: ToastrService
   ) {}
@@ -27,8 +27,9 @@ export class CartComponent implements OnInit {
   }
 
   loadUserCart() {
-    const userId = this.authService.getCurrentUserId(); // Update with the actual user's ID
-    this.cartService.getUserCart(userId).subscribe(
+    const userId= this.authService.getCurrentUserId(); // Update with the actual user's ID
+    if(userId!=null)
+      this.cartService.getUserCart(userId).subscribe(
       (cart: any) => {
         this.userCart = cart.length > 0 ? cart[0] : null;
 
@@ -64,6 +65,7 @@ export class CartComponent implements OnInit {
 
   removeFromCart(productId: number) {
     const userId = this.authService.getCurrentUserId();
+    if(userId!=null)
     this.cartService.removeFromCart(userId, productId).subscribe(
       () => {
         this.toastr.success('Product removed from cart');
@@ -80,6 +82,7 @@ export class CartComponent implements OnInit {
 
   calculateTotalAmount() {
     const userId = this.authService.getCurrentUserId();
+    if(userId!=null)
     this.cartService.getUserCart(userId).subscribe(
       (cart: any) => {
         const productIds = this.userCart.cartItems.map((item: any) => item.productId);
