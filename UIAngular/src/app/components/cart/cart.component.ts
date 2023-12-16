@@ -4,6 +4,7 @@ import { CartService } from '../../service/cart/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from '../../service/product/product.service'; // Import ProductService
 import { AuthorizationService } from "../../service/auth/authorization.service"
+import {OrderService} from "../../service/order/order.service";
 
 @Component({
   selector: 'app-cart',
@@ -18,7 +19,8 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private authService: AuthorizationService,
     private productService: ProductService, // Inject ProductService
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -84,40 +86,61 @@ export class CartComponent implements OnInit {
   }
 
   calculateTotalAmount() {
-    // const userId = this.authService.getCurrentUserId();
-    // if(userId!=null)
-    // this.cartService.getUserCart(userId).subscribe(
-    //   (cart: any) => {
-    //     const productQuantities=this.userCart.cartItems.map((item: any) => item.quantity);
-    //     const productIds = this.userCart.cartItems.map((item: any) => item.productId);
-    //     this.productService.getProductsByProductIds(productIds).subscribe(
-    //       (products: any[]) => {
-    //         this.totalAmount=0;
-    //         console.log("calculating");
-    //         console.log(cart);
-    //         for(let i=0;i<products.length;i++){
-    //
-    //           this.totalAmount+=products[i].productPrice*productQuantities[i];
-    //         }
-    //         return this.totalAmount;
-    //       },
-    //       error => {
-    //         console.error('Error loading product details:', error);
-    //         this.toastr.error('Error loading product details');
-    //       }
-    //     );
-    //   },
-    //   error => {
-    //     console.error('Error loading user cart:', error);
-    //     this.toastr.error('Error loading user cart');
-    //   }
-    // );
-    this.totalAmount=0;
+    const userId = this.authService.getCurrentUserId();
+    if(userId!=null)
+    this.cartService.getUserCart(userId).subscribe(
+      (cart: any) => {
+        const productQuantities=this.userCart.cartItems.map((item: any) => item.quantity);
+        const productIds = this.userCart.cartItems.map((item: any) => item.productId);
+        this.productService.getProductsByProductIds(productIds).subscribe(
+          (products: any[]) => {
+            this.totalAmount=0;
+            for(let i=0;i<products.length;i++){
+              console.log([products[i].productPrice,productQuantities[i]])
+              this.totalAmount+=products[i].productPrice*productQuantities[i];
+            }
+            return this.totalAmount;
+          },
+          error => {
+            console.error('Error loading product details:', error);
+            this.toastr.error('Error loading product details');
+          }
+        );
+      },
+      error => {
+        console.error('Error loading user cart:', error);
+        this.toastr.error('Error loading user cart');
+      }
+    );
+    // this.totalAmount=0;
   }
 
   checkout() {
-    // Implement your checkout logic here
+    const userId = this.authService.getCurrentUserId();
     console.log('Checkout button clicked');
-    // You might want to navigate to a checkout page or show a modal for the checkout process.
+    console.log(this.userCart.cartItems);
+    const cartItems=this.userCart.cartItems;
+    const newOrder={
+        userId,
+        "orderedDate": "2023-11-01T00:00:00Z",
+        "deliveredDate": "2023-11-01T00:00:00Z",
+        "total": 100,
+        "orderedItems": [
+          {
+            "id": 1,
+            "productQuantity": 2
+          },
+          {
+            "id": 3,
+            "productQuantity": 1
+          }
+        ]
+      }
+    if(userId!=null)
+      this.orderService.addOrder(userId, newOrder)
+    for(let i=0;i<cartItems.length;i++){
+      this.removeFromCart(cartItems[i].productId);
+    }
+    this.calculateTotalAmount();
   }
 }
