@@ -31,6 +31,8 @@ export class CartComponent implements OnInit {
     if(userId!=null)
       this.cartService.getUserCart(userId).subscribe(
       (cart: any) => {
+        console.log(cart);
+        console.log(cart[0]);
         this.userCart = cart.length > 0 ? cart[0] : null;
 
         // Load product details for each cart item
@@ -44,7 +46,7 @@ export class CartComponent implements OnInit {
   }
 
   loadProductDetails() {
-    if (this.userCart && this.userCart.cartItems.length > 0) {
+    if (this.userCart) {
       const productIds = this.userCart.cartItems.map((item: any) => item.productId);
 
       this.productService.getProductsByProductIds(productIds).subscribe(
@@ -64,6 +66,7 @@ export class CartComponent implements OnInit {
   }
 
   removeFromCart(productId: number) {
+    console.log("remove button clicked");
     const userId = this.authService.getCurrentUserId();
     if(userId!=null)
     this.cartService.removeFromCart(userId, productId).subscribe(
@@ -81,30 +84,35 @@ export class CartComponent implements OnInit {
   }
 
   calculateTotalAmount() {
-    const userId = this.authService.getCurrentUserId();
-    if(userId!=null)
-    this.cartService.getUserCart(userId).subscribe(
-      (cart: any) => {
-        const productIds = this.userCart.cartItems.map((item: any) => item.productId);
-        this.productService.getProductsByProductIds(productIds).subscribe(
-          (products: any[]) => {
-            this.totalAmount=0;
-            for(let i=0;i<products.length;i++){
-              this.totalAmount+=products[i].productPrice;
-            }
-            return this.totalAmount;
-          },
-          error => {
-            console.error('Error loading product details:', error);
-            this.toastr.error('Error loading product details');
-          }
-        );
-      },
-      error => {
-        console.error('Error loading user cart:', error);
-        this.toastr.error('Error loading user cart');
-      }
-    );
+    // const userId = this.authService.getCurrentUserId();
+    // if(userId!=null)
+    // this.cartService.getUserCart(userId).subscribe(
+    //   (cart: any) => {
+    //     const productQuantities=this.userCart.cartItems.map((item: any) => item.quantity);
+    //     const productIds = this.userCart.cartItems.map((item: any) => item.productId);
+    //     this.productService.getProductsByProductIds(productIds).subscribe(
+    //       (products: any[]) => {
+    //         this.totalAmount=0;
+    //         console.log("calculating");
+    //         console.log(cart);
+    //         for(let i=0;i<products.length;i++){
+    //
+    //           this.totalAmount+=products[i].productPrice*productQuantities[i];
+    //         }
+    //         return this.totalAmount;
+    //       },
+    //       error => {
+    //         console.error('Error loading product details:', error);
+    //         this.toastr.error('Error loading product details');
+    //       }
+    //     );
+    //   },
+    //   error => {
+    //     console.error('Error loading user cart:', error);
+    //     this.toastr.error('Error loading user cart');
+    //   }
+    // );
+    this.totalAmount=0;
   }
 
   checkout() {

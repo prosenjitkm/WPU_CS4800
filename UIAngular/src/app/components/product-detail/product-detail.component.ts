@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from "../../models/productModel";
 import { ProductService } from "../../service/product/product.service";
 import {ToastrService} from "ngx-toastr";
+import { AuthorizationService} from "../../service/auth/authorization.service";
+import { CartService } from "../../service/cart/cart.service";
 
 @Component({
     selector: 'app-product-detail',
@@ -22,6 +24,8 @@ export class ProductDetailComponent implements OnInit {
         private productService: ProductService,
         private router: Router,
         private toastr: ToastrService,
+        private authService: AuthorizationService,
+        private cartService: CartService,
     ) {
       this.checkUserCategory()
     }
@@ -64,6 +68,16 @@ export class ProductDetailComponent implements OnInit {
     }
 
     addToCart(){
-
+      const userId = this.authService.getCurrentUserId();
+      if (userId) {;
+        this.cartService.addToCart(userId, this.product.id).subscribe(() => {
+          this.toastr.success('Product added to cart');
+        }, (error: any) => {
+          console.error('Error adding to cart:', error);
+          this.toastr.error('Error adding product to cart');
+        });
+      } else {
+        this.toastr.error('User not identified');
+      }
     }
 }
